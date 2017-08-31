@@ -116,6 +116,20 @@ add_action( 'widgets_init', 'numero_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+function numero_styles() {
+    
+    wp_enqueue_style( 'numero-bootstrap',get_template_directory_uri().'/css/bootstrap.css');
+    wp_enqueue_style( 'numero-font-awesome',get_template_directory_uri().'/css/font-awesome.css');
+    wp_enqueue_style( 'numero-owl-carousel',get_template_directory_uri().'/css/owl.carousel.css');
+    wp_enqueue_style( 'numero-owl-theme',get_template_directory_uri().'/css/owl.theme.css');
+    wp_enqueue_style( 'numero-animate',get_template_directory_uri().'/css/animate.css');
+    wp_enqueue_style( 'numero-style',get_template_directory_uri().'/style.css');
+    wp_enqueue_style( 'numero-googleapis', 'https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Montserrat:100,200,300,300i,400,500,600,700,800,900|Lato:300,400|Crimson+Text:400,400i,600');    
+
+    }
+add_action( 'wp_enqueue_scripts', 'numero_styles' );
+
+
 function numero_scripts() {
 	wp_enqueue_style( 'numero-style', get_stylesheet_uri() );
 
@@ -123,6 +137,25 @@ function numero_scripts() {
 
 	wp_enqueue_script( 'numero-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
+	wp_enqueue_script( 'numero-jquery-min', get_template_directory_uri() . '/jquery.min.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'numero-bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'numero-SmoothScroll', get_template_directory_uri() . '/js/SmoothScroll.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'numero-jquery-isotope', get_template_directory_uri() . '/js/jquery.isotope.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'numero-owl-carousel', get_template_directory_uri() . '/js/owl.carousel.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'numero-jquery-waypoints', get_template_directory_uri() . '/js/jquery.waypoints.min.js', array(), '20151215', true );
+    
+	wp_enqueue_script( 'numero-main', get_template_directory_uri() . '/js/main.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'numero-wow-min', get_template_directory_uri() . '/js/wow.min.js', array(), '20151215', true );
+
+    
+    
+    
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

@@ -14,42 +14,421 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+<!-- banner Page
+    ==========================================-->
+<Section id="home-banner" style="background-image: url( <?php echo get_template_directory_uri();?>/img/bg-1.jpg );">
+  <div class="content">
+    <div class="container wow fdeInUp"  data-wow-duration="1s">
+      <h1>MOBILE first APPROACH! </h1>
+      <h2>THINK BIG & GROW RICH.</h2>
+      <p>We build some of the best wordpress themes and also provide support for them. Our team of 5 work smart to get you pixel perfect themes. Lets grow together.</p>
+      <a class="btn btn-outline-default" href="#">Contact us</a> <a class="btn btn-info chooser-btn" href="#">Start FREE Trial</a> </div>
+  </div>
+</Section>
 
-		<?php
-		if ( have_posts() ) :
+<!-- about us Page
+    ==========================================-->
+<section id="about-us-block">
+  <div class="container">
+    <div class="row"> 
+      <!--section-title-->
+      <div class="section-title text-center wow fadeInUp">
+        <h2>About us</h2>
+        <p>Alice wondered a little at this, but she was too much in awe of the Queen to disbelieve it. 'I'll try it when I go home,' she thought to herself.</p>
+      </div>
+      <!--/section-title--> 
+      
+      <!--col-1-->
+      <div class="col-md-4 col-sm-4 col-about-us wow fdeInUp"> <i class="fa fa-clock-o"></i>
+        <h4>History</h4>
+        <p>This sounded a very good reason, and Alice was quite pleased to know it. 'I never thought of that before!' she said.</p>
+      </div>
+      <!--/col-1--> 
+      
+      <!--col-2-->
+      <div class="col-md-4 col-sm-4 col-about-us wow fdeInUp"> <i class="fa fa-clock-o"></i>
+        <h4>Expertise</h4>
+        <p>She gave my mother such a turn, that I have always been convinced I am indebted to Miss Betsey for having been born on a Friday.</p>
+      </div>
+      <!--/col-2--> 
+      
+      <!--col-3-->
+      <div class="col-md-4 col-sm-4 col-about-us wow fdeInUp"> <i class="fa fa-clock-o"></i>
+        <h4>Future plans</h4>
+        <p>Looking cautiously round, to ascertain that they were not overheard, the two hags cowered nearer to the fire, and chuckled heartily.</p>
+      </div>
+      <!--/col-3--> 
+      
+    </div>
+  </div>
+</section>
 
-			if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
+<!-- Why choose us
+    ==========================================-->
+<section id="why-choose-us"> 
+  
+  <!--section-title-->
+  <div class="section-title text-center wow fadeInUp">
+    <h2>Why choose us</h2>
+  </div>
+  <!--/section-title-->
+  
+  <div class="container">
+    <div class="row">
+      <div> 
+        
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#Speed" aria-controls="Speed" role="tab" data-toggle="tab">Speed</a></li>
+          <li role="presentation"><a href="#Design" aria-controls="Design" role="tab" data-toggle="tab">Design</a></li>
+          <li role="presentation"><a href="#Support" aria-controls="Support" role="tab" data-toggle="tab">Support</a></li>
+          <li role="presentation"><a href="#Best" aria-controls="Best" role="tab" data-toggle="tab">Best</a></li>
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="Speed"> 
+              <img src="<?php echo get_template_directory_uri();?>/img/tab-1.jpg" class="img-responsive"> </div>
+          <div role="tabpanel" class="tab-pane" id="Design">...</div>
+          <div role="tabpanel" class="tab-pane" id="Support">...</div>
+          <div role="tabpanel" class="tab-pane" id="Best">...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-			<?php
-			endif;
+<!-- Company counter section
+    ==========================================-->
+<section id="company-counter" style="background-image:url(<?php echo get_template_directory_uri();?>/img/count-bg.jpg);">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12 wow fadeInDown">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="c-block"><i class="fa fa-user"></i><span class="counter">17</span>
+            <p>Clients</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="c-block"><i class="fa fa-check"></i><span class="counter">45</span>
+            <p>Finished Projects</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="c-block"><i class="fa fa-coffee"></i><span class="counter">596</span>
+            <p>Cup of Coffee</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="c-block"><i class="fa fa-trophy"></i><span class="counter">56</span>
+            <p>Awards won</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Company counter section --> 
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+<!-- our works block
+    ==========================================-->
+<section id="our-work-block">
+  <div class="container">
+    <div class="row"> 
+      <!--section-title-->
+      <div class="section-title text-center wow fadeInUp">
+        <h2>Our case of Studies</h2>
+        <p>Find our latest projects we have worked on and get started.</p>
+      </div>
+      <!--/section-title-->
+      <div class="clearfix"></div>
+      <div class="works">
+        <ul class="grid">
+          <li>
+            <figure><img src="<?php echo get_template_directory_uri();?>/img/01-screenshot.jpg" alt="Screenshot 01">
+              <figcaption>
+                <div class="caption-content">
+                  <h6>Codetowp branding</h6>
+                  <a href="#">Design</a> <a href="#">brand</a>
+                  <ul class="work-more">
+                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                  </ul>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure><img src="<?php echo get_template_directory_uri();?>/img/02-screenshot.jpg" alt="Screenshot 01">
+              <figcaption>
+                <div class="caption-content">
+                  <h6>Optimised For Design</h6>
+                  <a href="#">Design</a> <a href="#">brand</a>
+                  <ul class="work-more">
+                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                  </ul>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure><img src="<?php echo get_template_directory_uri();?>/img/03-screenshot.jpg" alt="Screenshot 01">
+              <figcaption>
+                <div class="caption-content">
+                  <h6>Optimised For Design</h6>
+                  <a href="#">Design</a> <a href="#">brand</a>
+                  <ul class="work-more">
+                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                  </ul>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure><img src="<?php echo get_template_directory_uri();?>/img/04-screenshot.jpg" alt="Screenshot 01">
+              <figcaption>
+                <div class="caption-content">
+                  <h6>Optimised For Design</h6>
+                  <a href="#">Design</a> <a href="#">brand</a>
+                  <ul class="work-more">
+                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                  </ul>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure><img src="<?php echo get_template_directory_uri();?>/img/04-screenshot.jpg" alt="Screenshot 01">
+              <figcaption>
+                <div class="caption-content">
+                  <h6>Optimised For Design</h6>
+                  <a href="#">Design</a> <a href="#">brand</a>
+                  <ul class="work-more">
+                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                  </ul>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure><img src="<?php echo get_template_directory_uri();?>/img/06-screenshot.jpg" alt="Screenshot 01">
+              <figcaption>
+                <div class="caption-content">
+                  <h6>Optimised For Design</h6>
+                  <a href="#">Design</a> <a href="#">brand</a>
+                  <ul class="work-more">
+                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                  </ul>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure><img src="<?php echo get_template_directory_uri();?>/img/04-screenshot.jpg" alt="Screenshot 01">
+              <figcaption>
+                <div class="caption-content">
+                  <h6>Optimised For Design</h6>
+                  <a href="#">Design</a> <a href="#">brand</a>
+                  <ul class="work-more">
+                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                  </ul>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure><img src="<?php echo get_template_directory_uri();?>/img/06-screenshot.jpg" alt="Screenshot 01">
+              <figcaption>
+                <div class="caption-content">
+                  <h6>Optimised For Design</h6>
+                  <a href="#">Design</a> <a href="#">brand</a>
+                  <ul class="work-more">
+                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                  </ul>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
+        <a href="#" class="more-links">View All Projects</a> </div>
+    </div>
+  </div>
+</section>
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+<!-- our services
+    ==========================================-->
 
-			endwhile;
+<section id="our-services">
+  <div class="container">
+    <div class="row"> 
+      <!--section-title-->
+      <div class="section-title text-center wow fadeInUp">
+        <h2>Our Services</h2>
+        <p>Find our latest projects we have worked on and get started.</p>
+      </div>
+      <!--/section-title--> 
+      
+      <!--col-1-->
+      <div class="col-md-4 col-sm-6 col-xs-12 services-block eq-blocks"> <i class="fa fa-desktop"></i>
+        <div class="services-content">
+          <h6>Fully Responsive</h6>
+          <p>This sounded a very good reason, and Alice was quite pleased to know it. 'I never thought of that before!' she said. </p>
+        </div>
+      </div>
+      <!--/col-1--> 
+      
+      <!--col-2-->
+      <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks"> <i class="fa fa-cart-plus"></i>
+        <div class="services-content">
+          <h6>Shopping ready</h6>
+          <p>Now the races of these two have been for some ages utterly extinct, and besides to discourse any further of them.</p>
+        </div>
+      </div>
+      <!--/col-2--> 
+      
+      <!--col-3-->
+      <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks"> <i class="fa fa-sliders"></i>
+        <div class="services-content">
+          <h6>bootstrap shortcodes</h6>
+          <p>She gave my mother such a turn, that I have always been convinced I am indebt to Miss Betsey for having been born.</p>
+        </div>
+      </div>
+      <!--/col-3--> 
+      
+      <!--col-4-->
+      <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks"> <i class="fa fa-cog"></i>
+        <div class="services-content">
+          <h6>seo optimized</h6>
+          <p>Now the races of these two have been for some ages utterly extinct, and besides to discourse any further of them.</p>
+        </div>
+      </div>
+      <!--/col-4--> 
+      
+      <!--col-5-->
+      <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks"> <i class="fa fa-headphones"></i>
+        <div class="services-content">
+          <h6>fast support</h6>
+          <p>She gave my mother such a turn, that I have always been convinced I am indebt to Miss Betsey for having been born.</p>
+        </div>
+      </div>
+      <!--/col-5--> 
+      <!--col-6-->
+      <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks"> <i class="fa fa-bookmark"></i>
+        <div class="services-content">
+          <h6>pixel perfect design</h6>
+          <p>This sounded a very good reason, and Alice was quite pleased to know it. 'I never thought of that before!' she said.</p>
+        </div>
+      </div>
+      <!--/col-6--> 
+      
+    </div>
+  </div>
+</section>
 
-			the_posts_navigation();
+<!-- Testimonials Section
+    ==========================================-->
+<section id="testimonials-block" class="text-center">
+  <div class="container">
+    <div class="row"> 
+      
+      <!--section-title-->
+      <div class="section-title text-center wow fadeInUp">
+        <h2>What our clients say?</h2>
+      </div>
+      <!--/section-title-->
+      
+      <div class="col-md-6 col-md-offset-3">
+        <div id="testimonial" class="owl-carousel owl-theme">
+          <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/team/01.jpg">
+              flhjga;khwjsgeiaopughjouibrhwuirhewouirghwjuihsui
+            <p><strong>Dean Martin</strong> CEO Acme Inc.</p>
+            <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
+          </div>
+          <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/team/02.jpg">
+            <p><strong>Dean Martin</strong> CEO Acme Inc.</p>
+            <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
+          </div>
+          <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/team/03.jpg">
+            <p><strong>Dean Martin</strong> CEO Acme Inc.</p>
+            <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-		else :
+<!-- Clients Section
+    ==========================================-->
+<section id="clients-block" class="text-center">
+  <div class="container">
+    <div id="clients" class="owl-carousel owl-theme">
+      <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/01.png"> </div>
+      <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/02.png"> </div>
+      <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/03.png"> </div>
+      <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/04.png"> </div>
+      <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/05.png"> </div>
+      <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/01.png"> </div>
+      <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/02.png"> </div>
+    </div>
+  </div>
+</section>
 
-			get_template_part( 'template-parts/content', 'none' );
+<!--From the blog
+    ==========================================-->
 
-		endif; ?>
+<section id="from-blog">
+  <div class="container">
+    <div class="row wow fdeInUp"> 
+      <!--section-title-->
+      <div class="section-title text-center wow fadeInUp">
+        <h2>From Our Blog</h2>
+        <p>At half-past eight the door opened, the policeman appeared, and, requesting them to follow him, led the way to an adjoining hall.</p>
+      </div>
+      <!--/section-title--> 
+      
+      <!--blog post-->
+      <article class="col-md-4"> <a href="#"><img src="<?php echo get_template_directory_uri();?>/img/a-1.jpg" class="img-responsive"></a>
+        <header class="entry-header"><a href="#">
+          <h5>The Guide To Living Creatively</h5>
+          </a></header>
+        <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
+          mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
+      </article>
+      <!--/blog post--> 
+      
+      <!--blog post-->
+      <article class="col-md-4"> <a href="#"><img src="<?php echo get_template_directory_uri();?>/img/a-2.jpg" class="img-responsive"></a>
+        <header class="entry-header"><a href="#">
+          <h5>Article Name</h5>
+          </a></header>
+        <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
+          mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
+      </article>
+      <!--/blog post--> 
+      <!--blog post-->
+      <article class="col-md-4"> <a href="#"><img src="<?php echo get_template_directory_uri();?>/img/a-3.jpg" class="img-responsive"></a>
+        <header class="entry-header"><a href="#">
+          <h5>A Guide To Still Photography</h5>
+          </a></header>
+        <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
+          mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
+      </article>
+      <!--/blog post--> 
+      
+      <a href="#" class="more-links">Go to Blog</a> </div>
+  </div>
+</section>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+<!-- Free trail
+    ==========================================-->
+<section id="free-trial-block">
+  <div class="container">
+    <div class="row wow fadeInUp">
+      <p>Be the first to grap all new design content from numero!</p>
+      <a href="#">Strat free trial</a> </div>
+  </div>
+</section>
+
 
 <?php
 get_sidebar();
