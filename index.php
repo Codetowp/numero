@@ -16,12 +16,29 @@ get_header(); ?>
 
 <!-- banner Page
     ==========================================-->
-<Section id="home-banner" style="background-image: url( <?php echo get_template_directory_uri();?>/img/bg-1.jpg );">
+<?php
+    $background_img   = esc_url( get_theme_mod( 'bck_ground_image' ) );   
+    $background_img_static   = get_template_directory_uri()."/img/bg-1.jpg";
+    $image = $background_img ? "$background_img" : "$background_img_static";      
+?>
+
+
+<Section id="home-banner" style="background-image: url( <?php echo $image;?> );">
   <div class="content">
     <div class="container wow fdeInUp"  data-wow-duration="1s">
-      <h1>MOBILE first APPROACH! </h1>
-      <h2>THINK BIG & GROW RICH.</h2>
-      <p>We build some of the best wordpress themes and also provide support for them. Our team of 5 work smart to get you pixel perfect themes. Lets grow together.</p>
+        
+      <h1>
+          <?php echo  $grit_tagline=( get_theme_mod( 'numero_header_text' ) )?
+            ( get_theme_mod( 'numero_header_text' ) ):' MOBILE first APPROACH!'; ?>
+      </h1>
+      <h2>
+          <?php echo  $grit_tagline=( get_theme_mod( 'numero_tag_line' ) )?
+            ( get_theme_mod( 'numero_tag_line' ) ):'THINK BIG & GROW RICH.'; ?>
+      </h2>
+      <p>
+          <?php echo  $grit_tagline=( get_theme_mod( 'numero_header_description' ) )?
+            ( get_theme_mod( 'numero_header_description' ) ):'We build some of the best wordpress themes and also provide support for them. Our team of 5 work smart to get you pixel perfect themes. Lets grow together.'; ?>
+      </p>
       <a class="btn btn-outline-default" href="#">Contact us</a> <a class="btn btn-info chooser-btn" href="#">Start FREE Trial</a> </div>
   </div>
 </Section>
