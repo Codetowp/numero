@@ -112,6 +112,8 @@ function numero_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'numero_widgets_init' );
+require get_template_directory() . '/inc/widget/social.php';  
+
 
 /**
  * Enqueue scripts and styles.
@@ -137,7 +139,7 @@ function numero_scripts() {
 
 	wp_enqueue_script( 'numero-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'numero-jquery-min', get_template_directory_uri() . '/jquery.min.js', array(), '20151215', true );
+	wp_enqueue_script( 'numero-jquery-min', get_template_directory_uri() . '/js/jquery.1.11.1.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'numero-bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array(), '20151215', true );
 

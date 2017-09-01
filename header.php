@@ -45,11 +45,25 @@
             </div>
             <div class="pull-right">
               <ul class="list-inline top-social-link">
-                <li> <a href="mailto:someone@example.com?"><i class="fa fa-facebook"></i></a></li>
-                <li> <a href="mailto:someone@example.com?"><i class="fa fa-rss"></i></a></li>
-                <li> <a href="mailto:someone@example.com?"><i class="fa fa-twitter"></i></a></li>
-                <li> <a href="mailto:someone@example.com?"><i class="fa fa-linkedin-square"></i></a></li>
-                <li> <a href="mailto:someone@example.com?"><i class="fa fa-vimeo-square"></i></a></li>
+                  
+                <?php
+                    if ( $socials = get_theme_mod( 'social' ) ) 
+                    {
+                        $socials = $socials ? array_filter( $socials ) : array();
+                        foreach ( $socials as $social => $name ) 
+                            {
+                                printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> <li> ', esc_url( $name ), $social );
+                            }
+                    }
+                    if(get_theme_mod( 'social' )=='')
+                {?>
+                  
+                    <li> <a href="mailto:someone@example.com?"><i class="fa fa-facebook"></i></a></li>
+                    <li> <a href="mailto:someone@example.com?"><i class="fa fa-rss"></i></a></li>
+                    <li> <a href="mailto:someone@example.com?"><i class="fa fa-twitter"></i></a></li>
+                    <li> <a href="mailto:someone@example.com?"><i class="fa fa-linkedin-square"></i></a></li>
+                    <li> <a href="mailto:someone@example.com?"><i class="fa fa-vimeo-square"></i></a></li>
+                <?php }?>
               </ul>
             </div>
           </div>
@@ -61,8 +75,30 @@
     <div class="container"> 
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a class="navbar-brand" href="index.html">Numero</a> </div>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+            <span class="sr-only">Toggle navigation</span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+          </button>
+            <?php  
+                $custom_logo = get_theme_mod( 'custom_logo' );
+                $logo = wp_get_attachment_image_src( $custom_logo , 'full' );
+                $logo_img_static   = get_template_directory_uri()."";
+                
+                if ( has_custom_logo() ) 
+                {
+                    $img='<img src="'. esc_url( $logo[0] ) .'" >';
+                } 
+                else 
+                {
+                    $img='<img src="'.$logo_img_static.'" >';
+                }
+			?>
+          
+          
+        <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>"><?php echo $img; ?>
+            <?php echo bloginfo( 'name' ); ?></a> </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -79,39 +115,11 @@
 
 
   </div> <!--/search-cart-block --> 
+             <?php wp_nav_menu( array( 
+                    'theme_location' => 'menu-1',
+                     'menu_class' => 'nav navbar-nav navbar-righ'
+                 ) );?>
 
-
-
-
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" class="page-scroll active-on">Our Home</a></li>
-          <li  ><a href="#" class="page-scroll">Theme</a>
-            <ul class="sub-menu">
-              <li><a href="#">Sub Menu 1</a></li>
-              <li><a href="#">Sub Menu 2</a></li>
-              <li><a href="#">Sub Menu 3</a></li>
-              <li ><a href="#">Sub Menu 4 </a>
-                <ul>
-                  <li ><a href="#">Deep Menu 1 </a>
-                    <ul class="sub-menu">
-                      <li><a href="#">Sub Deep 1</a></li>
-                      <li><a href="#">Sub Deep 2</a></li>
-                      <li><a href="#">Sub Deep 3</a></li>
-                      <li><a href="#">Sub Deep 4</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Deep Menu 2</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Sub Menu 5</a></li>
-            </ul>
-          </li>
-          <li><a href="#" class="page-scroll">Blog</a></li>
-          <li><a href="#" class="page-scroll">Guides</a></li>
-          <li><a href="#" class="page-scroll">Develop</a></li>
-          <li><a href="#" class="page-scroll">Support</a></li>
-          <li><a href="#" class="page-scroll">Contact</a></li>
-        </ul>
 
       </div>
       <!-- /.navbar-collapse --> 
