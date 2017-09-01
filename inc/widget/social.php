@@ -8,7 +8,7 @@ class Numero_Premium extends WP_Widget{
     function __construct() 
     {
         parent::__construct(
-            'premium-widget', // Base ID
+            'social', // Base ID
             esc_attr__( 'Numero social Bar', 'numero' ), // Name
             array( 
                 'description' => esc_attr__( 'Display a Premium or Feature description.', 'numero' ),
@@ -37,10 +37,6 @@ class Numero_Premium extends WP_Widget{
     echo $args['before_widget'];
 
   ?>
-
-          <ul >
-              
-          
               
               <?php if( !empty( $instance['facebook_url'] ) ){?>
             <li ><a href="<?php if( !empty( $instance['facebook_url'] ) ): echo apply_filters( 'widget_title', $instance['facebook_url'] ); endif; ?>" title="facebook"><i class="fa fa-facebook"></i></a></li>
@@ -81,8 +77,6 @@ class Numero_Premium extends WP_Widget{
               
            
                 <?php }?>
-            
-</ul>
    
         <?php
 

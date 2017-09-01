@@ -110,9 +110,20 @@ function numero_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+    
+    register_sidebar( array(
+		'name'          => esc_html__( 'Social', 'numero' ),
+		'id'            => 'social',
+		'description'   => esc_html__( 'Add widgets here.', 'numero' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+    require get_template_directory() . '/inc/widget/social.php';  
+
 }
 add_action( 'widgets_init', 'numero_widgets_init' );
-require get_template_directory() . '/inc/widget/social.php';  
 
 
 /**

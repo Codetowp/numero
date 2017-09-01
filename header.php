@@ -47,15 +47,12 @@
               <ul class="list-inline top-social-link">
                   
                 <?php
-                    if ( $socials = get_theme_mod( 'social' ) ) 
-                    {
-                        $socials = $socials ? array_filter( $socials ) : array();
-                        foreach ( $socials as $social => $name ) 
-                            {
-                                printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> <li> ', esc_url( $name ), $social );
-                            }
-                    }
-                    if(get_theme_mod( 'social' )=='')
+                    if ( is_active_sidebar( 'social' ) ) 
+	{
+		 dynamic_sidebar( 'social' ); 
+	}
+else
+	
                 {?>
                   
                     <li> <a href="mailto:someone@example.com?"><i class="fa fa-facebook"></i></a></li>
