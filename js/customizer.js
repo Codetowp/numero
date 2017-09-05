@@ -40,7 +40,16 @@
 		} );
 	} );
     
+    wp.customize( 'numero_trial_button', function( value ) {
+        value.bind( function( to ) {
+            $( '#free-trial-block a' ).text( to );
+            } );
+    } );
     
-    
+    wp.customize( 'numero_trial_button_url', function( value ) {
+        value.bind( function( to ) {
+            $( '#free-trial-block href' ).text( to );
+            } );
+    } );
     
 } )( jQuery );

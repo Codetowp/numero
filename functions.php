@@ -190,6 +190,9 @@ require get_template_directory() . '/inc/template-tags.php';
  */
 require get_template_directory() . '/inc/template-functions.php';
 
+add_image_size( 'numero_our_work', 262, 163,  array( 'top', 'center' ) );
+
+
 /**
  * Customizer additions.
  */

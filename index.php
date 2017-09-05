@@ -431,39 +431,53 @@ get_header(); ?>
     <div class="row wow fdeInUp"> 
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>From Our Blog</h2>
-        <p>At half-past eight the door opened, the policeman appeared, and, requesting them to follow him, led the way to an adjoining hall.</p>
+        <h2>
+            <?php echo  $blog_header=( get_theme_mod( 'numero_blog_header' ) )?
+            ( get_theme_mod( 'numero_blog_header' ) ):'From Our Blog'; ?>
+        </h2>
+        <p> 
+            <?php echo  $blog_header=( get_theme_mod( 'numero_blog_description' ) )?
+            ( get_theme_mod( 'numero_blog_description' ) ):'At half-past eight the door opened, the policeman appeared, and, requesting them to follow him, led the way to an adjoining hall.'; ?>
+        </p>
       </div>
       <!--/section-title--> 
       
+                 
+			<?php 
+				$count_blog = get_theme_mod( 'numero_blog_count' );
+				$query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
+
+				if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
+			?>
+        
+        
+        
       <!--blog post-->
-      <article class="col-md-4"> <a href="#"><img src="<?php echo get_template_directory_uri();?>/img/a-1.jpg" class="img-responsive"></a>
+      <article class="col-md-4"> 
         <header class="entry-header"><a href="#">
-          <h5>The Guide To Living Creatively</h5>
+
+            <?php
+                if  ( get_the_post_thumbnail()!='')
+                {
+                    the_post_thumbnail('numero_our_work'); 
+                }
+                else
+                {?>
+                    <a href="#">
+                        <img src="<?php echo get_template_directory_uri();?>/img/a-1.jpg" class="img-responsive">
+                    </a>
+                <?php }?>       
+                <a href="<?php the_permalink();?>">
+                    <h5><?php the_title();?></h5>
+                </a>
           </a></header>
-        <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
-          mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
+        <p> <?php the_content(); ?> </p>
       </article>
+        <?php   endwhile;endif;?>
+			<?php wp_reset_postdata(); ?>
       <!--/blog post--> 
       
-      <!--blog post-->
-      <article class="col-md-4"> <a href="#"><img src="<?php echo get_template_directory_uri();?>/img/a-2.jpg" class="img-responsive"></a>
-        <header class="entry-header"><a href="#">
-          <h5>Article Name</h5>
-          </a></header>
-        <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
-          mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
-      </article>
-      <!--/blog post--> 
-      <!--blog post-->
-      <article class="col-md-4"> <a href="#"><img src="<?php echo get_template_directory_uri();?>/img/a-3.jpg" class="img-responsive"></a>
-        <header class="entry-header"><a href="#">
-          <h5>A Guide To Still Photography</h5>
-          </a></header>
-        <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
-          mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
-      </article>
-      <!--/blog post--> 
+    
       
       <a href="#" class="more-links">Go to Blog</a> </div>
   </div>
@@ -474,8 +488,17 @@ get_header(); ?>
 <section id="free-trial-block">
   <div class="container">
     <div class="row wow fadeInUp">
-      <p>Be the first to grap all new design content from numero!</p>
-      <a href="#">Strat free trial</a> </div>
+      <p>
+          <?php echo  $blog_header=( get_theme_mod( 'numero_trial_header' ) )?
+          ( get_theme_mod( 'numero_trial_header' ) ):'Be the first to grap all new design content from numero!'; ?>
+      </p>
+      <a href=" <?php echo  $button1_url=( get_theme_mod( 'numero_trial_button_url' ) )?
+            ( get_theme_mod( 'numero_trial_button_url' ) ):'#'; ?>">  
+          
+             <?php echo  $button1_text=( get_theme_mod( 'numero_trial_button' ) )?
+            ( get_theme_mod( 'numero_trial_button' ) ):'Strat free trial'; ?>
+      </a> 
+      </div>
   </div>
 </section>
 

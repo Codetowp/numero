@@ -87,18 +87,35 @@ function numero_customize_register( $wp_customize ) {
         
         $wp_customize->selective_refresh->add_partial( 'numero_testimonial_header', array(
             'selector'       	 	=> '#testimonials-block  .section-title h2',
-            'render_callback' 	 	=> 'numero_customize_partial_numero_testimonial_header',
+            'render_callback' 	 	=> 'numero_customize_partial_testimonial_header',
+        ) ); 
+                
+        $wp_customize->selective_refresh->add_partial( 'numero_blog_header', array(
+            'selector'       	 	=> '#from-blog  .section-title h2',
+            'render_callback' 	 	=> 'numero_customize_partial_blog_header',
+        ) ); 
+                        
+        $wp_customize->selective_refresh->add_partial( 'numero_blog_description', array(
+            'selector'       	 	=> '#from-blog  .section-title p',
+            'render_callback' 	 	=> 'numero_customize_partial_blog_description',
+        ) ); 
+
+        $wp_customize->selective_refresh->add_partial( 'numero_trial_header', array(
+            'selector'       	 	=> '#free-trial-block  p',
+            'render_callback' 	 	=> 'numero_customize_partial_trial_header',
         ) ); 
 
 
     }
+
+
 /**************label*************/
 		$wp_customize->add_panel( 'numero_pannel' ,array(
-				'priority'        		=> 101,
-				'title'           		=> esc_html__( 'Frontpage Theme Sections', 'numero' ),
-				'description'     		=> '',
+            'priority'        		=> 101,
+            'title'           		=> esc_html__( 'Frontpage Theme Sections', 'numero' ),
+            'description'     		=> '',
+        ) );
 
-			) );
 /********* header intro **********/
         $wp_customize->add_section('numero_header', array(
             'title'                     => __('Header Intro', 'numero'),
@@ -376,6 +393,106 @@ function numero_customize_register( $wp_customize ) {
             'priority' 					=> 1,
         ) );
     
+
+/*********Blog Section**********/
+    
+        $wp_customize->add_section('numero_blog', array(
+            'title'                     => __('Blog Section', 'numero'),
+            'description'               => 'Easily edit your header section',
+            'priority'                  => 6,   
+            'panel'                     => 'numero_pannel',    
+
+        ));
+    
+        $wp_customize->add_setting( 'numero_blog_header', array(      
+            'default'                   => 'From Our Blog' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'postMessage', // refresh or postMessage              
+        ) );    
+
+        $wp_customize->add_control( 'numero_blog_header', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Header', 'numero' ),
+            'section'  					=> 'numero_blog',
+            'priority' 					=> 1,
+        ) );
+    
+        $wp_customize->add_setting( 'numero_blog_description', array(      
+            'default'                   => '' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'postMessage',               
+        ) );    
+
+        $wp_customize->add_control( 'numero_blog_description', array(
+            'type'						=> 'textarea',
+            'label' 					=> __( 'Description', 'numero' ),
+            'section'  					=> 'numero_blog',
+            'priority' 					=> 3,
+        ) );
+    
+        $wp_customize->add_setting( 'numero_blog_count', array(
+            'default'                   => '3',
+            'sanitize_callback'         => 'grit_sanitize_integer'
+            )
+        );
+         $wp_customize->add_control( 'numero_blog_count', array(
+            'type'                      => 'integer',
+            'label'                     => __('Number Of Blog To Show - i.e 10 (default is 3)','grit'),
+            'section'                   => 'numero_blog',
+
+            )
+        );
+/*********Free Trail Section**********/
+    
+         $wp_customize->add_section('numero_trial', array(
+            'title'                     => __('Free Trial Section', 'numero'),
+            'description'               => 'Easily edit your header section',
+            'priority'                  => 7,   
+            'panel'                     => 'numero_pannel',    
+
+        ));
+    
+        $wp_customize->add_setting( 'numero_trial_header', array(      
+            'default'                   => 'Header' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'postMessage', // refresh or postMessage              
+        ) );    
+
+        $wp_customize->add_control( 'numero_trial_header', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Header', 'numero' ),
+            'section'  					=> 'numero_trial',
+            'priority' 					=> 1,
+        ) );
+    
+        $wp_customize->add_setting( 'numero_trial_button', array(      
+            'default'                   => 'START FREE TRIAL' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'postMessage',               
+        ) );    
+
+        $wp_customize->add_control( 'numero_trial_button', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Button Text', 'numero' ),
+            'section'  					=> 'numero_trial',
+            'priority' 					=> 4,
+        ) );	
+    
+        $wp_customize->add_setting( 'numero_trial_button_url', array(      
+            'default'                   => '#' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'postMessage',               
+        ) );    
+
+        $wp_customize->add_control( 'numero_trial_button_url', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Button Url', 'numero' ),
+            'section'  					=> 'numero_trial',
+            'priority' 					=> 5
+        ) );	  
+    
+    
+    
     
 }
 add_action( 'customize_register', 'numero_customize_register' );
@@ -431,6 +548,18 @@ function numero_customize_partial_service_description() {
 
 function numero_customize_partial_testimonial_header() {
     echo get_theme_mod('numero_testimonial_header');
+}
+
+function numero_customize_partial_blog_header() {
+    echo get_theme_mod('numero_blog_header');
+}
+
+function numero_customize_partial_blog_description() {
+    echo get_theme_mod('numero_blog_description');
+}
+
+function numero_customize_partial_trial_header() {
+    echo get_theme_mod('numero_trial_header');
 }
 /**
  * Render the site tagline for the selective refresh partial.
