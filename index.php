@@ -22,7 +22,6 @@ get_header(); ?>
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
 
-
 <Section id="home-banner" style="background-image: url( <?php echo $image;?> );">
   <div class="content">
     <div class="container wow fdeInUp"  data-wow-duration="1s">
@@ -39,7 +38,19 @@ get_header(); ?>
           <?php echo  $grit_tagline=( get_theme_mod( 'numero_header_description' ) )?
             ( get_theme_mod( 'numero_header_description' ) ):'We build some of the best wordpress themes and also provide support for them. Our team of 5 work smart to get you pixel perfect themes. Lets grow together.'; ?>
       </p>
-      <a class="btn btn-outline-default" href="#">Contact us</a> <a class="btn btn-info chooser-btn" href="#">Start FREE Trial</a> </div>
+      <a class="btn btn-outline-default" href=" <?php echo  $button1_url=( get_theme_mod( 'numero_header_button1_url' ) )?
+            ( get_theme_mod( 'numero_header_button1_url' ) ):'www.burstfly.com'; ?>">
+          
+          <?php echo  $button1_text=( get_theme_mod( 'numero_header_button1' ) )?
+            ( get_theme_mod( 'numero_header_button1' ) ):'Contact us'; ?>
+       </a> 
+        <a class="btn btn-info chooser-btn" href="<?php echo  $button2_url=( get_theme_mod( 'numero_header_button2_url' ) )?
+            ( get_theme_mod( 'numero_header_button2_url' ) ):'www.burstfly.com'; ?>">
+            
+             <?php echo  $button1_text=( get_theme_mod( 'numero_header_button2' ) )?
+            ( get_theme_mod( 'numero_header_button2' ) ):'Start FREE Trial'; ?>
+        </a> 
+      </div>
   </div>
 </Section>
 
@@ -50,8 +61,13 @@ get_header(); ?>
     <div class="row"> 
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>About us</h2>
-        <p>Alice wondered a little at this, but she was too much in awe of the Queen to disbelieve it. 'I'll try it when I go home,' she thought to herself.</p>
+        <h2>
+            <?php echo  $aout_header=( get_theme_mod( 'numero_about_header_text' ) )?
+            ( get_theme_mod( 'numero_about_header_text' ) ):'About us'; ?>
+        </h2>
+        <p>
+            <?php echo  $aout_desc=( get_theme_mod( 'numero_about_description' ) )?
+            ( get_theme_mod( 'numero_about_description' ) ):'Alice wondered a little at this, but she was too much in awe of the Queen to disbelieve it. I will try it when I go home she thought to herself.'; ?></p>
       </div>
       <!--/section-title--> 
       
@@ -86,7 +102,10 @@ get_header(); ?>
   
   <!--section-title-->
   <div class="section-title text-center wow fadeInUp">
-    <h2>Why choose us</h2>
+    <h2>
+        <?php echo  $choose_header=( get_theme_mod( 'numero_choose_header_text' ) )?
+            ( get_theme_mod( 'numero_choose_header_text' ) ):' Why choose us'; ?>
+    </h2>
   </div>
   <!--/section-title-->
   
@@ -154,8 +173,14 @@ get_header(); ?>
     <div class="row"> 
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>Our case of Studies</h2>
-        <p>Find our latest projects we have worked on and get started.</p>
+        <h2>
+            <?php echo  $work_header=( get_theme_mod( 'numero_our_work_header' ) )?
+            ( get_theme_mod( 'numero_our_work_header' ) ):'Our case of Studies'; ?>
+        </h2>
+        <p> 
+            <?php echo  $work_desc=( get_theme_mod( 'numero_our_work_description' ) )?
+            ( get_theme_mod( 'numero_our_work_description' ) ):'Find our latest projects we have worked on and get started.'; ?>
+        </p>
       </div>
       <!--/section-title-->
       <div class="clearfix"></div>
@@ -279,8 +304,13 @@ get_header(); ?>
     <div class="row"> 
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>Our Services</h2>
-        <p>Find our latest projects we have worked on and get started.</p>
+        <h2> 
+            <?php echo  $service_header=( get_theme_mod( 'numero_service_header' ) )?
+            ( get_theme_mod( 'numero_service_header' ) ):'Our Services'; ?>
+        </h2>
+        <p><span><?php echo  $service_desc=( get_theme_mod( 'numero_service_description' ) )?
+            ( get_theme_mod( 'numero_service_description' ) ):'Find our latest projects we have worked on and get started.'; ?></span>
+          </p>
       </div>
       <!--/section-title--> 
       
@@ -349,7 +379,10 @@ get_header(); ?>
       
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>What our clients say?</h2>
+        <h2>
+            <?php echo  $testimonial=( get_theme_mod( 'numero_testimonial_header' ) )?
+            ( get_theme_mod( 'numero_testimonial_header' ) ):'What our clients say?'; ?>
+        </h2>
       </div>
       <!--/section-title-->
       
@@ -398,39 +431,53 @@ get_header(); ?>
     <div class="row wow fdeInUp"> 
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>From Our Blog</h2>
-        <p>At half-past eight the door opened, the policeman appeared, and, requesting them to follow him, led the way to an adjoining hall.</p>
+        <h2>
+            <?php echo  $blog_header=( get_theme_mod( 'numero_blog_header' ) )?
+            ( get_theme_mod( 'numero_blog_header' ) ):'From Our Blog'; ?>
+        </h2>
+        <p> 
+            <?php echo  $blog_header=( get_theme_mod( 'numero_blog_description' ) )?
+            ( get_theme_mod( 'numero_blog_description' ) ):'At half-past eight the door opened, the policeman appeared, and, requesting them to follow him, led the way to an adjoining hall.'; ?>
+        </p>
       </div>
       <!--/section-title--> 
       
+                 
+			<?php 
+				$count_blog = get_theme_mod( 'numero_blog_count' );
+				$query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
+
+				if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
+			?>
+        
+        
+        
       <!--blog post-->
-      <article class="col-md-4"> <a href="#"><img src="<?php echo get_template_directory_uri();?>/img/a-1.jpg" class="img-responsive"></a>
+      <article class="col-md-4"> 
         <header class="entry-header"><a href="#">
-          <h5>The Guide To Living Creatively</h5>
+
+            <?php
+                if  ( get_the_post_thumbnail()!='')
+                {
+                    the_post_thumbnail('numero_our_work'); 
+                }
+                else
+                {?>
+                    <a href="#">
+                        <img src="<?php echo get_template_directory_uri();?>/img/a-1.jpg" class="img-responsive">
+                    </a>
+                <?php }?>       
+                <a href="<?php the_permalink();?>">
+                    <h5><?php the_title();?></h5>
+                </a>
           </a></header>
-        <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
-          mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
+        <p> <?php the_content(); ?> </p>
       </article>
+        <?php   endwhile;endif;?>
+			<?php wp_reset_postdata(); ?>
       <!--/blog post--> 
       
-      <!--blog post-->
-      <article class="col-md-4"> <a href="#"><img src="<?php echo get_template_directory_uri();?>/img/a-2.jpg" class="img-responsive"></a>
-        <header class="entry-header"><a href="#">
-          <h5>Article Name</h5>
-          </a></header>
-        <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
-          mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
-      </article>
-      <!--/blog post--> 
-      <!--blog post-->
-      <article class="col-md-4"> <a href="#"><img src="<?php echo get_template_directory_uri();?>/img/a-3.jpg" class="img-responsive"></a>
-        <header class="entry-header"><a href="#">
-          <h5>A Guide To Still Photography</h5>
-          </a></header>
-        <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
-          mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
-      </article>
-      <!--/blog post--> 
+    
       
       <a href="#" class="more-links">Go to Blog</a> </div>
   </div>
@@ -441,8 +488,17 @@ get_header(); ?>
 <section id="free-trial-block">
   <div class="container">
     <div class="row wow fadeInUp">
-      <p>Be the first to grap all new design content from numero!</p>
-      <a href="#">Strat free trial</a> </div>
+      <p>
+          <?php echo  $blog_header=( get_theme_mod( 'numero_trial_header' ) )?
+          ( get_theme_mod( 'numero_trial_header' ) ):'Be the first to grap all new design content from numero!'; ?>
+      </p>
+      <a href=" <?php echo  $button1_url=( get_theme_mod( 'numero_trial_button_url' ) )?
+            ( get_theme_mod( 'numero_trial_button_url' ) ):'#'; ?>">  
+          
+             <?php echo  $button1_text=( get_theme_mod( 'numero_trial_button' ) )?
+            ( get_theme_mod( 'numero_trial_button' ) ):'Strat free trial'; ?>
+      </a> 
+      </div>
   </div>
 </section>
 
