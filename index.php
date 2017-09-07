@@ -65,32 +65,15 @@ get_header(); ?>
             <?php echo  $aout_header=( get_theme_mod( 'numero_about_header_text' ) )?
             ( get_theme_mod( 'numero_about_header_text' ) ):'About us'; ?>
         </h2>
-        <p>
+        <p class="about-paragraph">
             <?php echo  $aout_desc=( get_theme_mod( 'numero_about_description' ) )?
-            ( get_theme_mod( 'numero_about_description' ) ):'Alice wondered a little at this, but she was too much in awe of the Queen to disbelieve it. I will try it when I go home she thought to herself.'; ?></p>
+            ( get_theme_mod( 'numero_about_description' ) ):'Alice wondered a little at this, but she was too much in awe of the Queen to disbelieve it. I will try it when I go home she thought to herself.'; ?>
+        </p>
       </div>
       <!--/section-title--> 
       
       <!--col-1-->
-      <div class="col-md-4 col-sm-4 col-about-us wow fdeInUp"> <i class="fa fa-clock-o"></i>
-        <h4>History</h4>
-        <p>This sounded a very good reason, and Alice was quite pleased to know it. 'I never thought of that before!' she said.</p>
-      </div>
-      <!--/col-1--> 
-      
-      <!--col-2-->
-      <div class="col-md-4 col-sm-4 col-about-us wow fdeInUp"> <i class="fa fa-clock-o"></i>
-        <h4>Expertise</h4>
-        <p>She gave my mother such a turn, that I have always been convinced I am indebted to Miss Betsey for having been born on a Friday.</p>
-      </div>
-      <!--/col-2--> 
-      
-      <!--col-3-->
-      <div class="col-md-4 col-sm-4 col-about-us wow fdeInUp"> <i class="fa fa-clock-o"></i>
-        <h4>Future plans</h4>
-        <p>Looking cautiously round, to ascertain that they were not overheard, the two hags cowered nearer to the fire, and chuckled heartily.</p>
-      </div>
-      <!--/col-3--> 
+      <?php  get_template_part( 'section-part/section', about );?>
       
     </div>
   </div>
@@ -112,23 +95,8 @@ get_header(); ?>
   <div class="container">
     <div class="row">
       <div> 
-        
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#Speed" aria-controls="Speed" role="tab" data-toggle="tab">Speed</a></li>
-          <li role="presentation"><a href="#Design" aria-controls="Design" role="tab" data-toggle="tab">Design</a></li>
-          <li role="presentation"><a href="#Support" aria-controls="Support" role="tab" data-toggle="tab">Support</a></li>
-          <li role="presentation"><a href="#Best" aria-controls="Best" role="tab" data-toggle="tab">Best</a></li>
-        </ul>
-        
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="Speed"> 
-              <img src="<?php echo get_template_directory_uri();?>/img/tab-1.jpg" class="img-responsive"> </div>
-          <div role="tabpanel" class="tab-pane" id="Design">...</div>
-          <div role="tabpanel" class="tab-pane" id="Support">...</div>
-          <div role="tabpanel" class="tab-pane" id="Best">...</div>
-        </div>
+        <?php  get_template_part( 'section-part/section', choose );?>
+
       </div>
     </div>
   </div>
