@@ -100,3 +100,49 @@ if ( ! function_exists( 'numero_entry_footer' ) ) :
 		);
 	}
 endif;
+
+if ( ! function_exists( 'numero_get_section_about_data' ) ) 
+{
+    /**
+     * Get counter data
+     *
+     * @return array
+     */
+    function numero_get_section_about_data()
+    {
+        $boxes = get_theme_mod('numero_about_boxes');
+        if (is_string($boxes)) 
+		{
+            $boxes = json_decode($boxes, true);
+        }
+        if (empty($boxes) || !is_array($boxes)) 
+		{
+            $boxes = array();
+        }
+        return $boxes;
+    }
+}
+
+
+if ( ! function_exists( 'numero_get_section_choose' ) ) 
+{
+    /**
+     * Get counter data
+     *
+     * @return array
+     */
+    function numero_get_section_choose()
+    {
+        $boxes = get_theme_mod('numero_choose_box');
+        if (is_string($boxes)) 
+		{
+            $boxes = json_decode($boxes, true);
+        }
+        if (empty($boxes) || !is_array($boxes)) 
+		{
+            $boxes = array();
+        }
+        return $boxes;
+    }
+}
+
