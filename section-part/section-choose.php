@@ -1,5 +1,5 @@
 <?php
- echo $page_ids = numero_get_section_choose();
+ $page_ids = numero_get_section_choose();
 
 ?>
 <?php
@@ -37,12 +37,11 @@
 					
 				
 			?>
-          <li role="presentation" class="<?php echo $firstClass;?>"><a href="#Speed" aria-controls="Speed" role="tab" data-toggle="tab"><?php echo $settings['title']?></a></li>
+          <li role="presentation" class="<?php echo $firstClass;?>"><a href="#<?php echo $settings['title']?>" aria-controls="<?php echo $settings['title']?>" role="tab" data-toggle="tab"><?php echo $settings['title']?></a></li>
          
-         <?php $firstClass=''; 
-				} ?>   
+         <?php $firstClass=''; }  ?>   
          
-    </ul>
+      </ul>
         
         <div class="tab-content">
             
@@ -56,34 +55,16 @@
 					setup_postdata( $post );
 			?>
             
-          <div role="tabpanel" class="tab-pane active" id="Speed"> 
-            <?php the_post_thumbnail('choose-medium');?>  </div>
-        </div>
+          <div role="tabpanel" class="tab-pane <?php echo $firstClass;?>" id="<?php echo $settings['title']?>"> 
+            <?php the_post_thumbnail('choose-medium');?>  
+          </div>
+      
 
-        <?php
-					$firstClass = ''; 
-				} // end foreach
+        <?php $firstClass = ''; }  // end foreach
 			wp_reset_postdata();
 			?>
-
+   </div>
 <?php 
 	}
-	else
-	{	?>                
-         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#Speed" aria-controls="Speed" role="tab" data-toggle="tab">Speed</a></li>
-          <li role="presentation"><a href="#Design" aria-controls="Design" role="tab" data-toggle="tab">Design</a></li>
-          <li role="presentation"><a href="#Support" aria-controls="Support" role="tab" data-toggle="tab">Support</a></li>
-          <li role="presentation"><a href="#Best" aria-controls="Best" role="tab" data-toggle="tab">Best</a></li>
-        </ul>
-        
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="Speed"> 
-              <img src="<?php echo get_template_directory_uri();?>/img/tab-1.jpg" class="img-responsive"> </div>
-          <div role="tabpanel" class="tab-pane" id="Design">...</div>
-          <div role="tabpanel" class="tab-pane" id="Support">...</div>
-          <div role="tabpanel" class="tab-pane" id="Best">...</div>
-        </div>
-<?php  }?>
+	?>
 

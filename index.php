@@ -95,6 +95,7 @@ get_header(); ?>
   <div class="container">
     <div class="row">
       <div> 
+          
         <?php  get_template_part( 'section-part/section', choose );?>
 
       </div>
@@ -104,30 +105,20 @@ get_header(); ?>
 
 <!-- Company counter section
     ==========================================-->
-<section id="company-counter" style="background-image:url(<?php echo get_template_directory_uri();?>/img/count-bg.jpg);">
+<?php
+    $background_img   = esc_url( get_theme_mod( 'counter_background_img' ) );   
+    $background_img_static   = get_template_directory_uri()."/img/count-bg.jpg";
+    $image = $background_img ? "$background_img" : "$background_img_static";      
+?>
+
+<section id="company-counter" style="background-image:url(<?php echo $image;?>);">
   <div class="container">
     <div class="row text-center">
       <div class="col-md-12 wow fadeInDown">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-user"></i><span class="counter">17</span>
-            <p>Clients</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-check"></i><span class="counter">45</span>
-            <p>Finished Projects</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-coffee"></i><span class="counter">596</span>
-            <p>Cup of Coffee</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-trophy"></i><span class="counter">56</span>
-            <p>Awards won</p>
-          </div>
-        </div>
+        
+        <?php  get_template_part( 'section-part/section', counter );?>  
+
+          
       </div>
     </div>
   </div>
@@ -281,59 +272,9 @@ get_header(); ?>
           </p>
       </div>
       <!--/section-title--> 
-      
-      <!--col-1-->
-      <div class="col-md-4 col-sm-6 col-xs-12 services-block eq-blocks"> <i class="fa fa-desktop"></i>
-        <div class="services-content">
-          <h6>Fully Responsive</h6>
-          <p>This sounded a very good reason, and Alice was quite pleased to know it. 'I never thought of that before!' she said. </p>
-        </div>
-      </div>
-      <!--/col-1--> 
-      
-      <!--col-2-->
-      <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks"> <i class="fa fa-cart-plus"></i>
-        <div class="services-content">
-          <h6>Shopping ready</h6>
-          <p>Now the races of these two have been for some ages utterly extinct, and besides to discourse any further of them.</p>
-        </div>
-      </div>
-      <!--/col-2--> 
-      
-      <!--col-3-->
-      <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks"> <i class="fa fa-sliders"></i>
-        <div class="services-content">
-          <h6>bootstrap shortcodes</h6>
-          <p>She gave my mother such a turn, that I have always been convinced I am indebt to Miss Betsey for having been born.</p>
-        </div>
-      </div>
-      <!--/col-3--> 
-      
-      <!--col-4-->
-      <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks"> <i class="fa fa-cog"></i>
-        <div class="services-content">
-          <h6>seo optimized</h6>
-          <p>Now the races of these two have been for some ages utterly extinct, and besides to discourse any further of them.</p>
-        </div>
-      </div>
-      <!--/col-4--> 
-      
-      <!--col-5-->
-      <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks"> <i class="fa fa-headphones"></i>
-        <div class="services-content">
-          <h6>fast support</h6>
-          <p>She gave my mother such a turn, that I have always been convinced I am indebt to Miss Betsey for having been born.</p>
-        </div>
-      </div>
-      <!--/col-5--> 
-      <!--col-6-->
-      <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks"> <i class="fa fa-bookmark"></i>
-        <div class="services-content">
-          <h6>pixel perfect design</h6>
-          <p>This sounded a very good reason, and Alice was quite pleased to know it. 'I never thought of that before!' she said.</p>
-        </div>
-      </div>
-      <!--/col-6--> 
+              
+        <?php  get_template_part( 'section-part/section', service );?>  
+
       
     </div>
   </div>

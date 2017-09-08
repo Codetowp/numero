@@ -299,7 +299,7 @@ function numero_customize_register( $wp_customize ) {
 					'section'       => 'numero_about',
 					'live_title_id' => 'content_page', // apply for unput text and textarea only
 					'title_format'  => esc_html__('[live_title]', 'numero'), // [live_title]
-					'max_item'      => 4, // Maximum item can add
+					'max_item'      => 3, // Maximum item can add
 					'fields'    	=> array(
 						'content_page'  => array(
 							'title' 	=> esc_html__('Select a page', 'numero'),
@@ -380,13 +380,83 @@ function numero_customize_register( $wp_customize ) {
 				)
 			) );
     
+/********* Counter section**********/
+    
+        $wp_customize->add_section('numero_counter', array(
+            'title'                     => __('Counter Section', 'numero'),
+            'description'               => 'Easily edit your header section',
+            'priority'                  => 2,   
+            'panel'                     => 'numero_pannel',    
+
+        ));    
+
+        $wp_customize->add_setting( 'counter_background_img', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+    
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'counter_background_img', array(
+            'label'                     => __( 'Background Image', '' ),
+            'section'                   => 'numero_counter',
+            'settings'                  => 'counter_background_img',
+            'context'                   => 'counter_background_img',
+            'priority'                  => 20,
+            ) 
+        ) );
+    
+        $wp_customize->add_setting( 'numero_counter_setting', 
+               array(               
+                   'sanitize_callback' => 'numero_sanitize_repeatable_data_field',
+                    'transport' => 'refresh', // refresh or postMessage
+
+               ) );    
+    
+        $wp_customize->add_control(
+			new Numero_Customize_Repeatable_Control(
+				$wp_customize,
+				'numero_counter_setting',
+				array(
+					'label'     	=> esc_html__('Counter Sections', 'numero'),
+					'description'   => 'Add upto 4 service blocks',
+					'section'       => 'numero_counter',
+					'title_format'  => esc_html__( '[live_title]', 'numero'), // [live_title]
+					'max_item'      => 4, // Maximum item can add
+					'limited_msg' 	=> wp_kses_post( 'Contact us through our Support Forum if you need more.', 'numero' ),
+					'fields'    	=> array(
+						
+
+					'icon'  	=> array(
+						'title' 	=> esc_html__('Icon', 'numero'),
+						'type'  	=>'icon',
+						'required' 	=> array( 'icon_type', '=', 'numero' ),
+					),
+
+						 'count' 	=> array(
+							'title' 	=> esc_html__('Count', 'numero'),
+							'type'  	=>'text',
+							'default' 	=> wp_kses_post('455', 'numero'),
+						),
+
+
+						 'title' 	=> array(
+							'title' 	=> esc_html__('Title', 'numero'),
+							'type'  	=>'text',
+							'default' 	=> wp_kses_post('CLIENTS'),
+						),
+					),
+
+				)
+			) );
 
 /*********Our Project**********/
     
         $wp_customize->add_section('numero_our_work', array(
             'title'                     => __('Our Work', 'numero'),
             'description'               => 'Easily edit your header section',
-            'priority'                  => 3,   
+            'priority'                  => 4,   
             'panel'                     => 'numero_pannel',    
 
         ));
@@ -418,12 +488,12 @@ function numero_customize_register( $wp_customize ) {
         ) );
     
 
-/*********Our Project**********/
+/********Service**********/
     
         $wp_customize->add_section('numero_service', array(
             'title'                     => __('Services Section', 'numero'),
             'description'               => 'Easily edit your header section',
-            'priority'                  => 4,   
+            'priority'                  => 5,   
             'panel'                     => 'numero_pannel',    
 
         ));
@@ -454,13 +524,48 @@ function numero_customize_register( $wp_customize ) {
             'priority' 					=> 3,
         ) );
     
+/*********Dropdown pages control **********/       
+    
+		$wp_customize->add_setting( 'numero_service_boxes', array(
+				'sanitize_callback' => 'numero_sanitize_repeatable_data_field',
+				'transport' => 'refresh', // refresh or postMessage
+			) );
 
+		$wp_customize->add_control(
+			new Numero_Customize_Repeatable_Control(
+				$wp_customize,
+				'numero_service_boxes',
+				array(
+					'label' 		=> esc_html__('Services', 'numero'),
+					'description'   => '',
+					'section'       => 'numero_service',
+					'live_title_id' => 'content_page', // apply for unput text and textarea only
+					'title_format'  => esc_html__('[live_title]', 'numero'), // [live_title]
+					'max_item'      => 6, // Maximum item can add
+                    'limited_msg' 	=> wp_kses_post( 'Contact us through our Support Forum if you need more.', 'numero' ),
+					'fields'    	=> array(
+						'content_page'  => array(
+							'title' 	=> esc_html__('Select a page', 'numero'),
+							'type'  	=>'select',
+							'options'		=> $option_pages
+						),
+						'icon'  		=> array(
+							'title' 	=> esc_html__('Icon', 'numero'),
+							'type'  	=>'icon',
+							'required' 	=> array( 'icon_type', '=', 'icon' ),
+						),
+				 
+					),
+
+				)
+			) );
+    
 /*********Testimonial Section**********/
     
         $wp_customize->add_section('numero_testimonial', array(
             'title'                     => __('Testimonial Section', 'numero'),
             'description'               => 'Easily edit your header section',
-            'priority'                  => 5,   
+            'priority'                  => 6,   
             'panel'                     => 'numero_pannel',    
 
         ));
@@ -484,7 +589,7 @@ function numero_customize_register( $wp_customize ) {
         $wp_customize->add_section('numero_blog', array(
             'title'                     => __('Blog Section', 'numero'),
             'description'               => 'Easily edit your header section',
-            'priority'                  => 6,   
+            'priority'                  => 7,   
             'panel'                     => 'numero_pannel',    
 
         ));
@@ -535,7 +640,7 @@ function numero_customize_register( $wp_customize ) {
          $wp_customize->add_section('numero_trial', array(
             'title'                     => __('Free Trial Section', 'numero'),
             'description'               => 'Easily edit your header section',
-            'priority'                  => 7,   
+            'priority'                  => 8,   
             'panel'                     => 'numero_pannel',    
 
         ));

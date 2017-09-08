@@ -146,3 +146,48 @@ if ( ! function_exists( 'numero_get_section_choose' ) )
     }
 }
 
+/*count section*/
+if ( ! function_exists( 'numero_get_section_counter_data' ) ) 
+{
+    /**
+     * Get counter data
+     *
+     * @return array
+     */
+    function numero_get_section_counter_data()
+    {
+        $boxes = get_theme_mod('numero_counter_setting');
+        if (is_string($boxes)) 
+		{
+            $boxes = json_decode($boxes, true);
+        }
+        if (empty($boxes) || !is_array($boxes)) 
+		{
+            $boxes = array();
+        }
+        return $boxes;
+    }
+}
+
+
+if ( ! function_exists( 'numero_get_section_service' ) ) 
+{
+    /**
+     * Get counter data
+     *
+     * @return array
+     */
+    function numero_get_section_service()
+    {
+        $boxes = get_theme_mod('numero_service_boxes');
+        if (is_string($boxes)) 
+		{
+            $boxes = json_decode($boxes, true);
+        }
+        if (empty($boxes) || !is_array($boxes)) 
+		{
+            $boxes = array();
+        }
+        return $boxes;
+    }
+}
