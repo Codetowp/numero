@@ -26,18 +26,23 @@ get_header(); ?>
   <div class="content">
     <div class="container wow fdeInUp"  data-wow-duration="1s">
         
-      <h1>
-          <?php echo  $grit_tagline=( get_theme_mod( 'numero_header_text' ) )?
-            ( get_theme_mod( 'numero_header_text' ) ):' MOBILE first APPROACH!'; ?>
-      </h1>
-      <h2>
-          <?php echo  $grit_tagline=( get_theme_mod( 'numero_tag_line' ) )?
-            ( get_theme_mod( 'numero_tag_line' ) ):'THINK BIG & GROW RICH.'; ?>
-      </h2>
-      <p>
-          <?php echo  $grit_tagline=( get_theme_mod( 'numero_header_description' ) )?
-            ( get_theme_mod( 'numero_header_description' ) ):'We build some of the best wordpress themes and also provide support for them. Our team of 5 work smart to get you pixel perfect themes. Lets grow together.'; ?>
-      </p>
+  
+       <?php 
+            $numero_theme_title  = get_theme_mod( 'numero_header_text', esc_html__(' MOBILE first APPROACH!', 'numero' ));
+            if ($numero_theme_title != '') echo '<h1>  ' . wp_kses_post($numero_theme_title) . ' </h1>'; 
+         ?>
+
+      
+          <?php 
+            $numero_tagline  = get_theme_mod( 'numero_tag_line', esc_html__(' THINK BIG & GROW RICH.', 'numero' ));
+            if ($numero_tagline != '') echo '<h2>  ' . wp_kses_post($numero_tagline) . ' </h2>'; 
+         ?>
+        
+        <?php 
+            $header_desc  = get_theme_mod( 'numero_header_description', esc_html__('We build some of the best wordpress themes and also provide support for them. Our team of 5 work smart to get you pixel perfect themes. Lets grow together.', 'numero' ));
+            if ($header_desc != '') echo '<p> ' . wp_kses_post($header_desc) . ' </p>'; 
+         ?>
+     
       <a class="btn btn-outline-default" href=" <?php echo  $button1_url=( get_theme_mod( 'numero_header_button1_url' ) )?
             ( get_theme_mod( 'numero_header_button1_url' ) ):'www.burstfly.com'; ?>">
           
@@ -61,14 +66,16 @@ get_header(); ?>
     <div class="row"> 
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>
-            <?php echo  $aout_header=( get_theme_mod( 'numero_about_header_text' ) )?
-            ( get_theme_mod( 'numero_about_header_text' ) ):'About us'; ?>
-        </h2>
-        <p class="about-paragraph">
-            <?php echo  $aout_desc=( get_theme_mod( 'numero_about_description' ) )?
-            ( get_theme_mod( 'numero_about_description' ) ):'Alice wondered a little at this, but she was too much in awe of the Queen to disbelieve it. I will try it when I go home she thought to herself.'; ?>
-        </p>
+            <?php 
+                $aout_header  = get_theme_mod( 'numero_about_header_text', esc_html__('About us', 'numero' ));
+                if ($aout_header != '') echo '<h2>  ' . wp_kses_post($aout_header) . ' </h2>'; 
+            ?>
+           
+           <?php 
+                $about_desc  = get_theme_mod( 'numero_about_description', esc_html__('Alice wondered a little at this, but  she was too much in awe of the Queen to disbelieve it. I will try it when I go home she thought to herself.', 'numero' ));
+                if ($about_desc != '') echo '<p class="about-paragraph">  ' . wp_kses_post($about_desc) . '</p>'; 
+            ?>
+
       </div>
       <!--/section-title--> 
       
@@ -85,10 +92,11 @@ get_header(); ?>
   
   <!--section-title-->
   <div class="section-title text-center wow fadeInUp">
-    <h2>
-        <?php echo  $choose_header=( get_theme_mod( 'numero_choose_header_text' ) )?
-            ( get_theme_mod( 'numero_choose_header_text' ) ):' Why choose us'; ?>
-    </h2>
+    
+		<?php 
+                $choose_header  = get_theme_mod( 'numero_choose_header_text', esc_html__('Why choose us', 'numero' ));
+                if ($choose_header != '') echo '<h2>  ' . wp_kses_post($choose_header) . '</h2>'; 
+            ?>
   </div>
   <!--/section-title-->
   
@@ -132,14 +140,17 @@ get_header(); ?>
     <div class="row"> 
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>
-            <?php echo  $work_header=( get_theme_mod( 'numero_our_work_header' ) )?
-            ( get_theme_mod( 'numero_our_work_header' ) ):'Our case of Studies'; ?>
-        </h2>
-        <p> 
-            <?php echo  $work_desc=( get_theme_mod( 'numero_our_work_description' ) )?
-            ( get_theme_mod( 'numero_our_work_description' ) ):'Find our latest projects we have worked on and get started.'; ?>
-        </p>
+            <?php 
+                $work_header  = get_theme_mod( 'numero_our_work_header', esc_html__('Why choose us', 'numero' ));
+                if ($work_header != '') echo '<h2>  ' . wp_kses_post($work_header) . '</h2>'; 
+            ?>
+       
+            
+            <?php 
+                $work_desc  = get_theme_mod( 'numero_our_work_description', esc_html__('Find our latest projects we have worked on and get started.', 'numero' ));
+                if ($work_desc != '') echo '<p>  ' . wp_kses_post($work_desc) . '</p>'; 
+            ?>
+       
       </div>
       <!--/section-title-->
       <div class="clearfix"></div>
@@ -263,14 +274,16 @@ get_header(); ?>
     <div class="row"> 
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2> 
-            <?php echo  $service_header=( get_theme_mod( 'numero_service_header' ) )?
-            ( get_theme_mod( 'numero_service_header' ) ):'Our Services'; ?>
-        </h2>
-        <p><span><?php echo  $service_desc=( get_theme_mod( 'numero_service_description' ) )?
-            ( get_theme_mod( 'numero_service_description' ) ):'Find our latest projects we have worked on and get started.'; ?></span>
-          </p>
-      </div>
+          <?php 
+                $service_header  = get_theme_mod( 'numero_service_header', esc_html__('Our Services', 'numero' ));
+                if ($service_header != '') echo '<h2>  ' . wp_kses_post($service_header) . '</h2>'; 
+            ?>
+     
+           <?php 
+                $service_desc  = get_theme_mod( 'numero_service_description', esc_html__('Find our latest projects we have worked on and get started.', 'numero' ));
+                if ($service_desc != '') echo '<p><span>  ' . wp_kses_post($service_desc) . '</span></p>'; 
+            ?>
+  
       <!--/section-title--> 
               
         <?php  get_template_part( 'section-part/section', service );?>  
@@ -288,10 +301,10 @@ get_header(); ?>
       
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>
-            <?php echo  $testimonial=( get_theme_mod( 'numero_testimonial_header' ) )?
-            ( get_theme_mod( 'numero_testimonial_header' ) ):'What our clients say?'; ?>
-        </h2>
+            <?php 
+                $testimonial  = get_theme_mod( 'numero_testimonial_header', esc_html__('What our clients say', 'numero' ));
+                if ($testimonial != '') echo '<h2>  ' . wp_kses_post($testimonial) . '</h2>'; 
+            ?>
       </div>
       <!--/section-title-->
       
@@ -340,20 +353,24 @@ get_header(); ?>
     <div class="row wow fdeInUp"> 
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>
-            <?php echo  $blog_header=( get_theme_mod( 'numero_blog_header' ) )?
-            ( get_theme_mod( 'numero_blog_header' ) ):'From Our Blog'; ?>
-        </h2>
-        <p> 
-            <?php echo  $blog_header=( get_theme_mod( 'numero_blog_description' ) )?
-            ( get_theme_mod( 'numero_blog_description' ) ):'At half-past eight the door opened, the policeman appeared, and, requesting them to follow him, led the way to an adjoining hall.'; ?>
-        </p>
+       
+            <?php 
+                $blog_header  = get_theme_mod( 'numero_blog_header', esc_html__('From Our Blog', 'numero' ));
+                if ($blog_header != '') echo '<h2>  ' . wp_kses_post($blog_header) . '</h2>'; 
+            ?>
+            
+       
+            <?php 
+                $blog_desc  = get_theme_mod( 'numero_blog_description', esc_html__('At half-past eight the door opened, the policeman appeared, and, requesting them to follow him, led the way to an adjoining hall.', 'numero' ));
+                if ($blog_desc != '') echo '<p>  ' . wp_kses_post($blog_desc) . '</p>'; 
+            ?>
+
       </div>
       <!--/section-title--> 
       
                  
 			<?php 
-				$count_blog = get_theme_mod( 'numero_blog_count' );
+				$count_blog = get_theme_mod( 'numero_blog_count', esc_html__('3','numero') );
 				$query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
 				if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();

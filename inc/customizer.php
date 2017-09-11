@@ -153,7 +153,8 @@ function numero_customize_register( $wp_customize ) {
         ) );
     
         $wp_customize->add_setting( 'numero_header_text', array(      
-            'default'                   => '' ,
+            
+            'default'                   => esc_html__(' MOBILE first APPROACH!', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -167,7 +168,7 @@ function numero_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'numero_tag_line', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__('THINK BIG & GROW RICH.', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -181,7 +182,7 @@ function numero_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'numero_header_description', array(      
-        'default'                   => '' ,
+        'default'                   => esc_html__('We build some of the best wordpress themes and also provide support for                                              them. Our team of 5 work smart to get you pixel perfect themes. Lets grow                                               together.', 'numero'),
         'sanitize_callback'         => 'sanitize_text_field',
         'transport'                 => 'postMessage',               
         ) );    
@@ -257,7 +258,7 @@ function numero_customize_register( $wp_customize ) {
         ));
     
          $wp_customize->add_setting( 'numero_about_header_text', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__('About us', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -270,7 +271,7 @@ function numero_customize_register( $wp_customize ) {
         ) );
     
         $wp_customize->add_setting( 'numero_about_description', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__(' Alice wondered a little at this, but she was too much in awe of the                                             Queen to disbelieve it. I will try it when I go home she thought to                                             herself.', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage',               
         ) );    
@@ -330,7 +331,7 @@ function numero_customize_register( $wp_customize ) {
         ));
     
          $wp_customize->add_setting( 'numero_choose_header_text', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__('why choose us', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -462,7 +463,7 @@ function numero_customize_register( $wp_customize ) {
         ));
     
         $wp_customize->add_setting( 'numero_our_work_header', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__('Our case of Studies', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -475,7 +476,7 @@ function numero_customize_register( $wp_customize ) {
         ) );
     
         $wp_customize->add_setting( 'numero_our_work_description', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__('Find our latest projects we have worked on and get started.', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage',               
         ) );    
@@ -499,7 +500,7 @@ function numero_customize_register( $wp_customize ) {
         ));
     
         $wp_customize->add_setting( 'numero_service_header', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__('Our Services', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -512,7 +513,7 @@ function numero_customize_register( $wp_customize ) {
         ) );
     
         $wp_customize->add_setting( 'numero_service_description', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__('Find our latest projects we have worked on and get started.', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage',               
         ) );    
@@ -571,7 +572,7 @@ function numero_customize_register( $wp_customize ) {
         ));
     
         $wp_customize->add_setting( 'numero_testimonial_header', array(      
-            'default'                   => 'What our clients say' ,
+            'default'                   => esc_html__('What our clients say', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -595,7 +596,7 @@ function numero_customize_register( $wp_customize ) {
         ));
     
         $wp_customize->add_setting( 'numero_blog_header', array(      
-            'default'                   => 'From Our Blog' ,
+            'default'                   => esc_html__('From Our Blog', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -608,7 +609,7 @@ function numero_customize_register( $wp_customize ) {
         ) );
     
         $wp_customize->add_setting( 'numero_blog_description', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__('At half-past eight the door opened, the policeman appeared, and, requesting them to follow him, led the way to an adjoining hall.', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage',               
         ) );    
@@ -621,7 +622,7 @@ function numero_customize_register( $wp_customize ) {
         ) );
     
         $wp_customize->add_setting( 'numero_blog_count', array(
-            'default'                   => '3',
+            'default'                   => esc_html__('3','numero'),
             'sanitize_callback'         => 'numero_sanitize_integer'
             )
         );
@@ -646,7 +647,7 @@ function numero_customize_register( $wp_customize ) {
         ));
     
         $wp_customize->add_setting( 'numero_trial_header', array(      
-            'default'                   => 'Header' ,
+            'default'                   => '' ,
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -770,6 +771,12 @@ function numero_customize_preview_js() {
 	wp_enqueue_script( 'numero-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'numero_customize_preview_js' );
+
+function numero_sanitize_integer( $input ) {
+    	if( is_numeric( $input ) ) {
+        return intval( $input );
+   	}
+	}
 
 /**
  * Customizer Icon picker
