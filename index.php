@@ -80,7 +80,7 @@ get_header(); ?>
       <!--/section-title--> 
       
       <!--col-1-->
-      <?php  get_template_part( 'section-part/section', about );?>
+      <?php  get_template_part( 'section-part/section', 'about' );?>
       
     </div>
   </div>
@@ -104,7 +104,7 @@ get_header(); ?>
     <div class="row">
       <div> 
           
-        <?php  get_template_part( 'section-part/section', choose );?>
+        <?php  get_template_part( 'section-part/section', 'choose' );?>
 
       </div>
     </div>
@@ -124,7 +124,7 @@ get_header(); ?>
     <div class="row text-center">
       <div class="col-md-12 wow fadeInDown">
         
-        <?php  get_template_part( 'section-part/section', counter );?>  
+        <?php  get_template_part( 'section-part/section', 'counter' );?>  
 
           
       </div>
@@ -286,7 +286,7 @@ get_header(); ?>
   
       <!--/section-title--> 
               
-        <?php  get_template_part( 'section-part/section', service );?>  
+        <?php  get_template_part( 'section-part/section', 'service' );?>  
 
       
     </div>
