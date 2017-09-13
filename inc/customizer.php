@@ -647,7 +647,7 @@ function numero_customize_register( $wp_customize ) {
         ));
     
         $wp_customize->add_setting( 'numero_trial_header', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__('Be the first to grap all new design content from numero!','numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -685,7 +685,31 @@ function numero_customize_register( $wp_customize ) {
             'priority' 					=> 5
         ) );	  
     
+  /* Footer Social */
     
+		$wp_customize->add_section( 'social', array(
+			'title'    					=> __( '[Numero]Footer Social', 'numero'  ),
+			'priority'                  => 110,
+			'panel'                     => 'numero_pannel', 
+		) );
+
+		$social_sites = array( 'facebook', 'twitter','instagram',  'google-plus', 'pinterest', 'linkedin', 'rss');
+
+		foreach( $social_sites as $social_site ) 
+		{
+			$wp_customize->add_setting( "social[$social_site]", array(
+				'type'              	=> 'theme_mod',
+				'capability'        	=> 'edit_theme_options',
+				'sanitize_callback' 	=> 'esc_url_raw'
+			) );
+
+			$wp_customize->add_control( "social[$social_site]", array(
+				'label'   				=> ucwords( $social_site ) . __( " Url:", 'numero' ),
+				'section' 				=> 'social',
+				'type'    				=> 'text',
+			) );
+		}
+
     
     
 }

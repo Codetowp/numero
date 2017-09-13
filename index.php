@@ -414,10 +414,12 @@ get_header(); ?>
 <section id="free-trial-block">
   <div class="container">
     <div class="row wow fadeInUp">
-      <p>
-          <?php echo  $blog_header=( get_theme_mod( 'numero_trial_header' ) )?
-          ( get_theme_mod( 'numero_trial_header' ) ):'Be the first to grap all new design content from numero!'; ?>
-      </p>
+     
+			<?php 
+                $trail_header  = get_theme_mod( 'numero_trial_header', esc_html__('Be the first to grap all new design content from numero!', 'numero' ));
+                if ($trail_header != '') echo '<p>  ' . wp_kses_post($trail_header) . '</p>'; 
+            ?>
+	 
       <a href=" <?php echo  $button1_url=( get_theme_mod( 'numero_trial_button_url' ) )?
             ( get_theme_mod( 'numero_trial_button_url' ) ):'#'; ?>">  
           
@@ -430,5 +432,4 @@ get_header(); ?>
 
 
 <?php
-get_sidebar();
 get_footer();

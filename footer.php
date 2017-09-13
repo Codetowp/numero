@@ -25,6 +25,31 @@
           {
           	dynamic_sidebar( 'widget-1' ); 
           }?>
+          <ul class="socio">
+              <?php
+						if ( $socials = get_theme_mod( 'social' ) ) 
+							{
+								$socials = $socials ? array_filter( $socials ) : array();
+								foreach ( $socials as $social => $name ) 
+									{
+										printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), $social );
+									}
+							}
+						if(get_theme_mod( 'social' )=='')
+                {?>
+              
+              
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-rss"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+              <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+              
+              <?php } ?> 
+          </ul>
 
       </div>
       <!--/site details--> 
