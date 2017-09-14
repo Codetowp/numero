@@ -11,7 +11,7 @@
 
 ?>
 
-<!-- Frooter
+<!-- Footer
     ==========================================-->
 
 <footer class="bottom-footer">
