@@ -23,7 +23,7 @@ get_header(); ?>
 <div id="page-banner" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/s-1.jpg );">
   <div class="content  wow fdeInUp" style="visibility: visible; animation-name: fdeInUp;">
     <div class="container">
-      <h1>Our Blog</h1>
+      <h1><?php the_title(); ?></h1>
     </div>
   </div>
 </div>
@@ -35,39 +35,15 @@ get_header(); ?>
       <!--blog posts container-->
       <div class="col-md-8 col-sm-8 single-post"> 
         
-        <!--article-->
-        <article class="col-md-12">
-          <header class="entry-header"> <span class="date-article"><i class="fa fa-calendar-o"></i> JULY 13 2017</span> <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/a-3.jpg" class="img-responsive"></a> <span class="byline"><span class="author vcard"><a href="#"><i class="fa fa-folder-o"></i> Business &bull; Industry</a><a href="#"><i class="fa fa-user-o"></i> Rijo</a> </span></span> <a href="#">
-            <h2>Top 10 tools for Automation and Better 
-              Photoshop </h2>
-            </a></header>
-          <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
-            mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
-          <a class="btn  readmore-btn" href="#">READ MORE</a> </article>
-        <!--/article--> 
+        <?php 
+            $query_post = new WP_Query( array( 'post_type' => 'post',  ) );
+            if ($query_post->have_posts()) :
+                 while ($query_post->have_posts()) : $query_post->the_post();	
+                        get_template_part( 'template-parts/blog', get_post_format() );
+                endwhile; ?>
         
-        <!--article-->
-        <article class="col-md-12">
-          <header class="entry-header"> <span class="date-article"><i class="fa fa-calendar-o"></i> JULY 13 2017</span> <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/a-3.jpg" class="img-responsive"></a> <span class="byline"><span class="author vcard"><a href="#"><i class="fa fa-folder-o"></i> Business &bull; Industry</a><a href="#"><i class="fa fa-user-o"></i> Rijo</a> </span></span> <a href="#">
-            <h2>Top 10 tools for Automation and Better 
-              Photoshop </h2>
-            </a></header>
-          <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
-            mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
-          <a class="btn  readmore-btn" href="#">READ MORE</a> </article>
-        <!--/article--> 
-        
-        <!--article-->
-        <article class="col-md-12">
-          <header class="entry-header"> <span class="date-article"><i class="fa fa-calendar-o"></i> JULY 13 2017</span> <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/a-3.jpg" class="img-responsive"></a> <span class="byline"><span class="author vcard"><a href="#"><i class="fa fa-folder-o"></i> Business &bull; Industry</a><a href="#"><i class="fa fa-user-o"></i> Rijo</a> </span></span> <a href="#">
-            <h2>Top 10 tools for Automation and Better 
-              Photoshop </h2>
-            </a></header>
-          <p>Nullam consequat sed purus ut laoreet. Etiam fringilla placerat magna a aliquam. Mauris
-            mollis tristique. In ac interdum ipsum. Phasellus in accumsan metus.</p>
-          <a class="btn  readmore-btn" href="#">READ MORE</a> </article>
-        <!--/article-->
-        
+        <?php endif; ?>
+
         <div class="clearfix"></div>
         
         <!--/portfolio page nav-->
