@@ -1,6 +1,5 @@
 <?php
 /**
- * Template Name: Page
  * The template for displaying all pages
  *
  * This is the template that displays all pages by default.
@@ -11,6 +10,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package numero
+ * Template Name: Page Fullwidth
  */
 
 get_header(); ?>
@@ -31,15 +31,18 @@ get_header(); ?>
   <div class="container">
     <div class="row wow fadeInUp"> 
       <!--blog posts container-->
-      <div class="col-md-8 col-sm-8 single-post">
+      <div class="col-md-10 col-sm-10 col-md-offset-1 single-post">
         <?php
           if(have_posts()):		  
 			while ( have_posts() ) : the_post();
         ?>
           
           <article class="post"> 
-            <p><?php echo the_content();?> </p>
-          </article>
+          
+         
+          <p><?php echo the_content();?> </p>
+         
+        </article>
        <?php endwhile;endif;?>
         
         
@@ -55,5 +58,4 @@ get_header(); ?>
 
 
 <?php
-get_sidebar();
 get_footer();

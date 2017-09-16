@@ -20,7 +20,7 @@ get_header(); ?>
 <!-- banner Page
     ==========================================-->
 
-<div id="page-banner" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/s-1.jpg );">
+<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
   <div class="content  wow fdeInUp" style="visibility: visible; animation-name: fdeInUp;">
     <div class="container">
       <h1><?php the_title(); ?></h1>

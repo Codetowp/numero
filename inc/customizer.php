@@ -37,8 +37,8 @@ function numero_customize_register( $wp_customize ) {
      
 	}
         $wp_customize->remove_control('blogdescription');
-        $wp_customize->remove_section('header_image');
         $wp_customize->get_section('title_tagline')->title = __( 'Branding','' );
+        $wp_customize->get_section('header_image')->title = __( 'Blog Page','' );
     
       if ( isset( $wp_customize->selective_refresh ) ) 
     {
@@ -709,7 +709,17 @@ function numero_customize_register( $wp_customize ) {
 				'type'    				=> 'text',
 			) );
 		}
+    
 
+/*********Free Trail Section**********/
+    
+         $wp_customize->add_section('numero_trial', array(
+            'title'                     => __('Free Trial Section', 'numero'),
+            'description'               => 'Easily edit your header section',
+            'priority'                  => 8,   
+            'panel'                     => 'numero_pannel',    
+
+        ));
     
     
 }
