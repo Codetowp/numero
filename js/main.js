@@ -69,6 +69,7 @@ function main() {
 
 
 
+
     /*====================================
     Show Menu on Book
     ======================================*/
@@ -105,10 +106,17 @@ $('#top-menu.navbar-default li:has(ul)').addClass('menu-item-has-children');
 
 $(window).resize(function(){
 
-    $('.content').css({
+    $('#home-banner .content').css({
         position:'relative',
-        left: ($(window).width() - $('.content').outerWidth())/2,
-        top: ($(window).height() - $('.content ').outerHeight())/2
+        left: ($(window).width() - $('#home-banner .content').outerWidth())/2,
+        top: ($(window).height() - $('#home-banner .content ').outerHeight())/2
+    });
+	
+	
+    $('.entry-header .content, #page-banner .content').css({
+        position:'relative',
+        left: ($(window).width() - $('.entry-header .content, #page-banner .content').outerWidth())/3,
+        top: ($(window).height() - $('.entry-header .content, #page-banner .content ').outerHeight())/3
     });
 
 });
