@@ -23,9 +23,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header( 'shop' ); ?>
 
 
-<section style="padding:80px 0;">
-<div class="container">
-<div class="row">
+<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
+  <div class="content  wow fdeInUp">
+    <div class="container ">
+      <h1><?php the_title(); ?> </h1>
+    </div>
+  </div>
+</div>
+
+
+
+<section id="woocommerce-page">
+  <div class="container">
+    <div class="row">
+      <div id="container">
+        <div id="content" role="main">
+          <nav class="woocommerce-breadcrumb">
 	<?php
 		/**
 		 * woocommerce_before_main_content hook.
@@ -35,20 +48,15 @@ get_header( 'shop' ); ?>
 		 */
 		do_action( 'woocommerce_before_main_content' );
 	?>
-
+        </nav>
+         
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php wc_get_template_part( 'content', 'single-product' ); ?>
 
 		<?php endwhile; // end of the loop. ?>
-
-
-</div>
-</div>
-</section>
-
-
-	<?php
+               
+               <?php
 		/**
 		 * woocommerce_after_main_content hook.
 		 *
@@ -56,6 +64,17 @@ get_header( 'shop' ); ?>
 		 */
 		do_action( 'woocommerce_after_main_content' );
 	?>
+               
+         
+          </div>
+        </div>
+    
+</div>
+</div>
+</section>
+
+
+	
 
 	<?php
 		/**
