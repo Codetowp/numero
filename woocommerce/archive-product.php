@@ -16,96 +16,91 @@
  * @version     2.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) 
+{
 	exit; // Exit if accessed directly
 }
 
 get_header( 'shop' ); ?>
-	<?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 * @hooked WC_Structured_Data::generate_website_data() - 30
-		 */
-		do_action( 'woocommerce_before_main_content' );
-	?>
 
+<?php
+    /**
+     * woocommerce_before_main_content hook.
+     *
+     * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+     * @hooked woocommerce_breadcrumb - 20
+     * @hooked WC_Structured_Data::generate_website_data() - 30
+     */
+    do_action( 'woocommerce_before_main_content' );
+?>
 
 <div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
-  <div class="content  wow fdeInUp">
-    <div class="container ">
-      <h1><?php woocommerce_page_title(); ?></h1>
+    <div class="content  wow fdeInUp">
+        <div class="container ">
+            <h1><?php woocommerce_page_title(); ?></h1>
+        </div>
     </div>
-  </div>
 </div>
 
 <section id="woocommerce-page">
-  <div class="container">
-    <div class="row">
-      <div id="content" role="main">
-        <nav class="woocommerce-breadcrumb"><?php
-						/**
-						* woocommerce_before_main_content hook.
-						*
-						* @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-						* @hooked woocommerce_breadcrumb - 20
-						* @hooked WC_Structured_Data::generate_website_data() - 30
-						*/
-						do_action( 'woocommerce_before_main_content' );
+    <div class="container">
+        <div class="row">
+            <div id="content" role="main">
+                <nav class="woocommerce-breadcrumb">
+                    <?php
+                        /**
+                        * woocommerce_before_main_content hook.
+                        *
+                        * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+                        * @hooked woocommerce_breadcrumb - 20
+                        * @hooked WC_Structured_Data::generate_website_data() - 30
+                        */
+                        do_action( 'woocommerce_before_main_content' );
                     ?>
                 </nav>
-                 <header class="woocommerce-products-header">
-					<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+                <header class="woocommerce-products-header">
+                    <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+                        <h1 class="woocommerce-products-header__title page-title">Posters</h1>
+                    <?php endif; ?> 
+                </header>
+                <ul class="products">
+                    <?php if ( have_posts() ) : ?>
+                    <?php
+                        /**
+                         * woocommerce_before_shop_loop hook.
+                         *
+                         * @hooked wc_print_notices - 10
+                         * @hooked woocommerce_result_count - 20
+                         * @hooked woocommerce_catalog_ordering - 30
+                         */
+                        do_action( 'woocommerce_before_shop_loop' );
+                    ?>
 
-                    <h1 class="woocommerce-products-header__title page-title">Posters</h1>
-                     
-					<?php endif; ?> 
+                    <?php woocommerce_product_loop_start(); ?>
 
-                 </header>
-            
-      
-        <ul class="products">
-         <?php if ( have_posts() ) : ?>
-					<?php
-						/**
-						 * woocommerce_before_shop_loop hook.
-						 *
-						 * @hooked wc_print_notices - 10
-						 * @hooked woocommerce_result_count - 20
-						 * @hooked woocommerce_catalog_ordering - 30
-						 */
-						do_action( 'woocommerce_before_shop_loop' );
-					?>
+                    <?php woocommerce_product_subcategories(); ?>
 
-					<?php woocommerce_product_loop_start(); ?>
+                    <?php while ( have_posts() ) : the_post(); ?>
 
-					<?php woocommerce_product_subcategories(); ?>
+                    <?php wc_get_template_part( 'content', 'product' ); ?>
 
-					<?php while ( have_posts() ) : the_post(); ?>
-				
-					<?php wc_get_template_part( 'content', 'product' ); ?>
+                    <?php endwhile; // end of the loop. ?>
 
-					<?php endwhile; // end of the loop. ?>
+                    <?php woocommerce_product_loop_end(); ?>
 
-					<?php woocommerce_product_loop_end(); ?>
+                    <?php
+                        /**
+                         * woocommerce_after_shop_loop hook.
+                         *
+                         * @hooked woocommerce_pagination - 10
+                         */
+                        do_action( 'woocommerce_after_shop_loop' );
+                        endif;
+                    ?>
+                </ul>
 
-					<?php
-						/**
-						 * woocommerce_after_shop_loop hook.
-						 *
-						 * @hooked woocommerce_pagination - 10
-						 */
-						do_action( 'woocommerce_after_shop_loop' );
-						endif;
-					?>
-        </ul>
-  
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
-
-
 <?php get_footer( 'shop' ); ?>

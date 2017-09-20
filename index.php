@@ -380,7 +380,7 @@ get_header(); ?>
         
       <!--blog post-->
       <article class="col-md-4"> 
-        <header class="entry-header"><a href="#">
+        <header class="entry-header"><a href="<?php the_permalink();?>">
 
             <?php
                 if  ( get_the_post_thumbnail()!='')

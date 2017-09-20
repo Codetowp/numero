@@ -722,6 +722,68 @@ function numero_customize_register( $wp_customize ) {
         ));
     
     
+/********* Fonts**********/
+
+        $wp_customize->add_section('numero_font_settings', array(
+            'title'                     => __('Font Settings', 'numero'),
+            'description'               => 'Change font family, size and color (Headings & Paragraph) for Homepage, Blog                                    Posts & Pages.',
+            'priority'                  => 125,
+
+        ));
+
+    // paragraph
+     $font_choices = customizer_library_get_font_choices();
+    
+     $wp_customize->add_setting( 'numero_paragraph_font', array(
+            'default'        => 'PT Serif',
+        ) );
+
+        $wp_customize->add_control( 'numero_paragraph_font', array(
+            'label'   => esc_attr__('Pick Paragraph Font Family', 'numero' ),
+            'description'   => esc_attr__('Default : PT Serif', 'numero' ),
+            'section' => 'numero_font_settings',
+            'type'    => 'select',
+            'choices' => $font_choices,
+            'priority' => 1,
+			));
+    
+    $wp_customize->add_setting( 'numero_paragraph_font_color', 
+            array(
+                'default' => '#43484d', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+	 $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_paragraph_font_color', 
+           array(
+			'label'      => esc_attr__( 'Pick Paragraph Font Color', 'numero' ),
+             'description'   => esc_attr__('Default : #43484d', 'numero' ),
+			'section'    => 'numero_font_settings',
+               'priority'   => 2,
+		) ) );    
+
+    
+     $wp_customize->add_setting( 'numero_paragraph_numero_paragraph_font_sizefont_size', array(
+			'default'       => get_theme_mod( 'dblogger_paragraph_font_size', '16px' ),
+			'capability'    => 'edit_theme_options',
+			'transport'     => 'refresh',
+	) );
+
+	$wp_customize->add_control( new Customizer_Range_Value_Control( $wp_customize, 'numero_paragraph_font_size', array(
+			'type'     => 'range-value',
+			'section'  => 'numero_font_settings',
+			'settings' => 'numero_paragraph_font_size',        
+			'label'    => __( 'Pick Paragraph Font Size' ),
+            'description'   => esc_attr__('Default : 16px', 'numero' ),
+			'input_attrs' => array(
+				'min'    => 11,
+				'max'    => 24,
+				'step'   => 1,
+				'suffix' => 'px',
+		  ),
+        'priority'   => 3,
+	) ) );
+    
+    
 }
 add_action( 'customize_register', 'numero_customize_register' );
 
