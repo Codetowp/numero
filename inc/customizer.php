@@ -16,6 +16,7 @@ function numero_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
     require get_template_directory() . '/inc/customizer-controls.php';
+	require get_template_directory() . '/inc/lib/fo-to-range.php';
 
       $pages  =  get_pages();
 	$option_pages = array();
@@ -728,6 +729,7 @@ function numero_customize_register( $wp_customize ) {
             'title'                     => __('Font Settings', 'numero'),
             'description'               => 'Change font family, size and color (Headings & Paragraph) for Homepage, Blog                                    Posts & Pages.',
             'priority'                  => 125,
+            'panel'                     => 'numero_pannel',  
 
         ));
 
@@ -762,8 +764,8 @@ function numero_customize_register( $wp_customize ) {
 		) ) );    
 
     
-     $wp_customize->add_setting( 'numero_paragraph_numero_paragraph_font_sizefont_size', array(
-			'default'       => get_theme_mod( 'dblogger_paragraph_font_size', '16px' ),
+     $wp_customize->add_setting( 'numero_paragraph_font_size', array(
+			'default'       => get_theme_mod( 'numero_paragraph_font_size', '16px' ),
 			'capability'    => 'edit_theme_options',
 			'transport'     => 'refresh',
 	) );
@@ -784,6 +786,69 @@ function numero_customize_register( $wp_customize ) {
 	) ) );
     
     
+/***************Heading fonts****************/
+       
+    $wp_customize->add_setting( 'numero_heading_font_family', array(
+            'default'        => 'Montserrat',
+             'transport'     => 'refresh',
+        ) );
+
+    $wp_customize->add_control( 'numero_heading_font_family', array(
+        'label'   => 'Pick Heading Font Family',
+        'description'   =>  esc_attr__('Default : Montserrat', 'numero' ),
+        'section' => 'numero_font_settings',
+        'type'    => 'select',
+        'choices' => $font_choices,
+        'priority' => 4,
+        ));
+        
+    
+    $wp_customize->add_setting( 'numero_headings_font_color', 
+            array(
+                'default' => '#ffffff', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+	 $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_headings_font_color', 
+           array(
+			'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
+			'section'    => 'numero_font_settings',
+               'priority'   => 5,
+		) ) );
+    
+    
+/**************accent**************/    
+    
+    $wp_customize->add_setting( 'numero_accent_color',  
+            array(
+                'default' => '#0ed1d1', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+			
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_accent_color', array(
+			'label'      => esc_attr__( 'Accent Color', 'numero' ),
+			'description' => esc_attr__( 'Add Accent Color to Button.', 'numero' ),
+			'section'    => 'numero_font_settings',
+		) ) );
+    
+    
+     $wp_customize->add_setting( 'numero_accent_opacity', 
+           array( 
+               'default' => __( '.90', 'numero' ),
+               'transport' => 'refresh',
+               'sanitize_callback' => 'sanitize_text_field',
+           ) );
+      $wp_customize->add_control( 'numero_accent_opacity', 
+           array(
+			'type' => 'text',
+			'section' => 'numero_font_settings', // Required, core or custom.
+			'label' => esc_attr__( "Background Transparency", 'numero' ),
+			//'description' => esc_attr__( 'Example: John Smith <span>CEO, Coni Inc.</span>', 'coni' ),
+		) );
+    
+    
+        
 }
 add_action( 'customize_register', 'numero_customize_register' );
 

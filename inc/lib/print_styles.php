@@ -30,10 +30,10 @@ if (!function_exists('numero_paragraph_font'))  {
 add_action( 'wp_head', 'numero_paragraph_font' );
 
 
-if (!function_exists('dblogger_paragraph_font_size_styles'))  {
-	function dblogger_paragraph_font_size_styles(){
+if (!function_exists('numero_paragraph_font_size'))  {
+	function numero_paragraph_font_size(){
 		echo '<style type="text/css" >';
-		$fontparagfamily_value = get_theme_mod('dblogger_paragraph_font_size', '');
+		$fontparagfamily_value = get_theme_mod('numero_paragraph_font_size', '');
 		$append_para_family_font = sprintf( 'font-size: %spx !important;',  $fontparagfamily_value );
 			// Output the styles.
 		if ( $fontparagfamily_value ) {
@@ -43,12 +43,12 @@ if (!function_exists('dblogger_paragraph_font_size_styles'))  {
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'dblogger_paragraph_font_size_styles' );
+add_action( 'wp_head', 'numero_paragraph_font_size' );
 
-if (!function_exists('dblogger_paragraph_font_color'))  {
-	function dblogger_paragraph_font_color(){
+if (!function_exists('numero_paragraph_font_color'))  {
+	function numero_paragraph_font_color(){
 		echo '<style type="text/css" >';
-		$color_value = get_theme_mod('dblogger_paragraph_font_color', '');
+		$color_value = get_theme_mod('numero_paragraph_font_color', '');
 		$append_color = sprintf( 'color: %s !important;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) {
@@ -58,13 +58,13 @@ if (!function_exists('dblogger_paragraph_font_color'))  {
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'dblogger_paragraph_font_color' );
+add_action( 'wp_head', 'numero_paragraph_font_color' );
 
 
-if (!function_exists('dblogger_heading_font_family'))  {
-	function dblogger_heading_font_family(){
+if (!function_exists('numero_heading_font_family'))  {
+	function numero_heading_font_family(){
 		echo '<style type="text/css">';
-		$fontfamily_value = get_theme_mod('dblogger_heading_font_family', '');
+		$fontfamily_value = get_theme_mod('numero_heading_font_family', '');
 		$append_family = sprintf( 'font-family: %s;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) {
@@ -74,13 +74,13 @@ if (!function_exists('dblogger_heading_font_family'))  {
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'dblogger_heading_font_family' );
+add_action( 'wp_head', 'numero_heading_font_family' );
 
 
-if (!function_exists('dblogger_headings_font_color'))  {
-	function dblogger_headings_font_color(){
+if (!function_exists('numero_headings_font_color'))  {
+	function numero_headings_font_color(){
 		echo '<style type="text/css" id="rijo-css">';
-		$color_value = get_theme_mod('dblogger_headings_font_color', '');
+		$color_value = get_theme_mod('numero_headings_font_color', '');
 		$append_color = sprintf( 'color: %s;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) {
@@ -91,27 +91,32 @@ if (!function_exists('dblogger_headings_font_color'))  {
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'dblogger_headings_font_color' );
+add_action( 'wp_head', 'numero_headings_font_color' );
 
 
-if (!function_exists('dblogger_accent_color'))  {
-	function dblogger_accent_color(){
+if (!function_exists('numero_accent_color'))  {
+	function numero_accent_color(){
 		echo '<style type="text/css" id="rijo-css">';
-		$color_value = get_theme_mod('dblogger_accent_color', '');
-		$append_color = sprintf( 'color: %s !important;',  $color_value );
-        $append_color_link = sprintf( 'background: %s !important;',  $color_value );
-        $append_bckcolor = sprintf( 'background-color: %s;',  $color_value );
-        $append_border=sprintf( 'border: 2px %s solid;',  $color_value );
-        $append_border_s=sprintf( 'border-color: %s;',  $color_value );
+		$color_value = get_theme_mod('numero_accent_color', '');
+        $opacity_value= get_theme_mod('numero_accent_opacity');
+		$append_color = sprintf( 'background-color: %s ;',  $color_value );
+        $icon_color = sprintf( 'color: %s ;',  $color_value );
+        $choose_color = sprintf('background : %s ;',  $color_value );
+        $opacity =sprintf('opacity : %s ;',  $opacity_value );
+        $opacity_color = sprintf( 'background : %s; ',  $color_value );
+        $append_border=sprintf( '    border: 1px %s solid;',  $color_value );
+
+        
+
 			// Output the styles.
 		if ( $color_value ) {
-			echo "\n" .'#top-menu.navbar-default{'.$append_bckcolor.'}'."\n".'#top-menu.navbar-default .navbar-nav > li a:hover{'.$append_bckcolor.'}'."\n".'.btn-default{'.$append_bckcolor.'}'."\n".'.guide-block .nav-tabs > li.active > a > h6, .guide-block .nav-tabs > li.active > a:hover{'.$append_color.'}'."\n".'.btn-white:hover{'.$append_bckcolor.'}'."\n".'.btn-white:hover{'.$append_border.'}'."\n".'button, input[type="button"], input[type="reset"], input[type="submit"]{'.$append_bckcolor.'}'."\n".'.guide-block .nav-tabs > li.active:before, .guide-block .nav-tabs > li:hover:before{'.$append_color_link.'}'."\n".'button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover {'.$append_bckcolor.'}'."\n".'button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover {'.$append_border_s.'}';
+			echo "\n" .'#home-banner a.btn-info{'.$append_color.'}'."\n" .'#about-us-block .col-about-us i{'.$icon_color.'}'."\n" .'#why-choose-us .section-title:after{'.$choose_color.'}'."\n" .'#why-choose-us .section-title{'.$choose_color.'}'."\n" .'#our-work-block .works figcaption{'.$opacity_color.'}'."\n".'#our-work-block .works figure:hover figcaption, #our-work-block .works figure:focus figcaption{'.$opacity.'}'."\n" .'.services-block i{'.$choose_color.'}'."\n" .'#clients-block{'.$choose_color.'}'."\n" .'#free-trial-block a{'.$choose_color.'}'."\n" .'#free-trial-block a{'.$append_border.'}';
 		}
 		echo "\n". "</style>". "\n";
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'dblogger_accent_color' );
+add_action( 'wp_head', 'numero_accent_color' );
 
 
 if (!function_exists('dblogger_secondary_color'))  {
