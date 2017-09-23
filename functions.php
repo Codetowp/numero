@@ -173,6 +173,8 @@ function numero_widgets_init() {
 	) );
     require get_template_directory() . '/inc/widget/social.php';  
 
+    require get_template_directory() . '/inc/styles.php';
+	require get_template_directory() . '/inc/customizer-library.php';
     
     
     
@@ -254,7 +256,7 @@ add_image_size( 'numero_our_work', 262, 163,  array( 'top', 'center' ) );
 add_image_size( 'choose-medium', 840, 527,  array( 'top', 'center' ) );
 add_image_size( 'numero-blog', 262, 163,  array( 'top', 'center' ) );
 
-
+add_image_size( 'numero_portfolio', 555, 347,  array( 'top', 'center' ) );
 
 
 /**
@@ -268,3 +270,20 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+/*fonts*/
+function demo_fonts() {
+
+	// Font options
+	$fonts = array(
+		get_theme_mod( 'numero_paragraph_font', customizer_library_get_default( 'primary-font' ) ),
+		get_theme_mod( 'numero_heading_font_family', customizer_library_get_default( 'secondary-font' ) )
+	);
+
+	$font_uri = customizer_library_get_google_font_uri( $fonts );
+
+	// Load Google Fonts
+	wp_enqueue_style( 'demo_fonts', $font_uri, array(), null, 'screen' );
+
+}
+add_action( 'wp_enqueue_scripts', 'demo_fonts' );
+

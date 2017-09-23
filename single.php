@@ -26,268 +26,265 @@ get_header(); ?>
 	<?php endwhile;endif;?>
 	<div class="container">
 		<div class="row wow fadeInUp"> 
-				<!--blog posts container-->
-				<div class="col-md-8 col-sm-8 single-post">
-				
-					<?php
-						if(have_posts()):		  
-							while ( have_posts() ) : the_post();
-					?>
-						
-						<article class="post">       
-							<p><?php the_content();?> </p>
-						</article>
+			<!--blog posts container-->
+			<div class="col-md-8 col-sm-8 single-post">
+				<?php
+					if(have_posts()):		  
+						while ( have_posts() ) : the_post();
+				?>
+				<article class="post">       
+					<p><?php the_content();?> </p>
+				</article>
+				<?php endwhile;endif;?>
+				<div class="clearfix"></div>
+				<footer class="entry-footer entry-meta-bar">
+					<div class="entry-meta">
+						<i class="fa fa-tags"></i> 
+							<span class="tag-links  clearfix"> 
+								<a href="#" rel="tag">wordpress</a>
+								<a href="#" rel="tag">themes</a> 
+							</span> 
+					</div>
+				</footer>
+				<!--/footer tags-->
+				<div class="clearfix"></div>
+				<!--author box-->
+				<div class="author-box"> 
+					<img alt="" src="img/team/03.jpg"  class="avatar " height="100" width="100">
+					<div class="author-box-title"> Authored By <a href="#" rel="author">Author </a> </div>
+					<div class="author-description"> Foysal loves to dig into WordPress, explore what’s possible and share his knowledge with readers. He also has deep interest in anything related to increasing productivity, writing better and being happy! </div>
+					<div class="author_social"> </div>
+				</div>
+				<!--/author box-->
+			
+				<div class="clearfix"></div>
+			
+				<!--posts navigation-->
+				<nav class="navigation posts-navigation"  role="navigation">
+					<ul>
+						<li class="pull-left">
+							<div class="nav-previous">
+								<a href="http://localhost/wordpress/page/2/"><i class="fa fa-chevron-left"></i> Previous post</a>
+							</div>
+						</li>
+						<li class="pull-right">
+							<div class="nav-next">
+								<a href="http://localhost/wordpress/page/2/">Next post <i class="fa fa-chevron-right"></i></a>
+							</div>
+						</li>
+					</ul>
+				</nav>
+				<!--/posts navigation-->
+		
+				<div class="clearfix"></div>
 					
-					<?php endwhile;endif;?>
-					<div class="clearfix"></div>
-					<footer class="entry-footer entry-meta-bar">
-						<div class="entry-meta">
-							<i class="fa fa-tags"></i> 
-								<span class="tag-links  clearfix"> 
-									<a href="#" rel="tag">wordpress</a>
-									<a href="#" rel="tag">themes</a> 
-								</span> 
-						</div>
-					</footer>
-					<!--/footer tags-->
-			
-					<div class="clearfix"></div>
-			
-					<!--author box-->
-					<div class="author-box"> 
-						<img alt="" src="img/team/03.jpg"  class="avatar " height="100" width="100">
-						<div class="author-box-title"> Authored By <a href="#" rel="author">Author </a> </div>
-						<div class="author-description"> Foysal loves to dig into WordPress, explore what’s possible and share his knowledge with readers. He also has deep interest in anything related to increasing productivity, writing better and being happy! </div>
-						<div class="author_social"> </div>
-					</div>
-					<!--/author box-->
-			
-					<div class="clearfix"></div>
-			
-					<!--posts navigation-->
-					<nav class="navigation posts-navigation"  role="navigation">
-						<ul>
-							<li class="pull-left">
-								<div class="nav-previous"><a href="http://localhost/wordpress/page/2/"><i class="fa fa-chevron-left"></i> Previous post</a></div>
-							</li>
-							<li class="pull-right">
-								<div class="nav-next"><a href="http://localhost/wordpress/page/2/">Next post <i class="fa fa-chevron-right"></i></a></div>
-							</li>
-						</ul>
-					</nav>
-					<!--/posts navigation-->
-			
-					<div class="clearfix"></div>
-					<!--Also like-->
-					<div class="also-like-block"> 
+				<!--Also like-->
+				<div class="also-like-block"> 
 					  
-						<!-- article-->
-						<article class="col-md-4 col-sm-6 col-xs-12">
-							<header class="entry-header"> 
-								<img src="img/04-screenshot.jpg" alt="image 1">
-								<a href="#">
-									<h6>10 Incredible Quotes To Guide Your Life</h6>
-								</a> 
-								<a href="#">Web-design</a> , <a href="#">Front-end</a>
-							</header>
-						</article>
-						<!--/ article --> 
+					<!-- article-->
+					<article class="col-md-4 col-sm-6 col-xs-12">
+						<header class="entry-header"> 
+							<img src="img/04-screenshot.jpg" alt="image 1">
+							<a href="#">
+								<h6>10 Incredible Quotes To Guide Your Life</h6>
+							</a> 
+							<a href="#">Web-design</a> , <a href="#">Front-end</a>
+						</header>
+					</article>
+					<!--/ article --> 
 
-						<!--article-->
-						<article class="col-md-4 col-sm-6 col-xs-12">
-							<header class="entry-header"> <img src="img/02-screenshot.jpg" alt="image 1"> 
-								<a href="#">
-									<h6>Responsive Website in 2017 – Step by Step Guide</h6>
-								</a> 
-								<a href="#">Web-design</a> 
-							</header>
-						</article>
-						<!--/article --> 
+					<!--article-->
+					<article class="col-md-4 col-sm-6 col-xs-12">
+						<header class="entry-header"> <img src="img/02-screenshot.jpg" alt="image 1"> 
+							<a href="#">
+								<h6>Responsive Website in 2017 – Step by Step Guide</h6>
+							</a> 
+							<a href="#">Web-design</a> 
+						</header>
+					</article>
+					<!--/article --> 
 
-						<!-- article-->
-						<article class="col-md-4 col-sm-6 col-xs-12">
-							<header class="entry-header"> <img src="img/03-screenshot.jpg" alt="image 1"> 
-								<a href="#">
-									<h6>10 Incredible Quotes To Guide Your Life</h6>
-								</a> 
-								<a href="#">Web-design</a> , <a href="#">Front-end</a> 
-							</header>
-						</article>
-						<!--/ article --> 
+					<!-- article-->
+					<article class="col-md-4 col-sm-6 col-xs-12">
+						<header class="entry-header"> <img src="img/03-screenshot.jpg" alt="image 1"> 
+							<a href="#">
+								<h6>10 Incredible Quotes To Guide Your Life</h6>
+							</a> 
+							<a href="#">Web-design</a> , <a href="#">Front-end</a> 
+						</header>
+					</article>
+					<!--/ article --> 
 
-					</div>
-					<!--/Also like-->
+				</div>
+				<!--/Also like-->
 
-					<div class="clearfix"></div>
+				<div class="clearfix"></div>
 			
-					<!--comment-->
-					<div id="comments" class="comments-area text-left">
-						<h2 class="comments-title"> Comments </h2>
-						<ol class="comment-list">
-							<li id="comment-1" class="comment even thread-even depth-1 parent">
-								<article id="div-comment-1" class="comment-body">
-									<footer class="comment-meta">
-										<div class="comment-author vcard"> 
-											<img alt="" src="img/team/03.jpg"  class="avatar avatar-42 photo avatar-default img-circle" height="42" width="42"> 
-											<b class="fn">
-												<a href="#" rel="external nofollow" class="url">Mr WordPress</a>
-											</b> 
-											<span class="says">says:</span> 
-										</div>
-										<!-- .comment-author -->
-
-										<div class="comment-metadata"> 
-											<a href="#">
-												<time datetime="2016-04-30T08:16:28+00:00"> April 30, 2016 at 8:16 am </time>
-											</a> 
-										</div>
-										<!-- .comment-metadata --> 
-									</footer>
-									<!-- .comment-meta -->
-									<div class="comment-content">
-										<p>
-											Hi, this is a comment.<br>
-											To delete a comment, just log in and view the post's comments. There you will have the option to edit or delete them.
-										</p>
+				<!--comment-->
+				<div id="comments" class="comments-area text-left">
+					<h2 class="comments-title"> Comments </h2>
+					<ol class="comment-list">
+						<li id="comment-1" class="comment even thread-even depth-1 parent">
+							<article id="div-comment-1" class="comment-body">
+								<footer class="comment-meta">
+									<div class="comment-author vcard"> 
+										<img alt="" src="img/team/03.jpg"  class="avatar avatar-42 photo avatar-default img-circle" height="42" width="42"> 
+										<b class="fn">
+											<a href="#" rel="external nofollow" class="url">Mr WordPress</a>
+										</b> 
+										<span class="says">says:</span> 
 									</div>
-									<!-- .comment-content -->
-									<div class="reply">
-										<a rel="nofollow" class="comment-reply-link" href="#"  aria-label="Reply to Mr WordPress">Reply</a>
+									<div class="comment-metadata"> 
+										<a href="#">
+											<time datetime="2016-04-30T08:16:28+00:00"> April 30, 2016 at 8:16 am </time>
+										</a> 
 									</div>
-								</article>
-								<!-- .comment-body -->
-								<ol class="children">
-									<li id="comment-2" class="comment byuser comment-author-admin bypostauthor odd alt depth-2">
-										<article id="div-comment-2" class="comment-body">
-											<footer class="comment-meta">
-												<div class="comment-author vcard"> 
-													<img alt="" src="img/team/02.jpg"  class="avatar avatar-42 photo img-circle" height="42" width="42"> 
-													<b class="fn">admin</b> 
-													<span class="says">says:</span> 
-												</div>
-												<!-- .comment-author -->
-											  
-												<div class="comment-metadata"> 
-													<a href="#">
-														<time datetime="2016-11-02T06:27:52+00:00"> November 2, 2016 at 6:27 am </time>
-													</a> 
-												</div>
-												<!-- .comment-metadata --> 
-											</footer>
-											<!-- .comment-meta -->
-
-											<div class="comment-content">
-												<p>just log in and view the post's comments.</p>
+									<!-- .comment-metadata --> 
+								</footer>
+								<!-- .comment-meta -->
+								<div class="comment-content">
+									<p>
+										Hi, this is a comment.<br>
+										To delete a comment, just log in and view the post's comments. There you will have the option to edit or delete them.
+									</p>
+								</div>
+								<!-- .comment-content -->
+								<div class="reply">
+									<a rel="nofollow" class="comment-reply-link" href="#"  aria-label="Reply to Mr WordPress">Reply</a>
+								</div>
+							</article>
+							<!-- .comment-body -->
+							<ol class="children">
+								<li id="comment-2" class="comment byuser comment-author-admin bypostauthor odd alt depth-2">
+									<article id="div-comment-2" class="comment-body">
+										<footer class="comment-meta">
+											<div class="comment-author vcard"> 
+												<img alt="" src="img/team/02.jpg"  class="avatar avatar-42 photo img-circle" height="42" width="42"> 
+												<b class="fn">admin</b> 
+												<span class="says">says:</span> 
 											</div>
-											<!-- .comment-content -->
-
-											<div class="reply">
-												<a rel="nofollow" class="comment-reply-link" href="http://localhost/burstfly/hello-world1/?replytocom=2#respond" onclick="return addComment.moveForm( &quot;div-comment-2&quot;, &quot;2&quot;, &quot;respond&quot;, &quot;1&quot; )" aria-label="Reply to admin">Reply</a>
+											<!-- .comment-author -->
+										  
+											<div class="comment-metadata"> 
+												<a href="#">
+													<time datetime="2016-11-02T06:27:52+00:00"> November 2, 2016 at 6:27 am </time>
+												</a> 
 											</div>
-										</article>
+											<!-- .comment-metadata --> 
+										</footer>
+										<!-- .comment-meta -->
+
+										<div class="comment-content">
+											<p>just log in and view the post's comments.</p>
+										</div>
+										<!-- .comment-content -->
+
+										<div class="reply">
+											<a rel="nofollow" class="comment-reply-link" href="http://localhost/burstfly/hello-world1/?replytocom=2#respond" onclick="return addComment.moveForm( &quot;div-comment-2&quot;, &quot;2&quot;, &quot;respond&quot;, &quot;1&quot; )" aria-label="Reply to admin">Reply</a>
+										</div>
+									</article>
+								<!-- .comment-body --> 
+								</li>
+							<!-- #comment-## -->
+							</ol>
+							<!-- .children --> 
+						</li>
+						<li id="comment-1" class="comment even thread-even depth-1 parent">
+							<article id="div-comment-1" class="comment-body">
+								<footer class="comment-meta">
+									<div class="comment-author vcard"> 
+										<img alt="" src="img/team/01.jpg"  class="avatar avatar-42 photo avatar-default img-circle" height="42" width="42"> 
+										<b class="fn">
+											<a href="#" rel="external nofollow" class="url">Mr WordPress</a>
+										</b> 
+										<span class="says">says:</span> 
+									</div>
+
+									<div class="comment-metadata"> 
+										<a href="#">
+											<time datetime="2016-04-30T08:16:28+00:00"> April 30, 2016 at 8:16 am </time>
+										</a> 
+									</div>
+								</footer>
+
+								<div class="comment-content">
+									<p>
+										Hi, this is a comment.<br>
+										To delete a comment, just log in and view the post's comments. There you will have the option to edit or delete them.
+									</p>
+								</div>
+								<!-- .comment-content -->
+
+								<div class="reply">
+									<a rel="nofollow" class="comment-reply-link" href="#"  aria-label="Reply to Mr WordPress">Reply</a>
+								</div>
+							</article>
+							<!-- .comment-body -->
+							<ol class="children">
+								<li id="comment-2" class="comment byuser comment-author-admin bypostauthor odd alt depth-2">
+									<article id="div-comment-2" class="comment-body">
+										<footer class="comment-meta">
+											<div class="comment-author vcard"> 
+												<img alt="" src="img/team/04.jpg"  class="avatar avatar-42 photo img-circle" height="42" width="42"> 
+												<b class="fn">admin</b> 
+												<span class="says">says:</span> 
+											</div>
+											<!-- .comment-author -->
+
+											<div class="comment-metadata"> 
+												<a href="#">
+													<time datetime="2016-11-02T06:27:52+00:00"> November 2, 2016 at 6:27 am </time>
+												</a> 
+											</div>
+											<!-- .comment-metadata --> 
+										</footer>
+
+										<div class="comment-content">
+											<p>There you will have the option to edit or delete them.</p>
+										</div>
+										<!-- .comment-content -->
+
+										<div class="reply">
+											<a rel="nofollow" class="comment-reply-link" href="http://localhost/burstfly/hello-world1/?replytocom=2#respond" onclick="return addComment.moveForm( &quot;div-comment-2&quot;, &quot;2&quot;, &quot;respond&quot;, &quot;1&quot; )" aria-label="Reply to admin">Reply</a>
+										</div>
+									</article>
 									<!-- .comment-body --> 
-									</li>
-								<!-- #comment-## -->
-								</ol>
-							<!-- .children --> 
-							</li>
-							<li id="comment-1" class="comment even thread-even depth-1 parent">
-								<article id="div-comment-1" class="comment-body">
-									<footer class="comment-meta">
-										<div class="comment-author vcard"> 
-											<img alt="" src="img/team/01.jpg"  class="avatar avatar-42 photo avatar-default img-circle" height="42" width="42"> 
-											<b class="fn">
-												<a href="#" rel="external nofollow" class="url">Mr WordPress</a>
-											</b> 
-											<span class="says">says:</span> 
-										</div>
-
-										<div class="comment-metadata"> 
-											<a href="#">
-												<time datetime="2016-04-30T08:16:28+00:00"> April 30, 2016 at 8:16 am </time>
-											</a> 
-										</div>
-									</footer>
-
-									<div class="comment-content">
-										<p>
-											Hi, this is a comment.<br>
-											To delete a comment, just log in and view the post's comments. There you will have the option to edit or delete them.
-										</p>
-									</div>
-									<!-- .comment-content -->
-
-									<div class="reply">
-										<a rel="nofollow" class="comment-reply-link" href="#"  aria-label="Reply to Mr WordPress">Reply</a>
-									</div>
-								</article>
-								<!-- .comment-body -->
-								<ol class="children">
-									<li id="comment-2" class="comment byuser comment-author-admin bypostauthor odd alt depth-2">
-										<article id="div-comment-2" class="comment-body">
-											<footer class="comment-meta">
-												<div class="comment-author vcard"> 
-													<img alt="" src="img/team/04.jpg"  class="avatar avatar-42 photo img-circle" height="42" width="42"> 
-													<b class="fn">admin</b> 
-													<span class="says">says:</span> 
-												</div>
-												<!-- .comment-author -->
-
-												<div class="comment-metadata"> 
-													<a href="#">
-														<time datetime="2016-11-02T06:27:52+00:00"> November 2, 2016 at 6:27 am </time>
-													</a> 
-												</div>
-												<!-- .comment-metadata --> 
-											</footer>
-
-											<div class="comment-content">
-												<p>There you will have the option to edit or delete them.</p>
-											</div>
-											<!-- .comment-content -->
-
-											<div class="reply">
-												<a rel="nofollow" class="comment-reply-link" href="http://localhost/burstfly/hello-world1/?replytocom=2#respond" onclick="return addComment.moveForm( &quot;div-comment-2&quot;, &quot;2&quot;, &quot;respond&quot;, &quot;1&quot; )" aria-label="Reply to admin">Reply</a>
-											</div>
-										</article>
-										<!-- .comment-body --> 
-									</li>
-								<!-- #comment-## -->
-								</ol>
-							<!-- .children --> 
-							</li>
+								</li>
+							<!-- #comment-## -->
+							</ol>
+						<!-- .children --> 
+						</li>
 						<!-- #comment-## -->
-						</ol>
-						
-						<!-- .comment-list -->
-						<div id="respond" class="comment-respond">
-							<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/?p=1#respond" style="display:none;">Cancel reply</a></small></h3>
-							<form action="http://localhost/burstfly/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-								<p class="comment-form-author">
-									<label for="author">Name <span class="required">*</span></label>
-									<input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" required>
-								</p>
-								<p class="comment-form-email">
-									<label for="email">Email <span class="required">*</span></label>
-									<input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required>
-								</p>
-								<p class="comment-form-url">
-									<label for="url">Website</label>
-									<input id="url" name="url" type="url" value="" size="30" maxlength="200">
-								</p>
-								<p class="comment-form-comment">
-									<label for="comment">Comment</label>
-									<textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required></textarea>
-								</p>
-								<p class="form-submit">
-									<input name="submit" type="submit" id="submit" class="submit" value="Post Comment">
-									<input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID">
-									<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-								</p>
-							</form>
-						</div>
-						<!-- #respond --> 
+					</ol>
+					<!-- .comment-list -->
+					<div id="respond" class="comment-respond">
+						<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/?p=1#respond" style="display:none;">Cancel reply</a></small></h3>
+						<form action="http://localhost/burstfly/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+							<p class="comment-form-author">
+								<label for="author">Name <span class="required">*</span></label>
+								<input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" required>
+							</p>
+							<p class="comment-form-email">
+								<label for="email">Email <span class="required">*</span></label>
+								<input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required>
+							</p>
+							<p class="comment-form-url">
+								<label for="url">Website</label>
+								<input id="url" name="url" type="url" value="" size="30" maxlength="200">
+							</p>
+							<p class="comment-form-comment">
+								<label for="comment">Comment</label>
+								<textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required></textarea>
+							</p>
+							<p class="form-submit">
+								<input name="submit" type="submit" id="submit" class="submit" value="Post Comment">
+								<input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID">
+								<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+							</p>
+						</form>
 					</div>
+					<!-- #respond --> 
+				</div>
 				<!--/comment--> 
 			</div>
 			<!--blog posts container--> 

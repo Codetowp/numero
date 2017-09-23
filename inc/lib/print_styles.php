@@ -85,7 +85,7 @@ if (!function_exists('numero_headings_font_color'))  {
 			// Output the styles.
 		if ( $color_value ) {
 			echo "\n" . 'h1{' . $append_color . '}'."\n".'h2{'.$append_color.'}'."\n".'h3{'.$append_color.'}'.
-                "\n".'h4{'.$append_color.'}'."\n".'h5{'.$append_color.'}' ;
+                "\n".'h4{'.$append_color.'}'."\n".'h5{'.$append_color.'}'."\n".'#about-us-block h2{'.$append_color.'}'."\n".'#our-work-block h2{'.$append_color.'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
