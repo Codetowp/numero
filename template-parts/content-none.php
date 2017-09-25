@@ -6,10 +6,22 @@
  *
  * @package numero
  */
-
+get_header(); 
 ?>
+<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
+	<div class="content  wow fdeInUp" style="visibility: visible; animation-name: fdeInUp;">
+		<div class="container">
+			<h1><?php the_title(); ?></h1>
+		</div>
+	</div>
+</div>
+<!--blog body-->
+<div id="Blog-post">
+	<div class="container">
+		<div class="row wow fadeInUp"> 
+			<!--blog posts container-->
+			<div class="col-md-8 col-sm-8 single-post"> 
 
-<section class="no-results not-found">
 	<header class="page-header">
 		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'numero' ); ?></h1>
 	</header><!-- .page-header -->
@@ -47,4 +59,10 @@
 
 		endif; ?>
 	</div><!-- .page-content -->
-</section><!-- .no-results -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+get_footer();

@@ -213,7 +213,7 @@ get_header(); ?>
 									?>
 									<ul class="work-more">
 										<li>
-											<a href="#"><i class="fa fa-link"></i></a>
+											<a href="<?php the_permalink();?>"><i class="fa fa-link"></i></a>
 										</li>
 									</ul>
 								</div>
@@ -222,7 +222,7 @@ get_header(); ?>
 					</li>
                     <?php  endwhile; endif;  wp_reset_postdata();?>  
 				</ul>
-				<a href="#" class="more-links">View All Projects</a> 
+				<a href="<?php  echo esc_url( home_url( '/portfolio' ) );?>" class="more-links">View All Projects</a> 
 			</div>
 		</div>
 	</div>
