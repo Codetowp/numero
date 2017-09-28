@@ -1,9 +1,9 @@
 <?php
 
-function dblogger_related_post() {
+function numero_related_post() {
 
 	$args = '';
-    $count = get_theme_mod( 'dblogger_post_related_post_count' );
+    $count = get_theme_mod( 'numero_blog_page_relative_count' );
       
 	$args = wp_parse_args( $args, array(
 		'category__in'   => wp_get_post_categories( get_the_ID() ),
@@ -23,7 +23,7 @@ function dblogger_related_post() {
                 
                 if  ( get_the_post_thumbnail()=='')
                 {
-                    $background_img_relatedpost   = get_template_directory_uri()."/img/t-1.jpg";
+                    $background_img_relatedpost   = get_template_directory_uri()."/img/04-screenshot.jpg";
                     
                     $post_thumbnail= '<img src="'.$background_img_relatedpost.'" class="img-responsive">';
                 }
@@ -40,20 +40,19 @@ function dblogger_related_post() {
                  $title=get_the_title();
                 
                 global $post;
-                $categories = get_the_category($post->ID);
-                $cat_link = get_category_link($categories[0]->cat_ID);
+                $categories = get_the_category(' / ');
+                
                 
 				printf(
-					'<div class="col-md-4 theme-post">%s 
-                        <div class="theme-post-caption">
-                            <h6><span class="badge badge-info">%s</span></h6>
-                            <div class="view-payment"> <a href="%s">View Theme</a></div>
-                        </div>
-                    </div> 
-                   ',
+                    
+					'<article class="col-md-4 col-sm-6 col-xs-12">
+                        <header class="entry-header"> %s<a href="%s">
+                            <h6>%s</h6>
+                        </a> %s</header>
+                    </article>',
 					$post_thumbnail,
-                    $title,
                     esc_url( get_permalink() ),
+                    $title,$categories,
                     $class_format
 				);
 				?>

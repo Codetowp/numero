@@ -116,6 +116,10 @@ function numero_customize_register( $wp_customize ) {
             'render_callback' 	 	=> 'numero_customize_partial_trial_header',
         ) ); 
 
+        $wp_customize->selective_refresh->add_partial( 'numero_header_det_check', array(
+            'selector'       	 	=> '#top-menu .pull-left  ul',
+            'render_callback' 	 	=> 'numero_customize_partial_header_det_check',
+        ) ); 
 
     }
 
@@ -125,6 +129,64 @@ function numero_customize_register( $wp_customize ) {
             'priority'        		=> 101,
             'title'           		=> esc_html__( 'Frontpage Theme Sections', 'numero' ),
             'description'     		=> '',
+        ) );
+/*************************header details********************************************/    
+        
+     $wp_customize->add_section( 'social', array(
+        'title'                     => __( 'Header Details Social', 'numero'  ),
+        'priority'                  => 99,
+        'panel'                     => 'numero_pannel',  
+    ) );
+    
+    
+      $wp_customize->add_setting( 'numero_header_det_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_header_det_check', array(
+                'settings' => 'numero_header_det_check',
+                'label'    => __( 'Disable Header Details Section?', 'numero' ),
+                'section'  => 'social',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+    
+    
+
+       $social_sites = array( 'facebook', 'twitter','instagram',  'google-plus', 'pinterest', 'linkedin', 'rss');
+
+		foreach( $social_sites as $social_site ) {
+			$wp_customize->add_setting( "social[$social_site]", array(
+                    'default'           => '',
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => 'esc_url_raw'
+			) );
+
+			$wp_customize->add_control( "social[$social_site]", array(
+					'label'   => ucwords( $social_site ) . __( " Url:", 'numero' ),
+					'section' => 'social',
+					'type'    => 'text',
+			) );
+		}
+    
+    
+       $wp_customize->add_setting( 'numero_header_details', array(  
+            'default'                   => esc_html__('', 'numero'),
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'postMessage', // refresh or postMessage              
+        ) );    
+
+        $wp_customize->add_control( 'numero_header_details', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Header Phone Number', 'numero' ),
+            'section'  					=> 'social',
+            'priority' 					=> 1,
         ) );
 
 /********* header intro **********/
@@ -1087,7 +1149,54 @@ function numero_customize_register( $wp_customize ) {
 		) );
     
     
+    
+    
+    
+    
+    /**************label*************/
+		$wp_customize->add_panel( 'numero_page_pannel' ,array(
+            'priority'        		=> 105,
+            'title'           		=> esc_html__( 'Page Settings Sections', 'numero' ),
+            'description'     		=> '',
+        ) );
+/*************************header details********************************************/    
         
+     $wp_customize->add_section( 'numero_blog_page_settings', array(
+        'title'                     => __( 'Blog Page', 'numero'  ),
+        'priority'                  => 1,
+        'panel'                     => 'numero_page_pannel',  
+    ) );
+    
+      $wp_customize->add_setting( 'numero_blog_page_background_img', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+    
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'numero_blog_page_background_img', array(
+            'label'                     => __( 'Background Image', '' ),
+            'section'                   => 'numero_blog_page_settings',
+            'settings'                  => 'numero_blog_page_background_img',
+            'context'                   => 'numero_blog_page_background_img',
+            'priority'                  => 1,
+            ) 
+        ) );
+    
+         $wp_customize->add_setting( 'numero_blog_page_relative_count', array(
+            'default'                   => esc_html__('3','numero'),
+            'sanitize_callback'         => 'numero_sanitize_integer'
+            )
+        );
+         $wp_customize->add_control( 'numero_blog_page_relative_count', array(
+            'type'                      => 'integer',
+            'label'                     => __('Number Of Relative Post  To Show - i.e 10 (default is 3)','numero'),
+            'section'                   => 'numero_blog_page_settings',
+             'priority'                  => 2,
+
+            )
+        );
 }
 add_action( 'customize_register', 'numero_customize_register' );
 
@@ -1154,6 +1263,10 @@ function numero_customize_partial_blog_description() {
 
 function numero_customize_partial_trial_header() {
     echo get_theme_mod('numero_trial_header');
+}
+
+function numero_customize_partial_header_det_check() {
+    echo get_theme_mod('numero_header_det_check');
 }
 /**
  * Render the site tagline for the selective refresh partial.
