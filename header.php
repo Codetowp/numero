@@ -39,29 +39,40 @@
         <div class="row">
           <div class="col-md-12">
             <div class="pull-left">
+             
+                <?php 
+                    $disable1    = get_theme_mod( 'numero_header_det_check' ) == 1 ? true : false ;
+
+                    if ( numero_is_selective_refresh() ) {
+                        $disable1 = false;
+                        }
+                    if ( ! $disable1) : ?>
               <ul class="">
-                <li>Phone: +232456758-212</li>
+                  <?php 
+                    $numero_header_details  = get_theme_mod( 'numero_header_details', esc_html__('Phone: +232456758-212', 'numero' ));
+                    if ($numero_header_details != '') echo '<li>Phone: ' . wp_kses_post($numero_header_details) . '</li>'; 
+                  ?>
               </ul>
+                <?php endif;?>
+
+
             </div>
             <div class="pull-right">
-              <ul class="list-inline top-social-link">
+             
+                <ul class="list-inline top-social-link">
                   
                 <?php
-                    if ( is_active_sidebar( 'social' ) ) 
-	{
-		 dynamic_sidebar( 'social' ); 
-	}
-else
-	
-                {?>
+                 if ( $socials = get_theme_mod( 'social' ) ) 
+                    {
+                        $socials = $socials ? array_filter( $socials ) : array();
+                        foreach ( $socials as $social => $name ) 
+                        {
+                                printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> <li> ', esc_url( $name ), $social );
+                        }
+                    }?>
                   
-                    <li> <a href="mailto:someone@example.com?"><i class="fa fa-facebook"></i></a></li>
-                    <li> <a href="mailto:someone@example.com?"><i class="fa fa-rss"></i></a></li>
-                    <li> <a href="mailto:someone@example.com?"><i class="fa fa-twitter"></i></a></li>
-                    <li> <a href="mailto:someone@example.com?"><i class="fa fa-linkedin-square"></i></a></li>
-                    <li> <a href="mailto:someone@example.com?"><i class="fa fa-vimeo-square"></i></a></li>
-                <?php }?>
               </ul>
+
             </div>
           </div>
         </div>
@@ -103,9 +114,10 @@ else
         <!--search-cart-block --> 
   <div class="search-cart-block">
   <!--search form-->
-
-          <form method="get" action="/search" id="search">
-            <input name="q" type="text" size="40" placeholder="Search..." />
+             
+      
+          <form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" id="search">
+            <input name="s" type="text" size="40" placeholder="<?php echo esc_attr_x( 'Search...&hellip;', 'placeholder', 'numero' ); ?>"  value="<?php echo get_search_query(); ?>" />
           </form>
           <!--/search form--> 
           <div class="cart-notify"><a href="#"><i class="fa fa-cart-plus"><span>0</span></i></a></div>

@@ -9,22 +9,23 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php numero_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-
-	<footer class="entry-footer">
-		<?php numero_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+<!--blog post-->
+      <article class="col-md-4"> 
+          <a href="<?php the_permalink();?>">
+               <?php
+                if  ( get_the_post_thumbnail()!='')
+                {
+                    the_post_thumbnail('numero_our_work'); 
+                }
+                else
+                {?>
+                    
+                   <img src="<?php echo get_template_directory_uri();?>/img/a-1.jpg" class="img-responsive">
+                    
+                <?php }?> </a>
+        <header class="entry-header"><a href="<?php the_permalink();?>">
+          <h5><?php the_title();?></h5>
+          </a></header>
+        <p><?php the_excerpt(); ?></p>
+      </article>
+      <!--/blog post--> 

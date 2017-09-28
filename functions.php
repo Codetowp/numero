@@ -173,8 +173,12 @@ function numero_widgets_init() {
 	) );
     require get_template_directory() . '/inc/widget/social.php';  
 
+    require get_template_directory() . '/inc/styles.php';
+	require get_template_directory() . '/inc/customizer-library.php';
     
     
+// Custom Theme Functions
+	require get_template_directory() . '/inc/lib/related-post.php';
     
 }
 add_action( 'widgets_init', 'numero_widgets_init' );
@@ -221,8 +225,6 @@ function numero_scripts() {
 	wp_enqueue_script( 'numero-wow-min', get_template_directory_uri() . '/js/wow.min.js', array(), '20151215', true );
 
     
-    
-    
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -240,6 +242,12 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
+ * Custom font style.
+ */
+require get_template_directory() . '/inc/lib/print_styles.php';
+
+
+/**
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
@@ -248,7 +256,7 @@ add_image_size( 'numero_our_work', 262, 163,  array( 'top', 'center' ) );
 add_image_size( 'choose-medium', 840, 527,  array( 'top', 'center' ) );
 add_image_size( 'numero-blog', 262, 163,  array( 'top', 'center' ) );
 
-
+add_image_size( 'numero_portfolio', 555, 347,  array( 'top', 'center' ) );
 
 
 /**
@@ -262,3 +270,20 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+/*fonts*/
+function demo_fonts() {
+
+	// Font options
+	$fonts = array(
+		get_theme_mod( 'numero_paragraph_font', customizer_library_get_default( 'primary-font' ) ),
+		get_theme_mod( 'numero_heading_font_family', customizer_library_get_default( 'secondary-font' ) )
+	);
+
+	$font_uri = customizer_library_get_google_font_uri( $fonts );
+
+	// Load Google Fonts
+	wp_enqueue_style( 'demo_fonts', $font_uri, array(), null, 'screen' );
+
+}
+add_action( 'wp_enqueue_scripts', 'demo_fonts' );
+

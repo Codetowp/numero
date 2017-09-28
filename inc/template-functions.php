@@ -13,7 +13,7 @@
  */
 function numero_body_classes( $classes ) {
 
-    if (  is_page() ) {
+    if (  is_page() && ! is_front_page() ) {
 		$classes = array( 'single' );
 	}
    

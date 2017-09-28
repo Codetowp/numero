@@ -37,13 +37,12 @@ get_header(); ?>
 				<?php 
 					$query_post = new WP_Query( array( 'post_type' => 'post',  ) );
 					if ($query_post->have_posts()) :
-						 while ($query_post->have_posts()) : $query_post->the_post();	
-								get_template_part( 'template-parts/blog', get_post_format() );
+						while ($query_post->have_posts()) : $query_post->the_post();	
+							get_template_part( 'template-parts/blog', get_post_format() );
 						endwhile; ?>
 
 				<?php endif; ?>
 				<div class="clearfix"></div>
-				
 				<!--/portfolio page nav-->
 				<nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
 					<ul>
@@ -57,10 +56,10 @@ get_header(); ?>
 				</nav>
 			</div>
 			<!--blog posts container--> 
-
+			
 			<!--aside-->
 			<aside class="col-md-4 col-sm-4" > 
-				<?php get_sidebar();?>
+				<?php get_sidebar(); ?>
 			</aside>
 			<!--aside-->
 			<div class="clearfix"></div>

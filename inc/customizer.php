@@ -16,6 +16,7 @@ function numero_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
     require get_template_directory() . '/inc/customizer-controls.php';
+	require get_template_directory() . '/inc/lib/fo-to-range.php';
 
       $pages  =  get_pages();
 	$option_pages = array();
@@ -115,6 +116,10 @@ function numero_customize_register( $wp_customize ) {
             'render_callback' 	 	=> 'numero_customize_partial_trial_header',
         ) ); 
 
+        $wp_customize->selective_refresh->add_partial( 'numero_header_det_check', array(
+            'selector'       	 	=> '#top-menu .pull-left  ul',
+            'render_callback' 	 	=> 'numero_customize_partial_header_det_check',
+        ) ); 
 
     }
 
@@ -125,6 +130,64 @@ function numero_customize_register( $wp_customize ) {
             'title'           		=> esc_html__( 'Frontpage Theme Sections', 'numero' ),
             'description'     		=> '',
         ) );
+/*************************header details********************************************/    
+        
+     $wp_customize->add_section( 'social', array(
+        'title'                     => __( 'Header Details Social', 'numero'  ),
+        'priority'                  => 99,
+        'panel'                     => 'numero_pannel',  
+    ) );
+    
+    
+      $wp_customize->add_setting( 'numero_header_det_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_header_det_check', array(
+                'settings' => 'numero_header_det_check',
+                'label'    => __( 'Disable Header Details Section?', 'numero' ),
+                'section'  => 'social',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+    
+    
+
+       $social_sites = array( 'facebook', 'twitter','instagram',  'google-plus', 'pinterest', 'linkedin', 'rss');
+
+		foreach( $social_sites as $social_site ) {
+			$wp_customize->add_setting( "social[$social_site]", array(
+                    'default'           => '',
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => 'esc_url_raw'
+			) );
+
+			$wp_customize->add_control( "social[$social_site]", array(
+					'label'   => ucwords( $social_site ) . __( " Url:", 'numero' ),
+					'section' => 'social',
+					'type'    => 'text',
+			) );
+		}
+    
+    
+       $wp_customize->add_setting( 'numero_header_details', array(  
+            'default'                   => esc_html__('', 'numero'),
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'postMessage', // refresh or postMessage              
+        ) );    
+
+        $wp_customize->add_control( 'numero_header_details', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Header Phone Number', 'numero' ),
+            'section'  					=> 'social',
+            'priority' 					=> 1,
+        ) );
 
 /********* header intro **********/
         $wp_customize->add_section('numero_header', array(
@@ -134,6 +197,29 @@ function numero_customize_register( $wp_customize ) {
             'panel'                     => 'numero_pannel',    
 
         ));
+    
+
+        $wp_customize->add_setting( 'numero_header_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_header_check', array(
+                'settings' => 'numero_header_check',
+                'label'    => __( 'Disable Header Section?', 'numero' ),
+                'section'  => 'numero_header',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+
+    
+    
+    
+    
     
         $wp_customize->add_setting( 'bck_ground_image', array(
             'default'                   => '',
@@ -257,6 +343,28 @@ function numero_customize_register( $wp_customize ) {
 
         ));
     
+    
+
+        $wp_customize->add_setting( 'numero_about_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_about_check', array(
+                'settings' => 'numero_about_check',
+                'label'    => __( 'Disable About Section?', 'numero' ),
+                'section'  => 'numero_about',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+
+    
+    
+    
          $wp_customize->add_setting( 'numero_about_header_text', array(      
             'default'                   => esc_html__('About us', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
@@ -330,6 +438,29 @@ function numero_customize_register( $wp_customize ) {
 
         ));
     
+    
+   
+
+        $wp_customize->add_setting( 'numero_choose_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_choose_check', array(
+                'settings' => 'numero_choose_check',
+                'label'    => __( 'Disable Choose Section?', 'numero' ),
+                'section'  => 'numero_choose',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+
+    
+    
+    
          $wp_customize->add_setting( 'numero_choose_header_text', array(      
             'default'                   => esc_html__('why choose us', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
@@ -390,6 +521,29 @@ function numero_customize_register( $wp_customize ) {
             'panel'                     => 'numero_pannel',    
 
         ));    
+    
+ 
+
+        $wp_customize->add_setting( 'numero_counter_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_counter_check', array(
+                'settings' => 'numero_counter_check',
+                'label'    => __( 'Disable Counter Section?', 'numero' ),
+                'section'  => 'numero_counter',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+
+    
+        
+
 
         $wp_customize->add_setting( 'counter_background_img', array(
             'default'                   => '',
@@ -462,6 +616,27 @@ function numero_customize_register( $wp_customize ) {
 
         ));
     
+
+        $wp_customize->add_setting( 'numero_our_work_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_our_work_check', array(
+                'settings' => 'numero_our_work_check',
+                'label'    => __( 'Enable Work Section?', 'numero' ),
+                'section'  => 'numero_our_work',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+
+    
+    
+    
         $wp_customize->add_setting( 'numero_our_work_header', array(      
             'default'                   => esc_html__('Our case of Studies', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
@@ -488,7 +663,19 @@ function numero_customize_register( $wp_customize ) {
             'priority' 					=> 3,
         ) );
     
+        $wp_customize->add_setting( 'numero_our_work_count', array(
+            'default'                   => '8',
+            'sanitize_callback'         => 'numero_sanitize_integer'
+            )
+        );
+        $wp_customize->add_control( 'numero_our_work_count', array(
+            'type'                      => 'integer',
+            'label'                     => __('Number Of Testimonial To Show - i.e 10 (default is 8)','numero'),
+            'section'                   => 'numero_our_work',
 
+            )
+        );
+          
 /********Service**********/
     
         $wp_customize->add_section('numero_service', array(
@@ -498,6 +685,27 @@ function numero_customize_register( $wp_customize ) {
             'panel'                     => 'numero_pannel',    
 
         ));
+    
+    
+
+        $wp_customize->add_setting( 'numero_service_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_service_check', array(
+                'settings' => 'numero_service_check',
+                'label'    => __( 'Disable Service Section?', 'numero' ),
+                'section'  => 'numero_service',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+
+    
     
         $wp_customize->add_setting( 'numero_service_header', array(      
             'default'                   => esc_html__('Our Services', 'numero'),
@@ -571,6 +779,27 @@ function numero_customize_register( $wp_customize ) {
 
         ));
     
+
+        $wp_customize->add_setting( 'numero_testimonial_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_testimonial_check', array(
+                'settings' => 'numero_testimonial_check',
+                'label'    => __( 'Enable Testimonial Section?', 'numero' ),
+                'section'  => 'numero_testimonial',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+
+    
+    
+    
         $wp_customize->add_setting( 'numero_testimonial_header', array(      
             'default'                   => esc_html__('What our clients say', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
@@ -584,6 +813,44 @@ function numero_customize_register( $wp_customize ) {
             'priority' 					=> 1,
         ) );
     
+           
+        $wp_customize->add_setting( 'numero_testimonial_count', array(
+            'default'                   => '3',
+            'sanitize_callback'         => 'numero_sanitize_integer'
+            )
+        );
+        $wp_customize->add_control( 'numero_testimonial_count', array(
+            'type'                      => 'integer',
+            'label'                     => __('Number Of Testimonial To Show - i.e 6 (default is 3)','numero'),
+            'section'                   => 'numero_testimonial',
+
+            )
+        );
+          
+    
+    
+    
+/*********Clients Section**********/
+    
+      
+        $wp_customize->add_setting( 'numero_testimonial_client_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_testimonial_client_check', array(
+                'settings' => 'numero_testimonial_client_check',
+                'label'    => __( 'Disable Client Section?', 'numero' ),
+                'section'  => 'numero_testimonial',
+                'type'     => 'ios',
+                'priority' => 6,
+
+        ) ) );
+
+    
 
 /*********Blog Section**********/
     
@@ -594,6 +861,24 @@ function numero_customize_register( $wp_customize ) {
             'panel'                     => 'numero_pannel',    
 
         ));
+    
+  
+        $wp_customize->add_setting( 'numero_blog_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_blog_check', array(
+                'settings' => 'numero_blog_check',
+                'label'    => __( 'Disable Blog Section?', 'numero' ),
+                'section'  => 'numero_blog',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
     
         $wp_customize->add_setting( 'numero_blog_header', array(      
             'default'                   => esc_html__('From Our Blog', 'numero'),
@@ -645,6 +930,23 @@ function numero_customize_register( $wp_customize ) {
             'panel'                     => 'numero_pannel',    
 
         ));
+    
+        $wp_customize->add_setting( 'numero_trial_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_trial_check', array(
+                'settings' => 'numero_trial_check',
+                'label'    => __( 'Disable Blog Section?', 'numero' ),
+                'section'  => 'numero_trial',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
     
         $wp_customize->add_setting( 'numero_trial_header', array(      
             'default'                   => esc_html__('Be the first to grap all new design content from numero!','numero'),
@@ -722,6 +1024,179 @@ function numero_customize_register( $wp_customize ) {
         ));
     
     
+/********* Fonts**********/
+
+        $wp_customize->add_section('numero_font_settings', array(
+            'title'                     => __('Font Settings', 'numero'),
+            'description'               => 'Change font family, size and color (Headings & Paragraph) for Homepage, Blog                                    Posts & Pages.',
+            'priority'                  => 125,
+           
+
+        ));
+
+    // paragraph
+     $font_choices = customizer_library_get_font_choices();
+    
+     $wp_customize->add_setting( 'numero_paragraph_font', array(
+            'default'        => 'PT Serif',
+        ) );
+
+        $wp_customize->add_control( 'numero_paragraph_font', array(
+            'label'   => esc_attr__('Pick Paragraph Font Family', 'numero' ),
+            'description'   => esc_attr__('Default : PT Serif', 'numero' ),
+            'section' => 'numero_font_settings',
+            'type'    => 'select',
+            'choices' => $font_choices,
+            'priority' => 1,
+			));
+    
+    $wp_customize->add_setting( 'numero_paragraph_font_color', 
+            array(
+                'default' => '#43484d', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+	 $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_paragraph_font_color', 
+           array(
+			'label'      => esc_attr__( 'Pick Paragraph Font Color', 'numero' ),
+             'description'   => esc_attr__('Default : #43484d', 'numero' ),
+			'section'    => 'numero_font_settings',
+               'priority'   => 2,
+		) ) );    
+
+    
+     $wp_customize->add_setting( 'numero_paragraph_font_size', array(
+			'default'       => get_theme_mod( 'numero_paragraph_font_size', '16px' ),
+			'capability'    => 'edit_theme_options',
+			'transport'     => 'refresh',
+	) );
+
+	$wp_customize->add_control( new Customizer_Range_Value_Control( $wp_customize, 'numero_paragraph_font_size', array(
+			'type'     => 'range-value',
+			'section'  => 'numero_font_settings',
+			'settings' => 'numero_paragraph_font_size',        
+			'label'    => __( 'Pick Paragraph Font Size' ),
+            'description'   => esc_attr__('Default : 16px', 'numero' ),
+			'input_attrs' => array(
+				'min'    => 11,
+				'max'    => 24,
+				'step'   => 1,
+				'suffix' => 'px',
+		  ),
+        'priority'   => 3,
+	) ) );
+    
+    
+/***************Heading fonts****************/
+       
+    $wp_customize->add_setting( 'numero_heading_font_family', array(
+            'default'        => 'Montserrat',
+             'transport'     => 'refresh',
+        ) );
+
+    $wp_customize->add_control( 'numero_heading_font_family', array(
+        'label'   => 'Pick Heading Font Family',
+        'description'   =>  esc_attr__('Default : Montserrat', 'numero' ),
+        'section' => 'numero_font_settings',
+        'type'    => 'select',
+        'choices' => $font_choices,
+        'priority' => 4,
+        ));
+        
+    
+    $wp_customize->add_setting( 'numero_headings_font_color', 
+            array(
+                'default' => '#ffffff', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+	 $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_headings_font_color', 
+           array(
+			'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
+			'section'    => 'numero_font_settings',
+               'priority'   => 5,
+		) ) );
+    
+    
+/**************accent**************/    
+    
+    $wp_customize->add_setting( 'numero_accent_color',  
+            array(
+                'default' => '#0ed1d1', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+			
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_accent_color', array(
+			'label'      => esc_attr__( 'Accent Color', 'numero' ),
+			'description' => esc_attr__( 'Add Accent Color to Button.', 'numero' ),
+			'section'    => 'numero_font_settings',
+		) ) );
+    
+    
+     $wp_customize->add_setting( 'numero_accent_opacity', 
+           array( 
+               'default' => __( '.90', 'numero' ),
+               'transport' => 'refresh',
+               'sanitize_callback' => 'sanitize_text_field',
+           ) );
+      $wp_customize->add_control( 'numero_accent_opacity', 
+           array(
+			'type' => 'text',
+			'section' => 'numero_font_settings', // Required, core or custom.
+			'label' => esc_attr__( "Background Transparency", 'numero' ),
+			//'description' => esc_attr__( 'Example: John Smith <span>CEO, Coni Inc.</span>', 'coni' ),
+		) );
+    
+    
+    
+    
+    
+    
+    /**************label*************/
+		$wp_customize->add_panel( 'numero_page_pannel' ,array(
+            'priority'        		=> 105,
+            'title'           		=> esc_html__( 'Page Settings Sections', 'numero' ),
+            'description'     		=> '',
+        ) );
+/*************************header details********************************************/    
+        
+     $wp_customize->add_section( 'numero_blog_page_settings', array(
+        'title'                     => __( 'Blog Page', 'numero'  ),
+        'priority'                  => 1,
+        'panel'                     => 'numero_page_pannel',  
+    ) );
+    
+      $wp_customize->add_setting( 'numero_blog_page_background_img', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+    
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'numero_blog_page_background_img', array(
+            'label'                     => __( 'Background Image', '' ),
+            'section'                   => 'numero_blog_page_settings',
+            'settings'                  => 'numero_blog_page_background_img',
+            'context'                   => 'numero_blog_page_background_img',
+            'priority'                  => 1,
+            ) 
+        ) );
+    
+         $wp_customize->add_setting( 'numero_blog_page_relative_count', array(
+            'default'                   => esc_html__('3','numero'),
+            'sanitize_callback'         => 'numero_sanitize_integer'
+            )
+        );
+         $wp_customize->add_control( 'numero_blog_page_relative_count', array(
+            'type'                      => 'integer',
+            'label'                     => __('Number Of Relative Post  To Show - i.e 10 (default is 3)','numero'),
+            'section'                   => 'numero_blog_page_settings',
+             'priority'                  => 2,
+
+            )
+        );
 }
 add_action( 'customize_register', 'numero_customize_register' );
 
@@ -788,6 +1263,10 @@ function numero_customize_partial_blog_description() {
 
 function numero_customize_partial_trial_header() {
     echo get_theme_mod('numero_trial_header');
+}
+
+function numero_customize_partial_header_det_check() {
+    echo get_theme_mod('numero_header_det_check');
 }
 /**
  * Render the site tagline for the selective refresh partial.

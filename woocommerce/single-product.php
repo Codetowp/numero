@@ -16,55 +16,64 @@
  * @version     1.6.4
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) 
+{
 	exit; // Exit if accessed directly
 }
 
 get_header( 'shop' ); ?>
 
-
-<section style="padding:80px 0;">
-<div class="container">
-<div class="row">
-	<?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 */
-		do_action( 'woocommerce_before_main_content' );
-	?>
-
-		<?php while ( have_posts() ) : the_post(); ?>
-
-			<?php wc_get_template_part( 'content', 'single-product' ); ?>
-
-		<?php endwhile; // end of the loop. ?>
-
-
+<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
+    <div class="content  wow fdeInUp">
+        <div class="container ">
+            <h1><?php the_title(); ?> </h1>
+        </div>
+    </div>
 </div>
-</div>
+
+<section id="woocommerce-page">
+    <div class="container">
+        <div class="row">
+            <div id="container">
+                <div id="content" role="main">
+                    <nav class="woocommerce-breadcrumb">
+                        <?php
+                            /**
+                            * woocommerce_before_main_content hook.
+                            *
+                            * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+                            * @hooked woocommerce_breadcrumb - 20
+                            */
+                            do_action( 'woocommerce_before_main_content' );
+                        ?>
+                    </nav>
+                    <?php while ( have_posts() ) : the_post(); ?>
+
+                        <?php wc_get_template_part( 'content', 'single-product' ); ?>
+
+                    <?php endwhile; // end of the loop. ?>
+
+                    <?php
+                        /**
+                         * woocommerce_after_main_content hook.
+                         *
+                         * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+                         */
+                        do_action( 'woocommerce_after_main_content' );
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-
-
-	<?php
-		/**
-		 * woocommerce_after_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-		 */
-		do_action( 'woocommerce_after_main_content' );
-	?>
-
-	<?php
-		/**
-		 * woocommerce_sidebar hook.
-		 *
-		 * @hooked woocommerce_get_sidebar - 10
-		 */
-		/* do_action( 'woocommerce_sidebar' ); */
-	?>
+<?php
+    /**
+     * woocommerce_sidebar hook.
+     *
+     * @hooked woocommerce_get_sidebar - 10
+     */
+    /* do_action( 'woocommerce_sidebar' ); */
+?>
 
 <?php get_footer( 'shop' );
 

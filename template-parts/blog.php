@@ -31,8 +31,8 @@
         </a> 
         <span class="byline">
             <span class="author vcard">
-                <a href="#"><i class="fa fa-folder-o"></i> Business &bull; Industry</a>
-                <a href="#"><i class="fa fa-user-o"></i> Rijo</a> 
+                <a href="#"><i class="fa fa-folder-o"></i> <?php numero_entry_footer(); ?></a>
+                <a href="#"><i class="fa fa-user-o"></i> <?php echo get_author_name();?></a> 
             </span>
         </span> 
         <a href="<?php the_permalink();?>">
