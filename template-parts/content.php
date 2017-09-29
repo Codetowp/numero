@@ -27,7 +27,7 @@
         <header class="entry-header"><a href="<?php the_permalink();?>">
           <h5><?php the_title();?></h5>
           </a></header>
-        <p><?php the_content(); ?></p>
+        <p><?php the_excerpt(); ?></p>
       </article>
       <!--/blog post--> 
 

@@ -17,13 +17,9 @@ get_header(); ?>
 <?php
 		if(have_posts()):		  
 		while ( have_posts() ) : the_post();
-
-
-   $background_img   = esc_url( get_theme_mod( 'numero_blog_page_background_img' ) );   
-   $background_img_static   = get_template_directory_uri()."/img/s-1.jpg";
-   $image = $background_img ? "$background_img" : "$background_img_static";  
+ 
 ?>
-<div id="page-banner" style="background-image: url(<?php echo $image; ?>);">
+<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
   <div class="content  wow fdeInUp" style="visibility: visible; animation-name: fdeInUp;">
     <div class="container">
       <h1><?php the_title(); ?></h1>
@@ -77,6 +73,7 @@ get_header(); ?>
         <footer class="entry-footer entry-meta-bar">
           <div class="entry-meta"> <i class="fa fa-tags"></i> <span class="tag-links  clearfix"> <?php the_category(' / '); ?></span> </div>
         </footer>
+          
         <!--/footer tags-->
         
         <div class="clearfix"></div>
