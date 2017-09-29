@@ -23,7 +23,12 @@ get_header(); ?>
 <div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
 	<div class="content  wow fdeInUp" style="visibility: visible; animation-name: fdeInUp;">
 		<div class="container">
-			<h1><?php the_title(); ?></h1>
+			<h1>
+                <?php 
+					$blog_header  = get_theme_mod( 'numero_blog_header', esc_html__('Our Blog', 'numero' ));
+					if ($blog_header != '') echo '<h2>  ' . wp_kses_post($blog_header) . '</h2>'; 
+				?>
+            </h1>
 		</div>
 	</div>
 </div>

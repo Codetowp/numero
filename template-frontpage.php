@@ -99,7 +99,7 @@ get_header(); ?>
 <!-- Why choose us
     ==========================================-->
 <?php
-  $disable    = get_theme_mod( 'numero_choose_check' ) == 1 ? true : false ;
+  $disable    = get_theme_mod( 'numero_choose_check' ) == 0 ? true : false ;
         if ( numero_is_selective_refresh() ) 
         {
             $disable = false;
@@ -319,18 +319,10 @@ get_header(); ?>
 		</div>
 	</div>
 </section>
-<?php endif;?>
 
-<!-- Clients Section
-    ==========================================-->
-<?php
-	$disable    = get_theme_mod( 'numero_testimonial_client_check' ) == 1 ? true : false ;
-		if ( numero_is_selective_refresh() ) 
-		{
-			$disable = false;
-		}
-		if ( ! $disable) :
-?>
+
+<!-- Clients Section -->
+
 <section id="clients-block" class="text-center">
 	<div class="container">
 		<div id="clients" class="owl-carousel owl-theme">
@@ -386,7 +378,7 @@ get_header(); ?>
 				wp_reset_postdata(); 
 			?>
 			<!--/blog post--> 
-			<a href="#" class="more-links">Go to Blog</a> 
+			<a href="<?php echo  esc_url( home_url( '/blog' ) ); ?>" class="more-links">Go to Blog</a> 
 		</div>
 	</div>
 </section>

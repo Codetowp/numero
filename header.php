@@ -49,7 +49,7 @@
                     if ( ! $disable1) : ?>
               <ul class="">
                   <?php 
-                    $numero_header_details  = get_theme_mod( 'numero_header_details', esc_html__('Phone: +232456758-212', 'numero' ));
+                    $numero_header_details  = get_theme_mod( 'numero_header_phone_number', esc_html__('+232456758-212', 'numero' ));
                     if ($numero_header_details != '') echo '<li>Phone: ' . wp_kses_post($numero_header_details) . '</li>'; 
                   ?>
               </ul>

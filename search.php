@@ -13,7 +13,9 @@ get_header(); ?>
         <div class="container">
             <header class="page-header">
                 <h1 class="page-title">
-                    <?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'numero' ); ?>
+                    <?php               
+                         printf( esc_html__( 'Search Results for', 'numero' ), '<span>' . get_search_query() . '</span>' ); 
+                    ?>
                 </h1>
             </header><!-- .page-header -->
         </div>
