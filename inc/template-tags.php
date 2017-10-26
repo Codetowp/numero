@@ -14,7 +14,7 @@ if ( ! function_exists( 'numero_posted_on' ) ) :
 	function numero_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
 		}
 
 		$time_string = sprintf( $time_string,
@@ -30,7 +30,7 @@ if ( ! function_exists( 'numero_posted_on' ) ) :
 
 	
 
-		echo '<i class="fa fa-calendar-o"></i> ' . $posted_on ; // WPCS: XSS OK.
+		echo '<i class="fa fa-calendar-o"></i> ' . $time_string ; // WPCS: XSS OK.
 
 	}
 endif;

@@ -40,21 +40,20 @@ function numero_related_post() {
                  $title=get_the_title();
                 
                 global $post;
-                $categories = get_the_category(' / ');
+               $categories = get_the_category($post->ID);
+                $cat_link = get_category_link($categories[0]->cat_ID);
                 
                 
-				printf(
-                    
+				printf(                    
 					'<article class="col-md-4 col-sm-6 col-xs-12">
                         <header class="entry-header"> %s<a href="%s">
                             <h6>%s</h6>
-                        </a> %s</header>
+                        </a>%s</header>
                     </article>',
 					$post_thumbnail,
                     esc_url( get_permalink() ),
-                    $title,$categories,
-                    $class_format
-				);
+                    $title,
+					$categories);
 				?>
 			<?php
 			}
