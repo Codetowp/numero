@@ -58,7 +58,7 @@ get_header(); ?>
           <header class="entry-header"> 
               <span class="date-article"><!--<i class="fa fa-calendar-o"></i> -->
               <?php  numero_posted_on();?>
-              </span> <a href="#"><img src="<?php echo $img; ?>" class="img-responsive"></a> <span class="byline"><span class="author vcard"><a href="#"><i class="fa fa-folder-o"></i> <?php numero_entry_footer(); ?></a><a href="#"><i class="fa fa-user-o"></i> <?php echo get_the_author_meta('display_name');?></a> </span></span> <a href="#">
+              </span> <a href="#"><img src="<?php echo $img; ?>" class="img-responsive"></a> <span class="byline"><span class="author vcard"><a href="#"><i class="fa fa-folder-o"></i> <?php echo get_the_category_list( ', '); ?></a><a href="#"><i class="fa fa-user-o"></i> <?php echo get_the_author_meta('display_name');?></a> </span></span> <a href="#">
             </a></header>
           <!--/Header-->
           
@@ -71,7 +71,7 @@ get_header(); ?>
           <?php endwhile;endif;?>
         <div class="clearfix"></div>
         <footer class="entry-footer entry-meta-bar">
-          <div class="entry-meta"> <i class="fa fa-tags"></i> <span class="tag-links  clearfix"> <?php the_category(' / '); ?></span> </div>
+          <div class="entry-meta"> <i class="fa fa-tags"></i> <span class="tag-links  clearfix"> <?php echo get_the_tag_list(); ?>  </span> </div>
         </footer>
           
         <!--/footer tags-->
@@ -84,7 +84,7 @@ get_header(); ?>
 					<div class="author-box-title"> Authored By <a href="#" rel="author"><?php the_author_link(); ?> </a> </div>
 					<div class="author-description"><?php the_author_meta('description'); ?></div>
 					<div class="author_social"> </div>
-				</div>
+          </div>
               
         <div class="clearfix"></div>
         

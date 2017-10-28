@@ -17,50 +17,49 @@ get_header(); ?>
 <!-- banner Page
     ==========================================-->
 <?php
-    $background_img   = esc_url( get_theme_mod( 'bck_ground_image' ) );   
-    $background_img_static   = get_template_directory_uri()."/img/bg-1.jpg";
-    $image = $background_img ? "$background_img" : "$background_img_static";      
+$background_img   = esc_url( get_theme_mod( 'bck_ground_image' ) );   
+$background_img_static   = get_template_directory_uri()."/img/bg-1.jpg";
+$image = $background_img ? "$background_img" : "$background_img_static";      
 
-    $disable    = get_theme_mod( 'numero_header_check' ) == 1 ? true : false ;
-        if ( numero_is_selective_refresh() ) 
-        {
-            $disable = false;
-        }
-        if ( ! $disable) : ?>
+$disable    = get_theme_mod( 'numero_header_check' ) == 1 ? true : false ;
+if ( numero_is_selective_refresh() ) 
+{
+    $disable = false;
+}
+if ( ! $disable) : ?>
+    <Section id="home-banner" style="background-image: url( <?php echo $image;?> );">
+        <div class="content">
+            <div class="container wow fdeInUp"  data-wow-duration="1s">
+                <?php 
+                    $numero_theme_title  = get_theme_mod( 'numero_header_text', esc_html__(' MOBILE first APPROACH!', 'numero' ));
+                    if ($numero_theme_title != '') echo '<h1>  ' . wp_kses_post($numero_theme_title) . ' </h1>'; 
+                ?>
 
-<Section id="home-banner" style="background-image: url( <?php echo $image;?> );">
-    <div class="content">
-        <div class="container wow fdeInUp"  data-wow-duration="1s">
-            <?php 
-                $numero_theme_title  = get_theme_mod( 'numero_header_text', esc_html__(' MOBILE first APPROACH!', 'numero' ));
-                if ($numero_theme_title != '') echo '<h1>  ' . wp_kses_post($numero_theme_title) . ' </h1>'; 
-            ?>
+                <?php 
+                    $numero_tagline  = get_theme_mod( 'numero_tag_line', esc_html__(' THINK BIG & GROW RICH.', 'numero' ));
+                    if ($numero_tagline != '') echo '<h2>  ' . wp_kses_post($numero_tagline) . ' </h2>'; 
+                ?>
 
-            <?php 
-                $numero_tagline  = get_theme_mod( 'numero_tag_line', esc_html__(' THINK BIG & GROW RICH.', 'numero' ));
-                if ($numero_tagline != '') echo '<h2>  ' . wp_kses_post($numero_tagline) . ' </h2>'; 
-            ?>
+                <?php 
+                    $header_desc  = get_theme_mod( 'numero_header_description', esc_html__('We build some of the best wordpress themes and also provide support for them. Our team of 5 work smart to get you pixel perfect themes. Lets grow together.', 'numero' ));
+                    if ($header_desc != '') echo '<p> ' . wp_kses_post($header_desc) . ' </p>'; 
+                ?>
 
-            <?php 
-                $header_desc  = get_theme_mod( 'numero_header_description', esc_html__('We build some of the best wordpress themes and also provide support for them. Our team of 5 work smart to get you pixel perfect themes. Lets grow together.', 'numero' ));
-                if ($header_desc != '') echo '<p> ' . wp_kses_post($header_desc) . ' </p>'; 
-            ?>
+                <a class="btn btn-outline-default" href="<?php echo  $button1_url=( get_theme_mod( 'numero_header_button1_url' ) )?
+                    ( get_theme_mod( 'numero_header_button1_url' ) ):'www.burstfly.com'; ?>">
 
-            <a class="btn btn-outline-default" href="<?php echo  $button1_url=( get_theme_mod( 'numero_header_button1_url' ) )?
-                ( get_theme_mod( 'numero_header_button1_url' ) ):'www.burstfly.com'; ?>">
+                    <?php echo  $button1_text=( get_theme_mod( 'numero_header_button1' ) )?
+                    ( get_theme_mod( 'numero_header_button1' ) ):'Contact us'; ?>
+                </a> 
+                <a class="btn btn-info chooser-btn" href="<?php echo  $button2_url=( get_theme_mod( 'numero_header_button2_url' ) )?
+                    ( get_theme_mod( 'numero_header_button2_url' ) ):'www.burstfly.com'; ?>">
 
-                <?php echo  $button1_text=( get_theme_mod( 'numero_header_button1' ) )?
-                ( get_theme_mod( 'numero_header_button1' ) ):'Contact us'; ?>
-            </a> 
-            <a class="btn btn-info chooser-btn" href="<?php echo  $button2_url=( get_theme_mod( 'numero_header_button2_url' ) )?
-                ( get_theme_mod( 'numero_header_button2_url' ) ):'www.burstfly.com'; ?>">
-
-                 <?php echo  $button1_text=( get_theme_mod( 'numero_header_button2' ) )?
-                ( get_theme_mod( 'numero_header_button2' ) ):'Start FREE Trial'; ?>
-            </a> 
+                     <?php echo  $button1_text=( get_theme_mod( 'numero_header_button2' ) )?
+                    ( get_theme_mod( 'numero_header_button2' ) ):'Start FREE Trial'; ?>
+                </a> 
+            </div>
         </div>
-    </div>
-</Section>
+    </Section>
 <?php endif;?>
 
 
