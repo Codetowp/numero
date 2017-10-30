@@ -247,6 +247,17 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/lib/print_styles.php';
 
 
+
+
+
+/**
+ * Load WooCommerce compatibility file.
+ */
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
+}
+
+
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */

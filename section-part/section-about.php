@@ -39,7 +39,7 @@
 				$class = esc_attr( $settings['icon'] );
 			}              
 			?>
-            <div class="col-md-4 col-sm-4 col-about-us wow fdeInUp"> <i class="<?php echo $class;?>"></i>
+            <div class="col-md-4 col-sm-4 col-about-us wow fdeInUp"> <i class="<?php echo esc_attr( $settings['icon'] );?>"></i>
                     <h4><?php the_title(); ?></h4>
                     <p>
                         <?php 

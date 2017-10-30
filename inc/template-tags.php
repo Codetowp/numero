@@ -186,6 +186,34 @@ if ( ! function_exists( 'numero_get_section_service' ) )
         return $boxes;
     }
 }
+
+
+/*client section*/
+if ( ! function_exists( 'numero_get_section_client_data' ) ) 
+{
+    /**
+     * Get counter data
+     *
+     * @return array
+     */
+    function numero_get_section_client_data()
+    {
+        $boxes = get_theme_mod('numero_client_setting');
+        if (is_string($boxes)) 
+		{
+            $boxes = json_decode($boxes, true);
+        }
+        if (empty($boxes) || !is_array($boxes)) 
+		{
+            $boxes = array();
+        }
+        return $boxes;
+    }
+}
+
+
+
+
 if ( ! function_exists( 'numero_is_selective_refresh' ) ) {
     function numero_is_selective_refresh()
     {

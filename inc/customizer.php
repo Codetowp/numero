@@ -182,9 +182,9 @@ function numero_customize_register( $wp_customize ) {
     
     
        $wp_customize->add_setting( 'numero_header_phone_number', array(  
-            'default'                   => esc_html__('', 'numero'),
+            'default'                   => esc_html__('+232456758-212', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage', // refresh or postMessage              
+            'transport'                 => 'refresh', // refresh or postMessage              
         ) );    
 
         $wp_customize->add_control( 'numero_header_phone_number', array(
@@ -643,7 +643,7 @@ function numero_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'numero_our_work_header', array(      
-            'default'                   => esc_html__('Our case of Studies', 'numero'),
+            'default'                   => esc_html__('Session Title', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -656,7 +656,7 @@ function numero_customize_register( $wp_customize ) {
         ) );
     
         $wp_customize->add_setting( 'numero_our_work_description', array(      
-            'default'                   => esc_html__('Find our latest projects we have worked on and get started.', 'numero'),
+            'default'                   => esc_html__('Section Description.', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage',               
         ) );    
@@ -821,7 +821,7 @@ function numero_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'numero_testimonial_header', array(      
-            'default'                   => esc_html__('What our clients say', 'numero'),
+            'default'                   => esc_html__('Section Title', 'numero'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -847,6 +847,63 @@ function numero_customize_register( $wp_customize ) {
             )
         );
           
+/*********Clients Section**********/
+    
+        $wp_customize->add_section('numero_client', array(
+            'title'                     => __('Client Section', 'numero'),
+            'description'               => 'Easily edit your header section',
+            'priority'                  => 45,   
+            'panel'                     => 'numero_pannel',    
+
+        ));
+    
+
+        $wp_customize->add_setting( 'numero_client_check', array(
+                'sanitize_callback' => 'numero_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_client_check', array(
+                'settings' => 'numero_client_check',
+                'label'    => __( 'Disable Client Section?', 'numero' ),
+                'section'  => 'numero_client',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+
+      $wp_customize->add_setting( 'numero_client_setting', 
+               array(               
+                   'sanitize_callback' => 'numero_sanitize_repeatable_data_field',
+                    'transport' => 'refresh', // refresh or postMessage
+
+               ) );    
+    
+        $wp_customize->add_control(
+			new Numero_Customize_Repeatable_Control(
+				$wp_customize,
+				'numero_client_setting',
+				array(
+					'label'     	=> esc_html__('Client Sections', 'numero'),
+					'description'   => 'Add upto 4 service blocks',
+					'section'       => 'numero_client',
+					'title_format'  => esc_html__( '[live_title]', 'numero'), // [live_title]
+					'max_item'      => 4, // Maximum item can add
+					'limited_msg' 	=> wp_kses_post( 'Contact us through our Support Forum if you need more.', 'numero' ),
+					'fields'    	=> array(						
+					'image'  	=> array(
+						'title' 	=> esc_html__('Image', 'numero'),
+						'type'  	=>'media',
+						
+					),
+						 
+					),
+
+				)
+			) );
 
 /*********Blog Section**********/
     

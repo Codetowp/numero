@@ -205,10 +205,10 @@ if ( ! $disable) : ?>
 									<h6><?php the_title(); ?></h6>
 									<?php
 										echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
-										sprintf( '<a href="#">%1$s' ),
+										sprintf( '<a href="#">%1$s' ,
 											esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
 											'</a>'
-										);
+										) );
 									?>
 									<ul class="work-more">
 										<li>
@@ -318,14 +318,25 @@ if ( ! $disable) : ?>
 		</div>
 	</div>
 </section>
-
+<?php endif;?>
 
 <!-- Clients Section -->
+<?php
+$disable    = get_theme_mod( 'numero_client_check' ) == 1 ? true : false ;
+if ( numero_is_selective_refresh() ) 
+{
+$disable = false;
+}
+if ( ! $disable) :
+?>
 
 <section id="clients-block" class="text-center">
 	<div class="container">
 		<div id="clients" class="owl-carousel owl-theme">
+            
 			<div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/01.png"> </div>
+            
+            
 			<div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/02.png"> </div>
 			<div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/03.png"> </div>
 			<div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/04.png"> </div>
@@ -335,8 +346,8 @@ if ( ! $disable) : ?>
 		</div>
 	</div>
 </section>
-<?php endif;?>
 
+<?php endif;?>
 <!--From the blog
     ==========================================-->
 <?php
