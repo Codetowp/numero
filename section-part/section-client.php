@@ -1,60 +1,50 @@
 <?php
- $page_ids = numero_get_section_client_data();
+$user_ids = numero_get_section_client_data();
 ?>
 <?php
-    if ( ! empty( $page_ids ) ) 
-	{
-		$col = 3;
-		$num_col = 4;
-		$n = count( $page_ids );
-		if ($n < 4) 
-		{
-			switch ($n) 
-			{
-				case 3:
-					$col = 4;
-					$num_col = 3;
-					break;
-				case 2:
-					$col = 6;
-					$num_col = 2;
-					break;
-				default:
-					$col = 12;
-					$num_col = 1;
-			}
-		}
-		$j = 0;
-		global $post;    
-		foreach ($page_ids as $post_id => $settings  ) 
-		{
-		   $post_id = $settings['content_page'];
-					$post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
-					$post = get_post( $post_id );
-					setup_postdata( $post );
-						 
-			if ( $settings['icon'] ) 
-			{
-				$settings['icon'] = trim( $settings['icon'] );
-				$class = esc_attr( $settings['icon'] );
-			}              
-			?>
+if ( ! empty( $user_ids ) ) {
+    $n = 0;
+    $firstClass = 'active'; 
 
-            <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/01.png"> </div>
-           
-			<?php
- 
-        } // end foreach
-        wp_reset_postdata();
-	}
-	else
-	{?>                
-            <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/01.png"> </div>
-            <div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/02.png"> </div>
-			<div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/03.png"> </div>
-			<div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/04.png"> </div>
-			<div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/05.png"> </div>
-			<div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/01.png"> </div>
-			<div class="item"> <img src="<?php echo get_template_directory_uri();?>/img/client/02.png"> </div>
-                
+    foreach ( $user_ids as $member ) {
+        $member = wp_parse_args( $member, array(
+        'user_id'  =>array(),
+        ));
+        $user_id = wp_parse_args( $member['user_id'],array(
+        'id' => '',
+        ) );
+        $image_attributes = wp_get_attachment_image_src( $user_id['id'], 'creativeagency-small' );
+        $image_alt = get_post_meta( $user_id['id'], '_wp_attachment_image_alt', true);   
+
+        // if ( $image_attributes ) {
+
+
+        if($image_attributes[0])
+        {
+            $image = $image_attributes[0];
+        }
+        else
+        {
+            $image=get_template_directory_uri().'/img/client/01.png';
+        }
+
+        $data = get_post( $user_id['id'] );
+        $n ++;
+        ?>
+            <div class="item"> <img src="<?php echo esc_url( $image ); ?>"> </div>
+     
+    <?php
+    // }
+    } // end foreach
+    $firstClass = "";
+}
+else
+{?>
+     <div class="item"> <img src="img/client/01.png"> </div>
+      <div class="item"> <img src="img/client/02.png"> </div>
+      <div class="item"> <img src="img/client/03.png"> </div>
+      <div class="item"> <img src="img/client/04.png"> </div>
+      <div class="item"> <img src="img/client/05.png"> </div>
+      <div class="item"> <img src="img/client/01.png"> </div>
+      <div class="item"> <img src="img/client/02.png"> </div>
 <?php  }?>

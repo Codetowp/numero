@@ -874,36 +874,42 @@ function numero_customize_register( $wp_customize ) {
                 'priority' => 1,
 
         ) ) );
-
-      $wp_customize->add_setting( 'numero_client_setting', 
-               array(               
-                   'sanitize_callback' => 'numero_sanitize_repeatable_data_field',
-                    'transport' => 'refresh', // refresh or postMessage
-
-               ) );    
     
-        $wp_customize->add_control(
+    
+         $wp_customize->add_setting( 'numero_client_setting', 
+           array(               
+               'sanitize_callback' => 'numero_sanitize_repeatable_data_field',
+				'transport' => 'refresh', // refresh or postMessage
+                
+           ) );    
+    $wp_customize->add_control(
 			new Numero_Customize_Repeatable_Control(
 				$wp_customize,
 				'numero_client_setting',
 				array(
-					'label'     	=> esc_html__('Client Sections', 'numero'),
-					'description'   => 'Add upto 4 service blocks',
+					'label'     => esc_html__('Client Sections', 'numero'),
+					'description'   => '',
 					'section'       => 'numero_client',
+					//'live_title_id' => 'user_id', // apply for unput text and textarea only
 					'title_format'  => esc_html__( '[live_title]', 'numero'), // [live_title]
 					'max_item'      => 4, // Maximum item can add
-					'limited_msg' 	=> wp_kses_post( 'Contact us through our Support Forum if you need more.', 'numero' ),
-					'fields'    	=> array(						
-					'image'  	=> array(
-						'title' 	=> esc_html__('Image', 'numero'),
-						'type'  	=>'media',
-						
-					),
-						 
+                    'limited_msg' 	=> wp_kses_post( 'Upgrade to <a target="_blank" href="https://www.famethemes.com/plugins/numero/?utm_source=theme_customizer&utm_medium=text_link&utm_campaign=onepress_customizer#get-started">numero</a> to be able to add more items and unlock other premium features!', 'numero' ),
+                    'fields'    => array(
+                         'user_id' => array(
+							'title' => esc_html__('Image', 'numero'),
+							'type'  =>'media',
+							'default' => array(
+									'url' => get_template_directory_uri().'/img/client/01.png',
+									'id' => ''
+								),
+						),                   
+                                                 
 					),
 
 				)
-			) );
+			)
+		);
+    
 
 /*********Blog Section**********/
     

@@ -46,7 +46,7 @@ if ( ! function_exists( 'numero_entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'numero' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__('%1$s', 'numero' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				printf( '<i class="fa fa-folder-o"></i> ' . esc_html__('%1$s', 'numero' ) , $categories_list ); // WPCS: XSS OK.
 			}
 
 			/* translators: used between list items, there is a space after the comma */
