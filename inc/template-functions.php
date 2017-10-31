@@ -13,9 +13,13 @@
  */
 function numero_body_classes( $classes ) {
 
-    if (  is_page() && ! is_front_page() ) {
+    if (  is_page()) {
 		$classes = array( 'single' );
 	}
+    if(is_page_template('template-frontpage.php') )
+    {
+       $classes = array( 'home' );
+    }
    
 	return $classes;
 }

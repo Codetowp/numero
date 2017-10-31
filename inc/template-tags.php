@@ -46,11 +46,11 @@ if ( ! function_exists( 'numero_entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'numero' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( ' %1$s', 'numero' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				printf( '<i class="fa fa-folder-o"></i> ' . esc_html__('%1$s', 'numero' ) , $categories_list ); // WPCS: XSS OK.
 			}
 
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'numero' ) );
+			$tags_list = get_the_tag_list( esc_html_x( ', ', 'list item separator', 'numero' ) );
 			if ( $tags_list ) {
 				/* translators: 1: list of tags. */
 				printf( '<span class="tags-links">' . esc_html__( '%1$s', 'numero' ) . '</span>', $tags_list ); // WPCS: XSS OK.
@@ -94,6 +94,7 @@ if ( ! function_exists( 'numero_entry_footer' ) ) :
 		);*/
 	}
 endif;
+
 
 if ( ! function_exists( 'numero_get_section_about_data' ) ) 
 {
@@ -185,6 +186,34 @@ if ( ! function_exists( 'numero_get_section_service' ) )
         return $boxes;
     }
 }
+
+
+/*client section*/
+if ( ! function_exists( 'numero_get_section_client_data' ) ) 
+{
+    /**
+     * Get counter data
+     *
+     * @return array
+     */
+    function numero_get_section_client_data()
+    {
+        $boxes = get_theme_mod('numero_client_setting');
+        if (is_string($boxes)) 
+		{
+            $boxes = json_decode($boxes, true);
+        }
+        if (empty($boxes) || !is_array($boxes)) 
+		{
+            $boxes = array();
+        }
+        return $boxes;
+    }
+}
+
+
+
+
 if ( ! function_exists( 'numero_is_selective_refresh' ) ) {
     function numero_is_selective_refresh()
     {

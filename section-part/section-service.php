@@ -32,15 +32,14 @@
 					$post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
 					$post = get_post( $post_id );
 					setup_postdata( $post );
-						 
+			$icon_class='';
 			if ( $settings['icon'] ) 
 			{
 				$settings['icon'] = trim( $settings['icon'] );
-				$class = esc_attr( $settings['icon'] );
+				$icon_class = esc_attr( $settings['icon'] );
 			}              
 			?>
-
-             <div class="col-md-4 col-sm-6 col-xs-12 services-block eq-blocks"> <i class="<?php echo $class;?>"></i>
+             <div class="col-md-4 col-sm-6 col-xs-12 services-block eq-blocks style="height: 153px;""> <i class="<?php echo $icon_class;?>"></i>
                     <div class="services-content">
                       <h6><?php the_title(); ?></h6>
                       <p> 
