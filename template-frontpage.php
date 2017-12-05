@@ -308,8 +308,9 @@ if ( ! $disable) :
                                 while ( $project_query -> have_posts() ) : $project_query -> the_post();
 					     ?>
                     <div class="item"><?php the_post_thumbnail();?>
-						<p><strong><?php the_title();?></strong><!-- CEO Acme Inc.--></p>
-						<h5><?php the_excerpt();?></h5>
+						<p><strong><?php the_title();?></strong><?php if ( ! has_excerpt() ) { echo '';} else { echo strip_tags( get_the_excerpt() );  } 
+                                    ?></p>
+						<h5><?php the_content(); ?></h5>
 					</div>
                     <?php  endwhile; endif;  wp_reset_postdata();?>
 				</div>
@@ -368,6 +369,7 @@ if ( ! $disable) :
                 <!--blog post--> 
                 <?php 
                 $count_blog = get_theme_mod( 'numero_blog_count', esc_html__('3','numero') );
+                $count_blog = $count_blog-1;
                 $query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
                 if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();

@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package grit
+ * @package numero
  */
 
 get_header(); ?>
@@ -75,9 +75,9 @@ get_header(); ?>
         <!--portfolio page nav-->
         <nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
           <?php the_posts_navigation( array(
-							'prev_text'          => esc_html__( 'Older projects', 'grit' ),
-							'next_text'          => esc_html__( 'Newer projects', 'grit' ),
-							'screen_reader_text' => esc_html__( 'Projects navigation', 'grit' ),
+							'prev_text'          => esc_html__( 'Older projects', 'numero' ),
+							'next_text'          => esc_html__( 'Newer projects', 'numero' ),
+							'screen_reader_text' => esc_html__( 'Projects navigation', 'numero' ),
 							) ); 
 						?>
         </nav><!--/portfolio page nav-->
