@@ -67,7 +67,7 @@
                         $socials = $socials ? array_filter( $socials ) : array();
                         foreach ( $socials as $social => $name ) 
                         {
-                                printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> <li> ', esc_url( $name ), $social );
+                                printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li>', esc_url( $name ), $social );
                         }
                     }?>
                   

@@ -262,3 +262,23 @@ if ( ! function_exists( 'numero_woocommerce_header_cart' ) ) {
 		<?php
 	}
 }
+/** to change the position of rating **/
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_rating', 10 );
+add_action( 'woocommerce_single_product_summary','woocommerce_template_single_rating', 21 );
+/**to change the position of price **/
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_price', 10 );
+add_action( 'woocommerce_single_product_summary','woocommerce_template_single_price', 22 );
+/*remove title**/
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_title',5);
+/*change related product count*/
+add_filter( 'woocommerce_output_related_products_args', 'dblogger_related_products_args' );
+function dblogger_related_products_args( $args ) {
+$args['posts_per_page']     = 4; // 4 related products
+$args['columns']            = 4; // arranged in columns
+return $args;
+}
+// Override theme default specification for product # per row
+function loop_columns() {
+return 3; // 5 products per row
+}
+add_filter('loop_shop_columns', 'loop_columns', 999);

@@ -33,8 +33,7 @@ get_header( 'shop' ); ?>
      */
     do_action( 'woocommerce_before_main_content' );
 ?>
-
-<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
+<div id="page-banner" style="background-image: url(<?php the_post_thumbnail_url(); ?>);">
     <div class="content  wow fdeInUp">
         <div class="container ">
             <h1><?php woocommerce_page_title(); ?></h1>

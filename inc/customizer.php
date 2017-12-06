@@ -341,7 +341,7 @@ function numero_customize_register( $wp_customize ) {
 /*********About Us **********/
     
         $wp_customize->add_section('numero_about', array(
-            'title'                     => __('About Us', 'numero'),
+            'title'                     => esc_html__('About Us', 'numero'),
             'description'               => 'Easily edit your header section',
             'priority'                  => 20,   
             'panel'                     => 'numero_pannel',    
