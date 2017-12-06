@@ -202,13 +202,13 @@ add_action( 'wp_enqueue_scripts', 'numero_styles' );
 
 
 function numero_scripts() {
+	wp_enqueue_script( 'jquery' );
+
 	wp_enqueue_style( 'numero-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'numero-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'numero-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'numero-jquery-min', get_template_directory_uri() . '/js/jquery.1.11.1.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'numero-bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array(), '20151215', true );
 
@@ -245,6 +245,17 @@ require get_template_directory() . '/inc/template-tags.php';
  * Custom font style.
  */
 require get_template_directory() . '/inc/lib/print_styles.php';
+
+
+
+
+
+/**
+ * Load WooCommerce compatibility file.
+ */
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
+}
 
 
 /**
@@ -286,4 +297,13 @@ function demo_fonts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'demo_fonts' );
-
+//excerpt length function
+function custom_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+//add excerpt in jetpack
+function numero_add_excerpt_testimonial() {
+	add_post_type_support( 'jetpack-testimonial', 'excerpt' );
+}
+add_action( 'init', 'numero_add_excerpt_testimonial' );

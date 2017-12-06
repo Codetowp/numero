@@ -8,10 +8,6 @@
  */
 
 ?>
-
- 
-
-
 <article class="col-md-12">
     <header class="entry-header"> 
         <span class="date-article">
@@ -31,8 +27,8 @@
         </a> 
         <span class="byline">
             <span class="author vcard">
-                <a href="#"><i class="fa fa-folder-o"></i> <?php numero_entry_footer(); ?></a>
-                <a href="#"><i class="fa fa-user-o"></i> <?php echo get_author_name();?></a> 
+                <?php echo numero_entry_footer();?>
+                <a href="#"><i class="fa fa-user-o"></i> <?php echo get_the_author_meta('display_name');?></a> 
             </span>
         </span> 
         <a href="<?php the_permalink();?>">

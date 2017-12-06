@@ -104,13 +104,13 @@ if (!function_exists('numero_accent_color'))  {
         $choose_color = sprintf('background : %s ;',  $color_value );
         $opacity =sprintf('opacity : %s ;',  $opacity_value );
         $opacity_color = sprintf( 'background : %s; ',  $color_value );
-        $append_border=sprintf( '    border: 1px %s solid;',  $color_value );
-
+        $append_border=sprintf( 'border: 1px %s solid;',  $color_value );
+		//$widget_color=sprintf( 'border:0px %s dashed;',  $color_value );
         
 
 			// Output the styles.
 		if ( $color_value ) {
-			echo "\n" .'#home-banner a.btn-info{'.$append_color.'}'."\n" .'#about-us-block .col-about-us i{'.$icon_color.'}'."\n" .'#why-choose-us .section-title:after{'.$choose_color.'}'."\n" .'#why-choose-us .section-title{'.$choose_color.'}'."\n" .'#our-work-block .works figcaption{'.$opacity_color.'}'."\n".'#our-work-block .works figure:hover figcaption, #our-work-block .works figure:focus figcaption{'.$opacity.'}'."\n" .'.services-block i{'.$choose_color.'}'."\n" .'#clients-block{'.$choose_color.'}'."\n" .'#free-trial-block a{'.$choose_color.'}'."\n" .'#free-trial-block a{'.$append_border.'}';
+			echo "\n" .'#home-banner a.btn-info{'.$append_color.'}'."\n" .'#about-us-block .col-about-us i{'.$icon_color.'}'."\n" .'#why-choose-us .section-title:after{'.$choose_color.'}'."\n" .'#why-choose-us .section-title{'.$choose_color.'}'."\n" .'#our-work-block .works figcaption{'.$opacity_color.'}'."\n".'#our-work-block .works figure:hover figcaption, #our-work-block .works figure:focus figcaption{'.$opacity.'}'."\n" .'.services-block i{'.$choose_color.'}'."\n" .'#clients-block{'.$choose_color.'}'."\n" .'#free-trial-block a{'.$choose_color.'}'."\n" .'#free-trial-block a{'.$append_border.'}' ."\n".'.article a h5:hover{'.$icon_color.'}'."\n".'.subcribe-block form .btn i.fa{'.$icon_color.'}'."\n".'.article header .date-article, .single article header.entry-header .date-article{'.$choose_color.'}'."\n".'aside .widget_search button{'.$choose_color.'}'."\n".'.cart-notify i span{'.$choose_color.'}'."\n".'.widget-title:after{'.$opacity_color.'}'."\n".'.author-box .author-box-title{'.$icon_color.'}'."\n".'.author-box .author-box-title a{'.$choose_color.'}'."\n".'.single .single-post ul li:before, .page .page-block ul li:before, .single-jetpack-portfolio .page-block ul li:before{'.$choose_color.'}'."\n".'#top-menu.navbar-default .navbar-nav li:hover{'.$choose_color.'}'."\n".'article header .date-article, .single article header.entry-header .date-article{'.$choose_color.'}'."\n"."\n".'.tagcloud a:hover{'.$choose_color.'}'."\n"."\n".'#respond input[type=submit]{'.$choose_color.'}'."\n"."\n".'#testimonial.owl-theme .owl-controls .owl-page.active{'.$append_border.'}'."\n"."\n".'#clients-block .owl-theme .owl-controls .owl-page span{'.$choose_color.'}'."\n" ;
 		}
 		echo "\n". "</style>". "\n";
 	}

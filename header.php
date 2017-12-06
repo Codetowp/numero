@@ -49,7 +49,7 @@
                     if ( ! $disable1) : ?>
               <ul class="">
                   <?php 
-                    $numero_header_details  = get_theme_mod( 'numero_header_phone_number', esc_html__('+232456758-212', 'numero' ));
+                     $numero_header_details  = get_theme_mod( 'numero_header_phone_number', esc_html__('', 'numero' ));
                     if ($numero_header_details != '') echo '<li>Phone: ' . wp_kses_post($numero_header_details) . '</li>'; 
                   ?>
               </ul>
@@ -67,7 +67,7 @@
                         $socials = $socials ? array_filter( $socials ) : array();
                         foreach ( $socials as $social => $name ) 
                         {
-                                printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> <li> ', esc_url( $name ), $social );
+                                printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li>', esc_url( $name ), $social );
                         }
                     }?>
                   

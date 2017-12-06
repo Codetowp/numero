@@ -3,7 +3,7 @@
 function numero_related_post() {
 
 	$args = '';
-    $count = get_theme_mod( 'numero_blog_page_relative_count' );
+    $count = get_theme_mod( 'numero_blog_page_relative_count' , 3);
       
 	$args = wp_parse_args( $args, array(
 		'category__in'   => wp_get_post_categories( get_the_ID() ),
@@ -23,7 +23,7 @@ function numero_related_post() {
                 
                 if  ( get_the_post_thumbnail()=='')
                 {
-                    $background_img_relatedpost   = get_template_directory_uri()."/img/04-screenshot.jpg";
+                    $background_img_relatedpost   = get_template_directory_uri() . '/img/04-screenshot.jpg';
                     
                     $post_thumbnail= '<img src="'.$background_img_relatedpost.'" class="img-responsive">';
                 }
@@ -40,21 +40,21 @@ function numero_related_post() {
                  $title=get_the_title();
                 
                 global $post;
-                $categories = get_the_category(' / ');
+                $categories = get_the_category($post->ID);
+                $cat_link = get_category_link($categories[0]->cat_ID);
                 
                 
-				printf(
-                    
+				printf(                    
 					'<article class="col-md-4 col-sm-6 col-xs-12">
-                        <header class="entry-header"> %s<a href="%s">
-                            <h6>%s</h6>
-                        </a> %s</header>
-                    </article>',
+                        <header class="entry-header"> %s <a href="%s">
+                          <h6>%s</h6></a> 
+                          <a href="%s">' . $categories[0]->cat_name . '</a> , 
+                        </header>
+                      </article>',
 					$post_thumbnail,
                     esc_url( get_permalink() ),
-                    $title,$categories,
-                    $class_format
-				);
+                    $title,
+                    $cat_link );
 				?>
 			<?php
 			}

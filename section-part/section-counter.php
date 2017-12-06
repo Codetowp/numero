@@ -38,6 +38,7 @@
 			}
            
 			$media = '';
+			$icon = '';
 			$f =  wp_parse_args( $f, array(
 				'icon_type' => 'icon',
 				'icon' => 'gg',

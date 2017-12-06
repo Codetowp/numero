@@ -774,4 +774,3 @@ function numero_customizer_control_scripts(){
 
 add_action( 'customize_controls_enqueue_scripts', 'numero_customizer_control_scripts', 99 );
 add_action( 'customize_controls_enqueue_scripts', array( 'Numero_Editor_Scripts', 'enqueue' ), 95 );
-
