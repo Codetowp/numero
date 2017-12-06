@@ -202,13 +202,12 @@ if ( ! $disable) :
                                     <figcaption>
                                         <div class="caption-content">
                                             <h6><?php the_title(); ?></h6>
-                                            <?php
-                                            echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
-                                            sprintf( '<a href="#">%1$s' ,
-                                            esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
-                                            '</a>'
-                                            ) );
-                                            ?>
+                                            <?php 
+                                             $before='';
+                                             $after='';
+                                             $separator=' ';
+                                             the_terms(get_the_ID(), 'jetpack-portfolio-type', $before, $separator, $after); 
+                                             ?>
                                             <ul class="work-more">
                                                 <li>
                                                     <a href="<?php the_permalink();?>"><i class="fa fa-link"></i></a>
@@ -413,9 +412,5 @@ if ( ! $disable) :
         </div>
     </section>
 <?php endif;?>
-
-
 <?php
 get_footer();
-
-

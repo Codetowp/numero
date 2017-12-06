@@ -106,20 +106,39 @@ get_header(); ?>
 			<div class="clearfix"></div>
 			<div class="works">
 				<ul class="grid">
+					<?php
+					$args=array(   
+              'post__not_in' => array($post->ID),  
+              'showposts'=>4,  // Number of related posts that will be shown.  
+              'post_type'=> 'jetpack-portfolio' 
+              );  
+              $project_query = new WP_Query ( $args );
+		 
+						if ( post_type_exists( 'jetpack-portfolio' ) && $project_query -> have_posts() ) :
+		 
+							while ( $project_query -> have_posts() ) : $project_query -> the_post();
+               ?>
 					<li>
 						<figure>
-							<img src="img/01-screenshot.jpg" alt="Screenshot 01">
+							<?php the_post_thumbnail();?>
 							<figcaption>
 								<div class="caption-content">
-									<h6>Codetowp branding</h6>
-									<a href="#">Design</a> <a href="#">brand</a>
+									<h6><?php the_title(); ?></h6>
+									<?php 
+                                    $before='';
+                                    $after='';
+									$separator=' ';
+									the_terms(get_the_ID(), 'jetpack-portfolio-type', $before, $separator, $after); 
+									?>
 									<ul class="work-more">
-										<li><a href="#"><i class="fa fa-link"></i></a></li>
+										<li><a href="<?php the_permalink(); ?>"><i class="fa fa-link"></i></a></li>
+										
 									</ul>
 								</div>
 							</figcaption>
 						</figure>
 					</li>
+					<?php  endwhile; endif;  wp_reset_postdata();?>
 				</ul>
 			</div>
 		</div>
