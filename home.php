@@ -26,7 +26,7 @@ get_header(); ?>
 			<h1>
                 <?php 
 					$blog_header  = get_theme_mod( 'numero_blog_header', esc_html__('Our Blog', 'numero' ));
-					if ($blog_header != '') echo '<h2>  ' . wp_kses_post($blog_header) . '</h2>'; 
+					if ($blog_header != '') echo '<h1>  ' . wp_kses_post($blog_header) . '</h1>'; 
 				?>
             </h1>
 		</div>

@@ -1,7 +1,11 @@
   <div id="page-banner" style="background-image: url(<?php esc_url(the_post_thumbnail_url()); ?>);">
   <div class="content  wow fdeInUp" style="visibility: visible; animation-name: fdeInUp;">
     <div class="container">
-      <h1><?php the_title(); ?></h1>
+       <?php 
+          $blog_header  = get_theme_mod( 'numero_blog_header', esc_html__('Our Blog', 'numero' ));
+          if ($blog_header != '') echo '<h1>  ' . wp_kses_post($blog_header) . '</h1>'; 
+        ?>
+    <span><?php the_title(); ?></span>
     </div>
   </div>
 </div>
