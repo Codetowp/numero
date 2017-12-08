@@ -48,11 +48,14 @@ add_action( 'wp_head', 'numero_paragraph_font_size' );
 if (!function_exists('numero_paragraph_font_color'))  {
 	function numero_paragraph_font_color(){
 		echo '<style type="text/css" >';
+
 		$color_value = get_theme_mod('numero_paragraph_font_color', '');
 		$append_color = sprintf( 'color: %s !important;',  $color_value );
+		$banner_color ='#FFF';
+		$banner_p_color=sprintf( 'color: %s !important;',  $banner_color );
 			// Output the styles.
 		if ( $color_value ) {
-			echo "\n" . 'p{' . $append_color . '}' ;
+			echo "\n" . 'p{' . $append_color . '}'."\n".'#home-banner p{'.$banner_p_color.'}'."\n" ;
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -108,6 +111,9 @@ if (!function_exists('numero_single_headings_font_color'))  {
 		$testimonial_color= sprintf( 'color: %s;', $testimonial_color_value );
 		$blog_color_value= get_theme_mod('numero_blog_font_color','');
 		$blog_color= sprintf( 'color: %s;',$blog_color_value);
+		$numero_trial_color_value= get_theme_mod('numero_trial_font_color','');
+		$numero_trial_color= sprintf( 'color: %s!important;',$numero_trial_color_value);
+		
 		
 		 
 		
@@ -115,7 +121,7 @@ if (!function_exists('numero_single_headings_font_color'))  {
 
 			// Output the styles.
 		
-			echo "\n" .'#about-us-block h2{' . $about_color . '}'."\n" .'#why-choose-us h2{' . $why_choose_color . '}'."\n".'#our-work-block h2{' . $our_work_color . '}'."\n"."\n".'#our-services h2{' . $service_color . '}'."\n"."\n".'#testimonials-block h2{' .$testimonial_color . '}'."\n"."\n".'#from-blog h2{' .$blog_color . '}'."\n";
+			echo "\n" .'#about-us-block h2{' . $about_color . '}'."\n" .'#why-choose-us h2{' . $why_choose_color . '}'."\n".'#our-work-block h2{' . $our_work_color . '}'."\n"."\n".'#our-services h2{' . $service_color . '}'."\n"."\n".'#testimonials-block h2{' .$testimonial_color . '}'."\n"."\n".'#from-blog h2{' .$blog_color . '}'."\n"."\n".'#free-trial-block p{' .$numero_trial_color. '}'."\n";
 		
 		echo "\n". "</style>". "\n";
 	}

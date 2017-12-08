@@ -1093,6 +1093,19 @@ function numero_customize_register( $wp_customize ) {
             'section'  					=> 'numero_trial',
             'priority' 					=> 1,
         ) );
+         $wp_customize->add_setting( 'numero_trial_font_color', 
+            array(
+                'default' => '#fff', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+       
+       $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_trial_font_color', 
+           array(
+            'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
+            'section'    => 'numero_trial',
+               'priority'   => 5,
+        ) ) );
     
         $wp_customize->add_setting( 'numero_trial_button', array(      
             'default'                   => 'START FREE TRIAL' ,
