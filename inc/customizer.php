@@ -395,7 +395,18 @@ function numero_customize_register( $wp_customize ) {
             'section'  					=> 'numero_about',
             'priority' 					=> 3,
         ) );
-
+       $wp_customize->add_setting( 'numero_about_font_color', 
+            array(
+                'default' => '#3c434d', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+       $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_about_font_color', 
+           array(
+            'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
+            'section'    => 'numero_about',
+               'priority'   => 5,
+        ) ) );
 /*********Dropdown pages control **********/       
     
 		$wp_customize->add_setting( 'numero_about_boxes', array(
@@ -478,6 +489,18 @@ function numero_customize_register( $wp_customize ) {
             'section'  					=> 'numero_choose',
             'priority' 					=> 1,
         ) );
+         $wp_customize->add_setting( 'numero_why_choose_font_color', 
+            array(
+                'default' => '#fff', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_why_choose_font_color', 
+           array(
+            'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
+            'section'    => 'numero_choose',
+               'priority'   => 5,
+        ) ) );
     
  /********* Dropdown pages control**********/
     
@@ -667,7 +690,20 @@ function numero_customize_register( $wp_customize ) {
             'section'  					=> 'numero_our_work',
             'priority' 					=> 3,
         ) );
-    
+       
+       $wp_customize->add_setting( 'numero_our_work_font_color', 
+            array(
+                'default' => '#3c434d', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+       
+       $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_our_work_font_color', 
+           array(
+            'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
+            'section'    => 'numero_our_work',
+               'priority'   => 5,
+        ) ) );
         $wp_customize->add_setting( 'numero_our_work_count', array(
             'default'                   => '8',
             'sanitize_callback'         => 'numero_sanitize_integer'
@@ -752,7 +788,20 @@ function numero_customize_register( $wp_customize ) {
             'section'  					=> 'numero_service',
             'priority' 					=> 3,
         ) );
-    
+        
+        $wp_customize->add_setting( 'numero_service_font_color', 
+            array(
+                'default' => '#3c434d', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+       
+       $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_service_font_color', 
+           array(
+            'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
+            'section'    => 'numero_service',
+               'priority'   => 5,
+        ) ) );
 /*********Dropdown pages control **********/       
     
 		$wp_customize->add_setting( 'numero_service_boxes', array(
@@ -832,7 +881,19 @@ function numero_customize_register( $wp_customize ) {
             'section'  					=> 'numero_testimonial',
             'priority' 					=> 1,
         ) );
-    
+        $wp_customize->add_setting( 'numero_testimonial_font_color', 
+            array(
+                'default' => '#3c434d', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+       
+       $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_testimonial_font_color', 
+           array(
+            'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
+            'section'    => 'numero_testimonial',
+               'priority'   => 5,
+        ) ) );
            
         $wp_customize->add_setting( 'numero_testimonial_count', array(
             'default'                   => '3',
@@ -964,6 +1025,19 @@ function numero_customize_register( $wp_customize ) {
             'section'  					=> 'numero_blog',
             'priority' 					=> 3,
         ) );
+        $wp_customize->add_setting( 'numero_blog_font_color', 
+            array(
+                'default' => '#3c434d', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+       
+       $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_blog_font_color', 
+           array(
+            'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
+            'section'    => 'numero_blog',
+               'priority'   => 5,
+        ) ) );
     
         $wp_customize->add_setting( 'numero_blog_count', array(
             'default'                   => esc_html__('3','numero'),
