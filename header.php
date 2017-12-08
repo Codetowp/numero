@@ -126,7 +126,7 @@
   </div> <!--/search-cart-block --> 
              <?php wp_nav_menu( array( 
                     'theme_location' => 'menu-1',
-                     'menu_class' => 'nav navbar-nav navbar-righ'
+                     'menu_class' => 'nav navbar-nav navbar-right'
                  ) );?>
 
 
