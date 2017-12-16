@@ -48,11 +48,14 @@ add_action( 'wp_head', 'numero_paragraph_font_size' );
 if (!function_exists('numero_paragraph_font_color'))  {
 	function numero_paragraph_font_color(){
 		echo '<style type="text/css" >';
+
 		$color_value = get_theme_mod('numero_paragraph_font_color', '');
 		$append_color = sprintf( 'color: %s !important;',  $color_value );
+		$banner_color ='#FFF';
+		$banner_p_color=sprintf( 'color: %s !important;',  $banner_color );
 			// Output the styles.
 		if ( $color_value ) {
-			echo "\n" . 'p{' . $append_color . '}' ;
+			echo "\n" . 'p{' . $append_color . '}'."\n".'#home-banner p{'.$banner_p_color.'}'."\n" ;
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -79,19 +82,52 @@ add_action( 'wp_head', 'numero_heading_font_family' );
 
 if (!function_exists('numero_headings_font_color'))  {
 	function numero_headings_font_color(){
-		echo '<style type="text/css" id="rijo-css">';
+		echo '<style type="text/css" id="headings-css">';
 		$color_value = get_theme_mod('numero_headings_font_color', '');
 		$append_color = sprintf( 'color: %s;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) {
 			echo "\n" . 'h1{' . $append_color . '}'."\n".'h2{'.$append_color.'}'."\n".'h3{'.$append_color.'}'.
-                "\n".'h4{'.$append_color.'}'."\n".'h5{'.$append_color.'}'."\n".'#about-us-block h2{'.$append_color.'}'."\n".'#our-work-block h2{'.$append_color.'}' ;
+                "\n".'h4{'.$append_color.'}'."\n".'h5{'.$append_color.'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
 }
  // Add custom styles to `<head>`.
 add_action( 'wp_head', 'numero_headings_font_color' );
+
+if (!function_exists('numero_single_headings_font_color'))  {
+	function numero_single_headings_font_color(){
+		echo '<style type="text/css" id="headings-css">';
+		$about_color_value = get_theme_mod('numero_about_font_color', '');
+		$about_color = sprintf( 'color: %s;',  $about_color_value );
+		$why_choose_value= get_theme_mod('numero_why_choose_font_color','');
+		$why_choose_color= sprintf( 'color: %s;',  $why_choose_value );
+		$our_work_value= get_theme_mod('numero_our_work_font_color','');
+		$our_work_color= sprintf( 'color: %s;',  $our_work_value );
+		$service_color_value= get_theme_mod('numero_service_font_color','');
+		$service_color= sprintf( 'color: %s;',  $service_color_value );
+		$testimonial_color_value= get_theme_mod('numero_testimonial_font_color','');
+		$testimonial_color= sprintf( 'color: %s;', $testimonial_color_value );
+		$blog_color_value= get_theme_mod('numero_blog_font_color','');
+		$blog_color= sprintf( 'color: %s;',$blog_color_value);
+		$numero_trial_color_value= get_theme_mod('numero_trial_font_color','');
+		$numero_trial_color= sprintf( 'color: %s!important;',$numero_trial_color_value);
+		
+		
+		 
+		
+		
+
+			// Output the styles.
+		
+			echo "\n" .'#about-us-block h2{' . $about_color . '}'."\n" .'#why-choose-us h2{' . $why_choose_color . '}'."\n".'#our-work-block h2{' . $our_work_color . '}'."\n"."\n".'#our-services h2{' . $service_color . '}'."\n"."\n".'#testimonials-block h2{' .$testimonial_color . '}'."\n"."\n".'#from-blog h2{' .$blog_color . '}'."\n"."\n".'#free-trial-block p{' .$numero_trial_color. '}'."\n";
+		
+		echo "\n". "</style>". "\n";
+	}
+}
+ // Add custom styles to `<head>`.
+add_action( 'wp_head', 'numero_single_headings_font_color' );
 
 
 if (!function_exists('numero_accent_color'))  {
