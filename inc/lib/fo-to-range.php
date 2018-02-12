@@ -6,35 +6,19 @@
  */
  
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if ( ! defined( 'WPINC' ) ) 
+{
 	die;
 }
-if ( ! class_exists( 'Customizer_Library' ) ) :
-	// Helper functions for fonts.
-	require get_template_directory()  .'/inc/lib/fonts.php';
-	class Customizer_Library {
-		private static $instance;
-		public $options = array();
-		public static function instance() {
-			if ( is_null( self::$instance ) ) {
-				self::$instance = new self();
-			}
-			return self::$instance;
-		}
-		public function add_options( $options = array() ) {
-			$this->options = array_merge( $options, $this->options );
-		}
-		public function get_options() {
-			return $this->options;
-		}
-	}
-endif;
+
  
-    class Customizer_Toggle_Control extends WP_Customize_Control {
+    class Numero_Customizer_Toggle_Control extends WP_Customize_Control 
+	{
 		public $type = 'toggle';
-		public function enqueue() {
-			wp_enqueue_script( 'customizer-toggle-control', get_template_directory_uri() .'/inc/assets/customizer-toggle-control.js', array( 'jquery' ), rand(), true );
-			wp_enqueue_style( 'pure-css-toggle-buttons', get_template_directory_uri() . '/inc/assets/pure-css-togle-buttons.css', array(), rand() );			
+		public function enqueue() 
+		{
+			wp_enqueue_script( 'customizer-toggle-control', get_stylesheet_directory_uri() . '/inc/admin/customizer-toggle-control.js', array( 'jquery' ), rand(), true );
+			wp_enqueue_style( 'pure-css-toggle-buttons', get_stylesheet_directory_uri() . '/inc/admin/pure-css-togle-buttons.css', array(), rand() );			
 			$css = '.disabled-control-title {color: #a0a5aa;}
 					input[type=checkbox].tgl-light:checked + .tgl-btn {background: #0085ba;}
 					input[type=checkbox].tgl-light + .tgl-btn {background: #a0a5aa;}
@@ -46,30 +30,34 @@ endif;
 			wp_add_inline_style( 'pure-css-toggle-buttons' , $css );
 		}
 
-		public function render_content() {
+		public function render_content() 
+		{
 			?>
 			<label>
 				<div style="display:flex;flex-direction: row;justify-content: flex-start;">
 					<span class="customize-control-title" style="flex: 2 0 0; vertical-align: middle;"><?php echo esc_html( $this->label ); ?></span>
-					<input id="cb<?php echo esc_html($this->instance_number) ?>" type="checkbox" class="tgl tgl-<?php echo esc_html($this->type)?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
-					<label for="cb<?php echo esc_html($this->instance_number) ?>" class="tgl-btn"></label>
+					<input id="cb<?php echo esc_html( $this->instance_number ); ?>" type="checkbox" class="tgl tgl-<?php echo esc_html( $this->type );?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
+					<label for="cb<?php echo esc_html($this->instance_number ) ?>" class="tgl-btn"></label>
 				</div>
 				<?php if ( ! empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo esc_html($this->description); ?></span>
+				<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
 				<?php endif; ?>
 			</label>
 			<?php
 		}
 	}
 
-    class Customizer_Range_Value_Control extends WP_Customize_Control {
+    class Numero_Customizer_Range_Value_Control extends WP_Customize_Control 
+	{
 		public $type = 'range-input';
-		public function enqueue() {
-			wp_enqueue_script( 'customizer-range-value-control-js', get_template_directory_uri() . '/inc/assets/customizer-range-value-control.js', array( 'jquery' ), rand(), true );
-			wp_enqueue_style( 'customizer-range-value-control',get_template_directory_uri() . '/inc/assets/customizer-range-value-control.css', array(), rand() );
+		public function enqueue() 
+		{
+			wp_enqueue_script( 'customizer-range-value-control', get_stylesheet_directory_uri() . '/inc/admin/customizer-range-value-control.js', array( 'jquery' ), rand(), true );
+			wp_enqueue_style( 'customizer-range-value-control', get_stylesheet_directory_uri() . '/inc/admin/customizer-range-value-control.css', array(), rand() );
 		}
 
-		public function render_content() {
+		public function render_content() 
+		{
 			?>
 			<label>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
@@ -78,7 +66,7 @@ endif;
 					<span class="range-slider__value">0</span></span>
 				</div>
 				<?php if ( ! empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo esc_html($this->description); ?></span>
+				<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
 				<?php endif; ?>
 			</label>
 			<?php
