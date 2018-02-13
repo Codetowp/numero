@@ -41,195 +41,42 @@ if ( ! $disable) :
 
 <!-- Why choose us
     ==========================================-->
-<section id="why-choose-us"> 
-  
-  <!--section-title-->
-  <div class="section-title text-center">
-    <h2 class="wow zoomIn">Why choose us</h2>
-  </div>
-  <!--/section-title-->
-  
-  <div class="container">
-    <div class="row">
-      <div> 
-        
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#Speed" aria-controls="Speed" role="tab" data-toggle="tab">Speed</a></li>
-          <li role="presentation"><a href="#Design" aria-controls="Design" role="tab" data-toggle="tab">Design</a></li>
-          <li role="presentation"><a href="#Support" aria-controls="Support" role="tab" data-toggle="tab">Support</a></li>
-          <li role="presentation"><a href="#Best" aria-controls="Best" role="tab" data-toggle="tab">Best</a></li>
-        </ul>
-        
-        <!-- Tab panes -->
-        <div class="tab-content wow fadeInUp">
-          <div role="tabpanel" class="tab-pane active" id="Speed"> <img src="img/tab-1.jpg" class="img-responsive"> </div>
-          <div role="tabpanel" class="tab-pane" id="Design"><img src="img/tab-2.jpg" class="img-responsive"></div>
-          <div role="tabpanel" class="tab-pane" id="Support"><img src="img/tab-3.jpg" class="img-responsive"></div>
-          <div role="tabpanel" class="tab-pane" id="Best"><img src="img/tab-4.jpg" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <?php
+$disable    = get_theme_mod( 'numero_choose_check' ) == 0 ? true : false ;
+if ( numero_is_selective_refresh() ) 
+{
+    $disable = false;
+}
+if ( ! $disable) :
+ get_template_part( 'template-parts/content', 'why-choose' );
+ endif;?>
+
 
 <!-- Company counter section
     ==========================================-->
-<section id="company-counter" style="background-image:url(img/count-bg.jpg);">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-md-12 wow fadeInDown">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-user"></i><span class="counter">17</span>
-            <p>Clients</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-check"></i><span class="counter">45</span>
-            <p>Finished Projects</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-coffee"></i><span class="counter">596</span>
-            <p>Cup of Coffee</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-trophy"></i><span class="counter">56</span>
-            <p>Awards won</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<?php
+$disable    = get_theme_mod( 'numero_counter_check' ) == 1 ? true : false ;
+if ( numero_is_selective_refresh() ) 
+{
+    $disable = false;
+}
+if ( ! $disable) :
+ get_template_part( 'template-parts/content', 'counter' );
+ endif;?>
 <!-- /Company counter section --> 
 
 <!-- our works block
     ==========================================-->
-<section id="our-work-block">
-  <div class="container">
-    <div class="row"> 
-      <!--section-title-->
-      <div class="section-title text-center wow fadeInUp">
-        <h2>Our case of Studies</h2>
-        <p>Find our latest projects we have worked on and get started.</p>
-      </div>
-      <!--/section-title-->
-      <div class="clearfix"></div>
-      <div class="works">
-        <ul class="grid wow zoomIn">
-          <li>
-            <figure><img src="img/01-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Codetowp branding</h6>
-                  <a href="#">Design</a> <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="portfolio-inner.html"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><img src="img/02-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <a href="#">Design</a> <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><img src="img/03-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <a href="#">Design</a> <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><img src="img/04-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <a href="#">Design</a> <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><img src="img/04-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <a href="#">Design</a> <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><img src="img/06-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <a href="#">Design</a> <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><img src="img/04-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <a href="#">Design</a> <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><img src="img/06-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <a href="#">Design</a> <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-        </ul>
-        <div class="clearfix"></div>
-        <a href="portfolio.html" class="more-links">View All Projects</a> </div>
-    </div>
-  </div>
-</section>
 
+<?php
+$disable    = get_theme_mod( 'numero_our_work_check' ) == 0 ? true : false ;
+if ( numero_is_selective_refresh() ) 
+{
+    $disable = false;
+}
+if ( ! $disable) :
+ get_template_part( 'template-parts/content', 'our-work' );
+ endif;?>
 <!-- our services
     ==========================================-->
 
