@@ -9,33 +9,87 @@
 
 ?>
 <section id="why-choose-us"> 
-  
-  <!--section-title-->
-  <div class="section-title text-center">
-    <h2 class="wow zoomIn">Why choose us</h2>
-  </div>
-  <!--/section-title-->
-  
-  <div class="container">
-    <div class="row">
-      <div> 
-        
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#Speed" aria-controls="Speed" role="tab" data-toggle="tab">Speed</a></li>
-          <li role="presentation"><a href="#Design" aria-controls="Design" role="tab" data-toggle="tab">Design</a></li>
-          <li role="presentation"><a href="#Support" aria-controls="Support" role="tab" data-toggle="tab">Support</a></li>
-          <li role="presentation"><a href="#Best" aria-controls="Best" role="tab" data-toggle="tab">Best</a></li>
-        </ul>
-        
-        <!-- Tab panes -->
-        <div class="tab-content wow fadeInUp">
-          <div role="tabpanel" class="tab-pane active" id="Speed"> <img src="img/tab-1.jpg" class="img-responsive"> </div>
-          <div role="tabpanel" class="tab-pane" id="Design"><img src="img/tab-2.jpg" class="img-responsive"></div>
-          <div role="tabpanel" class="tab-pane" id="Support"><img src="img/tab-3.jpg" class="img-responsive"></div>
-          <div role="tabpanel" class="tab-pane" id="Best"><img src="img/tab-4.jpg" class="img-responsive"></div>
-        </div>
-      </div>
+	
+	<!--section-title-->
+	<div class="section-title text-center">
+		<?php 
+		$choose_header = get_theme_mod( 'numero_choose_header_text', __('Section Title', 'numero' ));
+		echo '<h2 class="wow zoomIn">  ' . esc_html($choose_header) . '</h2>'; 
+		?>
+	</div>
+	<!--/section-title-->
+	
+	<div class="container">
+		<div class="row">
+			<div> 
+				<?php
+				$page_ids = numero_get_section_choose();
+
+				?>
+				<?php
+				if ( ! empty( $page_ids ) ) 
+				{
+					$col = 3;
+					$num_col = 4;
+					$n = count( $page_ids );
+					if ($n < 4) 
+					{
+						switch ($n) 
+						{
+							case 3:
+							$col = 4;
+							$num_col = 3;
+							break;
+							case 2:
+							$col = 6;
+							$num_col = 2;
+							break;
+							default:
+							$col = 12;
+							$num_col = 1;
+						}
+					}
+					$j = 0;
+					global $post;  
+					?>
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<?php  
+						$firstClass = 'active'; 
+						foreach ($page_ids as $post_id => $settings  ) 
+						{
+							
+							
+							?>
+							<li role="presentation" class="<?php echo esc_html($firstClass);?>"><a href="#<?php echo esc_html($settings['title']);?>" aria-controls="<?php echo esc_html($settings['title']);?>" role="tab" data-toggle="tab"><?php echo esc_html( $settings['title']);?></a></li>
+							<?php $firstClass=''; }  ?> 
+						</ul>
+						
+						<!-- Tab panes -->
+						<div class="tab-content wow fadeInUp">
+							<?php
+							$firstClass = 'active'; 
+							foreach ($page_ids as $post_id => $settings  ) 
+							{
+								$post_id = $settings['content_page'];
+								$post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
+								$post = get_post( $post_id );
+								setup_postdata( $post );
+								?>
+								
+								<div role="tabpanel" class="tab-pane <?php echo esc_html($firstClass);?>" id="<?php echo esc_html($settings['title']);?>"> 
+									<?php the_post_thumbnail('choose-medium');?>  
+								</div>
+								
+
+        <?php $firstClass = ''; }  // end foreach
+        wp_reset_postdata();
+        ?>
     </div>
-  </div>
+    <?php 
+}
+?>
+</div>
+</div>
+</div>
 </section>

@@ -243,7 +243,7 @@ if ( ! function_exists( 'customizer_library_sanitize_font_choice' ) ) :
  * @param  string    $value    The font choice.
  * @return string              The sanitized font choice.
  */
-function customizer_library_sanitize_font_choice( $value ) {
+function numero_customizer_library_sanitize_font_choice( $value ) {
 	if ( is_int( $value ) ) {
 		// The array key is an integer, so the chosen option is a heading, not a real choice
 		return '';

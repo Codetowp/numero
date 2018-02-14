@@ -13,8 +13,15 @@
     <div class="row"> 
       <!--section-title-->
       <div class="section-title text-center">
-        <h2 class="wow fadeInUp">About us</h2>
-        <p class="wow zoomIn">Alice wondered a little at this, but she was too much in awe of the Queen to disbelieve it. 'I'll try it when I go home,' she thought to herself.</p>
+         <?php 
+                        $aout_header  = get_theme_mod( 'numero_about_header_text', __('About Us', 'numero' ));
+                         echo '<h2 class="wow fadeInUp">  ' . esc_html($aout_header) . ' </h2>'; 
+                    ?>
+
+                    <?php 
+                        $about_desc  = get_theme_mod( 'numero_about_description', __('Section Description', 'numero' ));
+                         echo '<p class="wow zoomIn">  ' . wp_kses_post($about_desc) . '</p>'; 
+                    ?>
       </div>
       <!--/section-title--> 
       <?php
@@ -56,10 +63,14 @@ if ( ! empty( $page_ids ) )
         {
             $settings['icon'] = trim( $settings['icon'] );
             $class = esc_attr( $settings['icon'] );
-        }              
+        }  
+        else{
+
+          $class = '';
+        }            
         ?>
       <!--col-1-->
-      <div class="col-md-4 col-sm-4 col-about-us wow fadeInLeft"> <i class="fa fa-clock-o"></i>
+      <div class="col-md-4 col-sm-4 col-about-us wow fadeInLeft"><?php if( $class !=''){ ?> <i class="<?php echo esc_attr($class); ?>"></i><?php } ?>
         <h4><?php echo esc_html( get_the_title($post_id)); ?></h4>
         <p><?php echo esc_html( wp_trim_words( get_the_content(), 10, '...' ));?></p>
       </div>

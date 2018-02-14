@@ -290,7 +290,7 @@ $wp_customize->add_control( 'numero_about_header_text', array(
 
 $wp_customize->add_setting( 'numero_about_description', array(      
     'default'                   => esc_html__('Section Description', 'numero'),
-    'sanitize_callback'         => 'sanitize_text_field',
+    'sanitize_callback'         => 'wp_kses_post',
     'transport'                 => 'postMessage',               
 ) );    
 
@@ -451,7 +451,7 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 
 
 $wp_customize->add_setting( 'counter_background_img', array(
-    'default'                   => '',
+    'default'                   => esc_url(get_template_directory_uri()."/assets/img/count-bg.jpg"),
     'type'                      => 'theme_mod',
     'capability'                => 'edit_theme_options',
     'sanitize_callback'         => 'esc_url_raw',
@@ -510,7 +510,7 @@ $wp_customize->add_control(
 
         )
     ) );
-/*********Our Project**********/
+/*********Our Work**********/
     
 $wp_customize->add_section('numero_our_work', array(
     'title'                     => __('Our Work Section', 'numero'),
@@ -556,7 +556,7 @@ $wp_customize->add_control( 'numero_our_work_header', array(
 
 $wp_customize->add_setting( 'numero_our_work_description', array(      
     'default'                   => esc_html__('Section Description.', 'numero'),
-    'sanitize_callback'         => 'sanitize_text_field',
+    'sanitize_callback'         => 'wp_kses_post',
     'transport'                 => 'postMessage',               
 ) );    
 
@@ -574,7 +574,7 @@ $wp_customize->add_setting( 'numero_our_work_count', array(
 );
 $wp_customize->add_control( 'numero_our_work_count', array(
     'type'                      => 'integer',
-    'label'                     => __('Number Of Testimonial To Show - i.e 10 (default is 8)','numero'),
+    'label'                     => __('Number Of portfolio To Show - i.e 10 (default is 8)','numero'),
     'section'                   => 'numero_our_work',
 
     )
@@ -705,7 +705,7 @@ $wp_customize->add_setting( 'numero_testimonial_check', array(
     )
 );
 
-$wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_testimonial_check', array(
+$wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize, 'numero_testimonial_check', array(
         'settings' => 'numero_testimonial_check',
         'label'    => __( 'Enable Testimonial Section?', 'numero' ),
         'section'  => 'numero_testimonial_section',
@@ -826,7 +826,7 @@ $wp_customize->add_setting( 'numero_blog_check', array(
     )
 );
 
-$wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_blog_check', array(
+$wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize, 'numero_blog_check', array(
         'settings' => 'numero_blog_check',
         'label'    => __( 'Disable Blog Section?', 'numero' ),
         'section'  => 'numero_blog_section',
@@ -893,7 +893,7 @@ $wp_customize->add_setting( 'numero_trial_check', array(
     )
 );
 
-$wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'numero_trial_check', array(
+$wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize, 'numero_trial_check', array(
         'settings' => 'numero_trial_check',
         'label'    => __( 'Disable Blog Section?', 'numero' ),
         'section'  => 'numero_trial_section',
@@ -941,6 +941,146 @@ $wp_customize->add_control( 'numero_trial_button_url', array(
     'priority'                  => 5
 ) );      
 
+/********* Fonts**********/
+
+$wp_customize->add_section('numero_font_settings', array(
+    'title'                     => __('Font Settings', 'numero'),
+    'description'               => 'Change font family, size and color (Headings & Paragraph) for Homepage, Blog Posts & Pages.',
+    'priority'                  => 65,
+   
+
+));
+
+// paragraph
+$font_choices = customizer_library_get_font_choices();
+
+$wp_customize->add_setting( 'numero_paragraph_font', array(
+    'default'        => 'PT Serif',
+    'sanitize_callback' =>'numero_customizer_library_sanitize_font_choice',
+) );
+
+$wp_customize->add_control( 'numero_paragraph_font', array(
+    'label'   => esc_attr__('Pick Paragraph Font Family', 'numero' ),
+    'description'   => esc_attr__('Default : PT Serif', 'numero' ),
+    'section' => 'numero_font_settings',
+    'type'    => 'select',
+    'choices' => $font_choices,
+    'priority' => 1,
+    ));
+
+$wp_customize->add_setting( 'numero_paragraph_font_color', 
+    array(
+        'default' => '#43484d', 
+        'transport' => 'refresh', 
+        'sanitize_callback' => 'sanitize_hex_color', 
+    ) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_paragraph_font_color', 
+   array(
+    'label'      => esc_attr__( 'Pick Paragraph Font Color', 'numero' ),
+     'description'   => esc_attr__('Default : #43484d', 'numero' ),
+    'section'    => 'numero_font_settings',
+       'priority'   => 2,
+) ) );    
+
+
+$wp_customize->add_setting( 'numero_paragraph_font_size', array(
+    'default'       => get_theme_mod( 'numero_paragraph_font_size', '16px' ),
+    'capability'    => 'edit_theme_options',
+    'transport'     => 'refresh',
+    'sanitize_callback'=> 'absint',
+) );
+
+$wp_customize->add_control( new Numero_Customizer_Range_Value_Control( $wp_customize, 'numero_paragraph_font_size', array(
+    'type'     => 'range-value',
+    'section'  => 'numero_font_settings',
+    'settings' => 'numero_paragraph_font_size',        
+    'label'    => __( 'Pick Paragraph Font Size','numero' ),
+    'description'   => esc_attr__('Default : 16px', 'numero' ),
+    'input_attrs' => array(
+        'min'    => 11,
+        'max'    => 24,
+        'step'   => 1,
+        'suffix' => 'px',
+  ),
+'priority'   => 3,
+) ) );
+
+/***************Heading fonts****************/
+       
+$wp_customize->add_setting( 'numero_heading_font_family', array(
+'default'        => 'Montserrat',
+ 'transport'     => 'refresh',
+ 'sanitize_callback'         => 'numero_customizer_library_sanitize_font_choice',
+) );
+
+$wp_customize->add_control( 'numero_heading_font_family', array(
+'label'   => 'Pick Heading Font Family',
+'description'   =>  esc_attr__('Default : Montserrat', 'numero' ),
+'section' => 'numero_font_settings',
+'type'    => 'select',
+'choices' => $font_choices,
+'priority' => 4,
+));
+
+
+$wp_customize->add_setting( 'numero_headings_font_color', 
+array(
+    'default' => '#ffffff', 
+    'transport' => 'refresh', 
+    'sanitize_callback' => 'sanitize_hex_color', 
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_headings_font_color', 
+array(
+'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
+'section'    => 'numero_font_settings',
+   'priority'   => 5,
+) ) );
+
+
+/**************accent**************/    
+
+$wp_customize->add_setting( 'numero_accent_color',  
+array(
+    'default' => '#0ed1d1', 
+    'transport' => 'refresh', 
+    'sanitize_callback' => 'sanitize_hex_color', 
+) );
+
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_accent_color', array(
+'label'      => esc_attr__( 'Accent Color', 'numero' ),
+'description' => esc_attr__( 'Add Accent Color to Button.', 'numero' ),
+'section'    => 'colors',
+) ) );
+
+
+/*************************Panel****************************************************/
+
+$wp_customize->add_panel( 'numero_page_pannel' ,array(
+'priority'              => 105,
+'title'                 => esc_html__( 'Page Settings Sections', 'numero' ),
+'description'           => '',
+) );
+/*************************header details********************************************/    
+
+$wp_customize->add_section( 'numero_blog_page_settings', array(
+'title'                     => __( 'Recent Post Count', 'numero'  ),
+'priority'                  => 1,
+'panel'                     => 'numero_page_pannel',  
+) );
+
+$wp_customize->add_setting( 'numero_blog_page_relative_count', array(
+'default'                   => 3,
+'sanitize_callback'         => 'absint'
+)
+);
+$wp_customize->add_control( 'numero_blog_page_relative_count', array(
+'type'                      => 'integer',
+'label'                     => __('Number Of Relative Post  To Show - i.e 10 (default is 3)','numero'),
+'section'                   => 'numero_blog_page_settings',
+ 'priority'                  => 2,
+
+)
+);
 
    
     
@@ -979,6 +1119,10 @@ function numero_customize_preview_js() {
 	wp_enqueue_script( 'numero-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'numero_customize_preview_js' );
+function numero_customizer_css_style() {
+    wp_enqueue_style( 'numero-customizer-css', get_template_directory_uri() . '/assets/css/customizer.css' );
+}
+add_action( 'customize_controls_enqueue_scripts', 'numero_customizer_css_style' );
 /**
  * Customizer Icon picker
  */

@@ -6,10 +6,30 @@
  */
  
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) 
-{
+if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+if ( ! class_exists( 'Customizer_Library' ) ) :
+	// Helper functions for fonts.
+	require plugin_dir_path( __FILE__ ) . 'fonts.php';
+	class Customizer_Library {
+		private static $instance;
+		public $options = array();
+		public static function instance() {
+			if ( is_null( self::$instance ) ) {
+				self::$instance = new self();
+			}
+			return self::$instance;
+		}
+		public function add_options( $options = array() ) {
+			$this->options = array_merge( $options, $this->options );
+		}
+		public function get_options() {
+			return $this->options;
+		}
+	}
+endif;
+ 
 
  
     class Numero_Customizer_Toggle_Control extends WP_Customize_Control 

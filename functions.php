@@ -165,6 +165,12 @@ function numero_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'numero_scripts' );
 
+add_image_size( 'numero_our_work', 262, 163,  array( 'top', 'center' ) );
+add_image_size( 'choose-medium', 840, 527,  array( 'top', 'center' ) );
+add_image_size( 'numero-blog', 262, 163,  array( 'top', 'center' ) );
+
+add_image_size( 'numero_portfolio', 555, 347,  array( 'top', 'center' ) );
+
 
 /**
  * Implement the Custom Header feature.
