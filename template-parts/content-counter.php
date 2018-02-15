@@ -9,7 +9,7 @@
 
 ?>
 <?php
-$background_img   = get_theme_mod( 'counter_background_img',get_template_directory_uri().'/img/count-bg.jpg' );   
+$background_img   = get_theme_mod( 'numero_counter_background_img',get_template_directory_uri().'/img/count-bg.jpg' );   
 ?>
 <section id="company-counter" style="background-image:url(<?php echo esc_url($background_img); ?>);">
   <div class="container">

@@ -450,7 +450,7 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 
 
 
-$wp_customize->add_setting( 'counter_background_img', array(
+$wp_customize->add_setting( 'numero_counter_background_img', array(
     'default'                   => esc_url(get_template_directory_uri()."/assets/img/count-bg.jpg"),
     'type'                      => 'theme_mod',
     'capability'                => 'edit_theme_options',
@@ -458,11 +458,11 @@ $wp_customize->add_setting( 'counter_background_img', array(
 ) );
 
 $wp_customize->add_control( new WP_Customize_Image_Control(
-    $wp_customize,'counter_background_img', array(
+    $wp_customize,'numero_counter_background_img', array(
     'label'                     => __( 'Background Image', 'numero' ),
     'section'                   => 'numero_counter_section',
-    'settings'                  => 'counter_background_img',
-    'context'                   => 'counter_background_img',
+    'settings'                  => 'numero_counter_background_img',
+    'context'                   => 'numero_counter_background_img',
     'priority'                  => 20,
     ) 
 ) );
@@ -639,8 +639,8 @@ $wp_customize->add_control( 'numero_service_header', array(
 ) );
 
 $wp_customize->add_setting( 'numero_service_description', array(      
-'default'                   => esc_html__('Section Description.', 'numero'),
-'sanitize_callback'         => 'sanitize_text_field',
+'default'                   => esc_html__('Section Description', 'numero'),
+'sanitize_callback'         => 'wp_kses_post',
 'transport'                 => 'postMessage',               
 ) );    
 
@@ -850,7 +850,7 @@ $wp_customize->add_control( 'numero_blog_header', array(
 
 $wp_customize->add_setting( 'numero_blog_description', array(      
     'default'                   => esc_html__('Section Description', 'numero'),
-    'sanitize_callback'         => 'sanitize_text_field',
+    'sanitize_callback'         => 'wp_kses_post',
     'transport'                 => 'postMessage',               
 ) );    
 
@@ -904,7 +904,7 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 
 $wp_customize->add_setting( 'numero_trial_header', array(      
     'default'                   => esc_html__('Be the first to grap all new design content from numero!','numero'),
-    'sanitize_callback'         => 'sanitize_text_field',
+    'sanitize_callback'         => 'wp_kses_post',
     'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
 
@@ -1081,7 +1081,22 @@ $wp_customize->add_control( 'numero_blog_page_relative_count', array(
 
 )
 );
+$wp_customize->add_setting( 'numero_portfolio_background_img', array(
+    'default'                   => esc_url(get_template_directory_uri()."/assets/img/count-bg.jpg"),
+    'type'                      => 'theme_mod',
+    'capability'                => 'edit_theme_options',
+    'sanitize_callback'         => 'esc_url_raw',
+) );
 
+$wp_customize->add_control( new WP_Customize_Image_Control(
+    $wp_customize,'numero_portfolio_background_img', array(
+    'label'                     => __( 'Background Image', 'numero' ),
+    'section'                   => 'numero_counter_section',
+    'settings'                  => 'numero_portfolio_background_img',
+    'context'                   => 'numero_portfolio_background_img',
+    'priority'                  => 20,
+    ) 
+) );
    
     
 }

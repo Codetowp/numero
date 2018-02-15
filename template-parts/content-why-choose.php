@@ -73,12 +73,12 @@
 							{
 								$post_id = $settings['content_page'];
 								$post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
-								$post = get_post( $post_id );
-								setup_postdata( $post );
+								$posts = get_post( $post_id );
+								setup_postdata( $posts );
 								?>
 								
 								<div role="tabpanel" class="tab-pane <?php echo esc_html($firstClass);?>" id="<?php echo esc_html($settings['title']);?>"> 
-									<?php the_post_thumbnail('choose-medium');?>  
+									<?php echo wp_kses_post(get_the_post_thumbnail( $post_id, 'choose-medium' )); ?> 
 								</div>
 								
 
