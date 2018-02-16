@@ -170,7 +170,8 @@ add_image_size( 'choose-medium', 840, 527,  array( 'top', 'center' ) );
 add_image_size( 'numero-blog', 262, 163,  array( 'top', 'center' ) );
 
 add_image_size( 'numero_portfolio', 555, 347,  array( 'top', 'center' ) );
-
+// Custom Theme Functions
+	require get_template_directory() . '/inc/lib/related-post.php';
 
 /**
  * Implement the Custom Header feature.
@@ -205,3 +206,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+/**
+ * Custom font style.
+ */
+require get_template_directory() . '/inc/lib/print_styles.php';

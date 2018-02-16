@@ -30,7 +30,7 @@
 
                 if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
 
-                   get_template_part( 'template-parts/content', get_post_format() );
+                   get_template_part( 'template-parts/content', 'blog-posts' );
 
                 endwhile;endif;
                 wp_reset_postdata(); 
