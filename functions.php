@@ -172,6 +172,7 @@ add_image_size( 'numero-blog', 262, 163,  array( 'top', 'center' ) );
 add_image_size( 'numero_portfolio', 555, 347,  array( 'top', 'center' ) );
 // Custom Theme Functions
 	require get_template_directory() . '/inc/lib/related-post.php';
+	require get_template_directory() . '/inc/lib/related-projects.php';
 
 /**
  * Implement the Custom Header feature.

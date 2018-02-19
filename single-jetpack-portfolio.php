@@ -107,20 +107,7 @@ get_header(); ?>
 			<div class="clearfix"></div>
 			<div class="works">
 				<ul class="grid">
-					<li>
-						<figure>
-							<img src="img/01-screenshot.jpg" alt="Screenshot 01">
-							<figcaption>
-								<div class="caption-content">
-									<h6>Codetowp branding</h6>
-									<a href="#">Design</a> <a href="#">brand</a>
-									<ul class="work-more">
-										<li><a href="#"><i class="fa fa-link"></i></a></li>
-									</ul>
-								</div>
-							</figcaption>
-						</figure>
-					</li>
+					<?php numero_related_projectx() ?>
 				</ul>
 			</div>
 		</div>
