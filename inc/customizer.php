@@ -34,6 +34,83 @@ function numero_customize_register( $wp_customize ) {
 			'selector'        => '.site-description',
 			'render_callback' => 'numero_customize_partial_blogdescription',
 		) );
+        $wp_customize->selective_refresh->add_partial( 'numero_header_text', array(
+            'selector'              => '#home-banner h1',
+            'render_callback'       => 'numero_customize_partial_header_text',
+
+        ) ); 
+        
+        $wp_customize->selective_refresh->add_partial( 'numero_tag_line', array(
+            'selector'              => '#home-banner h2',
+            'render_callback'       => 'numero_customize_partial_tag_line',
+
+        ) ); 
+        
+        $wp_customize->selective_refresh->add_partial( 'numero_header_description', array(
+            'selector'              => '#home-banner p',
+            'render_callback'       => 'numero_customize_partial_header_description',
+
+        ) ); 
+        
+        $wp_customize->selective_refresh->add_partial( 'numero_about_header_text', array(
+            'selector'              => '#about-us-block h2',
+            'render_callback'       => 'numero_customize_partial_about_header_text',
+        ) ); 
+        
+        $wp_customize->selective_refresh->add_partial( 'numero_about_description', array(
+            'selector'              => '#about-us-block .about-paragraph',
+            'render_callback'       => 'numero_customize_partial_about_description',
+        ) ); 
+        
+         $wp_customize->selective_refresh->add_partial( 'numero_choose_header_text', array(
+            'selector'              => '#why-choose-us h2',
+            'render_callback'       => 'numero_customize_partial_choose_header_text',
+        ) ); 
+        
+        $wp_customize->selective_refresh->add_partial( 'numero_our_work_header', array(
+            'selector'              => '#our-work-block h2',
+            'render_callback'       => 'numero_customize_partial_our_work_header',
+        ) ); 
+
+        $wp_customize->selective_refresh->add_partial( 'numero_our_work_description', array(
+            'selector'              => '#our-work-block p',
+            'render_callback'       => 'numero_customize_partial_our_work_description',
+        ) ); 
+
+        $wp_customize->selective_refresh->add_partial( 'numero_service_header', array(
+            'selector'              => '#our-services h2',
+            'render_callback'       => 'numero_customize_partial_service_header',
+        ) ); 
+        
+        $wp_customize->selective_refresh->add_partial( 'numero_service_description', array(
+            'selector'              => '#our-services p span',
+            'render_callback'       => 'numero_customize_partial_service_description',
+        ) ); 
+        
+        $wp_customize->selective_refresh->add_partial( 'numero_testimonial_header', array(
+            'selector'              => '#testimonials-block  .section-title h2',
+            'render_callback'       => 'numero_customize_partial_testimonial_header',
+        ) ); 
+                
+        $wp_customize->selective_refresh->add_partial( 'numero_blog_header', array(
+            'selector'              => '#from-blog  .section-title h2',
+            'render_callback'       => 'numero_customize_partial_blog_header',
+        ) ); 
+                        
+        $wp_customize->selective_refresh->add_partial( 'numero_blog_description', array(
+            'selector'              => '#from-blog  .section-title p',
+            'render_callback'       => 'numero_customize_partial_blog_description',
+        ) ); 
+
+        $wp_customize->selective_refresh->add_partial( 'numero_trial_header', array(
+            'selector'              => '#free-trial-block  p',
+            'render_callback'       => 'numero_customize_partial_trial_header',
+        ) ); 
+
+        $wp_customize->selective_refresh->add_partial( 'numero_header_phone_number', array(
+            'selector'              => '#top-menu .pull-left  ul',
+            'render_callback'       => 'numero_customize_partial_header_phone_number',
+        ) ); 
 	}
     /*****************************Panel***********************************************/
     
@@ -1118,6 +1195,65 @@ function numero_customize_partial_blogname() {
  */
 function numero_customize_partial_blogdescription() {
 	bloginfo( 'description' );
+}
+function numero_customize_partial_header_text() {
+     return get_theme_mod('numero_header_text');
+}
+
+function numero_customize_partial_tag_line() {
+    return get_theme_mod('numero_tag_line');
+}
+
+function numero_customize_partial_header_description() {
+    return get_theme_mod('numero_header_description');
+}
+
+function numero_customize_partial_about_header_text() {
+    return get_theme_mod('numero_about_header_text');
+}
+
+function numero_customize_partial_about_description() {
+    return get_theme_mod('numero_about_description');
+}
+
+function numero_customize_partial_choose_header_text() {
+    return get_theme_mod('numero_choose_header_text');
+}
+
+function numero_customize_partial_our_work_header() {
+    return get_theme_mod('numero_our_work_header');
+}
+
+function numero_customize_partial_our_work_description() {
+    return get_theme_mod('numero_our_work_description');
+}
+
+function numero_customize_partial_service_header() {
+    return get_theme_mod('numero_service_header');
+}
+
+function numero_customize_partial_service_description() {
+    return get_theme_mod('numero_service_description');
+}
+
+function numero_customize_partial_testimonial_header() {
+    return get_theme_mod('numero_testimonial_header');
+}
+
+function numero_customize_partial_blog_header() {
+    return get_theme_mod('numero_blog_header');
+}
+
+function numero_customize_partial_blog_description() {
+    return get_theme_mod('numero_blog_description');
+}
+
+function numero_customize_partial_trial_header() {
+    return get_theme_mod('numero_trial_header');
+}
+
+function numero_customize_partial_header_phone_number() {
+    return get_theme_mod('numero_header_phone_number');
 }
 function numero_sanitize_checkbox( $input ) {
     if ( $input == 1 ) {

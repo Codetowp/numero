@@ -27,8 +27,8 @@
         </a> 
         <span class="byline">
             <span class="author vcard">
-                <?php echo numero_entry_footer();?>
-                <a href="#"><i class="fa fa-user-o"></i> <?php echo get_the_author_meta('display_name');?></a> 
+                <?php numero_entry_footer();?>
+                <a href="#"><i class="fa fa-user-o"></i> <?php echo esc_html(get_the_author_meta('display_name'));?></a> 
             </span>
         </span> 
         <a href="<?php the_permalink();?>">
@@ -38,7 +38,7 @@
         </a>
     </header>
     <p>
-        <?php echo the_excerpt();?>
+        <?php the_excerpt();?>
     </p>
     <a class="btn  readmore-btn" href="<?php the_permalink();?>">READ MORE</a> 
 </article>
