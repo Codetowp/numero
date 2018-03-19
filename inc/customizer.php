@@ -288,7 +288,7 @@ $wp_customize->add_setting( 'numero_header_button_one_url', array(
 
 $wp_customize->add_control( 'numero_header_button_one_url', array(
     'type'                      => 'text',
-    'label'                     => __( 'Button one Url', 'numero' ),
+    'label'                     => __( 'Button one URL', 'numero' ),
     'section'                   => 'numero_header_section',
     'priority'                  => 5
 ) );      
@@ -315,7 +315,7 @@ $wp_customize->add_setting( 'numero_header_button_two_url', array(
 
 $wp_customize->add_control( 'numero_header_button_two_url', array(
     'type'                      => 'text',
-    'label'                     => __( 'Button Two Url', 'numero' ),
+    'label'                     => __( 'Button Two URL', 'numero' ),
     'section'                   => 'numero_header_section',
     'priority'                  => 7
 ) );    
@@ -324,7 +324,7 @@ $wp_customize->add_control( 'numero_header_button_two_url', array(
     
 $wp_customize->add_section('numero_about_section', array(
     'title'                     => __('About Us', 'numero'),
-    'description'               => 'Easily edit your header section',
+    'description'               => 'Easily edit your about section',
     'priority'                  => 20,   
     'panel'                     => 'numero_pannel',    
 
@@ -348,8 +348,6 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
         'priority' => 1,
 
 ) ) );
-
-
 
 
  $wp_customize->add_setting( 'numero_about_header_text', array(      
@@ -396,7 +394,7 @@ $wp_customize,
         'section'       => 'numero_about_section',
         'live_title_id' => 'content_page', // apply for unput text and textarea only
         'title_format'  => esc_html__('[live_title]', 'numero'), // [live_title]
-        'max_item'      => 3, // Maximum item can add
+        'max_item'      => 6, // Maximum item can add
         'fields'        => array(
             'content_page'  => array(
                 'title'     => esc_html__('Select a page', 'numero'),
@@ -414,11 +412,11 @@ $wp_customize,
         )
     ) );
     
-    /********* Choose section**********/
+    /********* Choose Tab section**********/
     
 $wp_customize->add_section('numero_choose_section', array(
-    'title'                     => __('Choose Section', 'numero'),
-    'description'               => 'Easily edit your header section',
+    'title'                     => __('Choose Tab Section', 'numero'),
+    'description'               => 'This section shows featured image of your pages in TAB Style',
     'priority'                  => 25,   
     'panel'                     => 'numero_pannel',    
 
@@ -437,7 +435,7 @@ $wp_customize->add_setting( 'numero_choose_check', array(
 
 $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize, 'numero_choose_check', array(
         'settings' => 'numero_choose_check',
-        'label'    => __( 'Enable Choose Section?', 'numero' ),
+        'label'    => __( 'Enable Tabbed Section?', 'numero' ),
         'section'  => 'numero_choose_section',
         'type'     => 'ios',
         'priority' => 1,
@@ -453,7 +451,7 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 
 $wp_customize->add_control( 'numero_choose_header_text', array(
     'type'                      => 'text',
-    'label'                     => __( 'Header', 'numero' ),
+    'label'                     => __( 'Section Title', 'numero' ),
     'section'                   => 'numero_choose_section',
     'priority'                  => 1,
 ) );
@@ -498,7 +496,7 @@ $wp_customize->add_control(
     
 $wp_customize->add_section('numero_counter_section', array(
     'title'                     => __('Counter Section', 'numero'),
-    'description'               => 'Easily edit your header section',
+    'description'               => 'Easily edit your counter items',
     'priority'                  => 30,   
     'panel'                     => 'numero_pannel',    
 
@@ -591,7 +589,7 @@ $wp_customize->add_control(
     
 $wp_customize->add_section('numero_our_work', array(
     'title'                     => __('Our Work Section', 'numero'),
-    'description'               => 'Easily edit your header section',
+    'description'               => 'Install Jetpack and Enable Portfolio',
     'priority'                  => 35,   
     'panel'                     => 'numero_pannel',    
 
@@ -619,14 +617,14 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 
 
 $wp_customize->add_setting( 'numero_our_work_header', array(      
-    'default'                   => esc_html__('Session Title', 'numero'),
+    'default'                   => esc_html__('Section Title', 'numero'),
     'sanitize_callback'         => 'sanitize_text_field',
     'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
 
 $wp_customize->add_control( 'numero_our_work_header', array(
     'type'                      => 'text',
-    'label'                     => __( 'Header', 'numero' ),
+    'label'                     => __( 'Heading', 'numero' ),
     'section'                   => 'numero_our_work',
     'priority'                  => 1,
 ) );
@@ -645,13 +643,13 @@ $wp_customize->add_control( 'numero_our_work_description', array(
 ) );
 
 $wp_customize->add_setting( 'numero_our_work_count', array(
-    'default'                   => 8,
+    'default'                   => 6,
     'sanitize_callback'         => 'absint'
     )
 );
 $wp_customize->add_control( 'numero_our_work_count', array(
     'type'                      => 'integer',
-    'label'                     => __('Number Of portfolio To Show - i.e 10 (default is 8)','numero'),
+    'label'                     => __('Number Of portfolio To Show - i.e 10 (default is 6)','numero'),
     'section'                   => 'numero_our_work',
 
     )
@@ -710,7 +708,7 @@ $wp_customize->add_setting( 'numero_service_header', array(
 
 $wp_customize->add_control( 'numero_service_header', array(
 'type'                      => 'text',
-'label'                     => __( 'Header', 'numero' ),
+'label'                     => __( 'Heading', 'numero' ),
 'section'                   => 'numero_service_section',
 'priority'                  => 1,
 ) );
@@ -741,11 +739,11 @@ new Numero_Customize_Repeatable_Control(
     'numero_service_boxes',
     array(
         'label'         => esc_html__('Services', 'numero'),
-        'description'   => '',
+        'description'   => 'Add upto 9 service blocks',
         'section'       => 'numero_service_section',
         'live_title_id' => 'content_page', // apply for unput text and textarea only
         'title_format'  => esc_html__('[live_title]', 'numero'), // [live_title]
-        'max_item'      => 6, // Maximum item can add
+        'max_item'      => 9, // Maximum item can add
         'limited_msg'   => wp_kses_post( 'Contact us through our Support Forum if you need more.', 'numero' ),
         'fields'        => array(
             'content_page'  => array(
@@ -767,7 +765,7 @@ new Numero_Customize_Repeatable_Control(
     
 $wp_customize->add_section('numero_testimonial_section', array(
     'title'                     => __('Testimonial Section', 'numero'),
-    'description'               => 'Easily edit your header section',
+    'description'               => 'Install Jetpack and enable Testimonials',
     'priority'                  => 45,   
     'panel'                     => 'numero_pannel',    
 
@@ -802,7 +800,7 @@ $wp_customize->add_setting( 'numero_testimonial_header', array(
 
 $wp_customize->add_control( 'numero_testimonial_header', array(
     'type'                      => 'text',
-    'label'                     => __( 'Header', 'numero' ),
+    'label'                     => __( 'Heading', 'numero' ),
     'section'                   => 'numero_testimonial_section',
     'priority'                  => 1,
 ) );
@@ -826,7 +824,7 @@ $wp_customize->add_control( 'numero_testimonial_count', array(
     
 $wp_customize->add_section('numero_client_section', array(
 'title'                     => __('Client Section', 'numero'),
-'description'               => 'Easily edit your header section',
+'description'               => 'Add your partners logo here',
 'priority'                  => 45,   
 'panel'                     => 'numero_pannel',    
 
@@ -888,7 +886,7 @@ new Numero_Customize_Repeatable_Control(
     
 $wp_customize->add_section('numero_blog_section', array(
     'title'                     => __('Blog Section', 'numero'),
-    'description'               => 'Easily edit your header section',
+    'description'               => 'Choose no of Blog posts to display',
     'priority'                  => 50,   
     'panel'                     => 'numero_pannel',    
 
@@ -920,7 +918,7 @@ $wp_customize->add_setting( 'numero_blog_header', array(
 
 $wp_customize->add_control( 'numero_blog_header', array(
     'type'                      => 'text',
-    'label'                     => __( 'Header', 'numero' ),
+    'label'                     => __( 'Heading', 'numero' ),
     'section'                   => 'numero_blog_section',
     'priority'                  => 1,
 ) );
@@ -955,8 +953,8 @@ $wp_customize->add_setting( 'numero_blog_count', array(
 /*********Free Trail Section**********/
     
  $wp_customize->add_section('numero_trial_section', array(
-    'title'                     => __('Free Trial Section', 'numero'),
-    'description'               => 'Easily edit your header section',
+    'title'                     => __('Call to Action Section', 'numero'),
+    'description'               => '',
     'priority'                  => 55,   
     'panel'                     => 'numero_pannel',    
 
@@ -972,7 +970,7 @@ $wp_customize->add_setting( 'numero_trial_check', array(
 
 $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize, 'numero_trial_check', array(
         'settings' => 'numero_trial_check',
-        'label'    => __( 'Disable Blog Section?', 'numero' ),
+        'label'    => __( 'Disable this Section?', 'numero' ),
         'section'  => 'numero_trial_section',
         'type'     => 'ios',
         'priority' => 1,
@@ -987,7 +985,7 @@ $wp_customize->add_setting( 'numero_trial_header', array(
 
 $wp_customize->add_control( 'numero_trial_header', array(
     'type'                      => 'text',
-    'label'                     => __( 'Header', 'numero' ),
+    'label'                     => __( 'Heading', 'numero' ),
     'section'                   => 'numero_trial_section',
     'priority'                  => 1,
 ) );
@@ -1013,7 +1011,7 @@ $wp_customize->add_setting( 'numero_trial_button_url', array(
 
 $wp_customize->add_control( 'numero_trial_button_url', array(
     'type'                      => 'text',
-    'label'                     => __( 'Button Url', 'numero' ),
+    'label'                     => __( 'Button URL', 'numero' ),
     'section'                   => 'numero_trial_section',
     'priority'                  => 5
 ) );      

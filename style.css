@@ -2693,6 +2693,7 @@ blockquote p {
 	object-fit: cover;
 	border-radius: 5px;
 	margin-top: 71px;
+	width: 100%;
 }
 .page figure .wp-caption-text, .single .single-post article figure .wp-caption-text {
 	font-size: 12px;

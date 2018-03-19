@@ -81,7 +81,13 @@ if ( ! empty( $page_ids ) )
     wp_reset_postdata();
 }
 else
-{?>            
+{?>   
+		 <!--col-1-->
+		<div class="col-md-4 col-sm-4 col-about-us wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;"> <i class="fa fa-clock-o"></i>
+			<h4>History</h4>
+			<p>This sounded a very good reason, and Alice was quite pleased to know it. 'I never thought of that before!' she said.</p>
+		</div>
+	   <!--col-1-->
       <!--col-2-->
       <div class="col-md-4 col-sm-4 col-about-us wow zoomIn"> <i class="fa fa-clock-o"></i>
         <h4>Expertise</h4>

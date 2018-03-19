@@ -80,7 +80,15 @@
         wp_reset_postdata();
   }
   else
-  {?>              
+  {?>    
+      <!--col-1-->   
+	   <div class="col-md-4 col-sm-6 col-xs-12 services-block eq-blocks wow fadeInUp" style="visibility: visible; animation-name: fadeInUp; height: 153px;"> <i class="fa fa-desktop"></i>
+			<div class="services-content">
+			  <h6>Fully Responsive</h6>
+			  <p>This sounded a very good reason, and Alice was quite pleased to know it. 'I never thought of that before!' she said. </p>
+			</div>
+      </div>   
+      <!--col-1-->	  
       <!--col-2-->
       <div class="col-md-4 col-sm-6 col-xs-12  services-block eq-blocks wow fadeInUp"> <i class="fa fa-cart-plus"></i>
         <div class="services-content">
