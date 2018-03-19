@@ -14,22 +14,36 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+	<div id="page-banner" style="background-image: url(img/s-1.jpg);">
+  <div class="content wow fdeInUp" style="visibility: visible; animation-name: fdeInUp;">
+    <div class="container">
+      <h1>Our Blog</h1>
+    </div>
+  </div>
+</div>
 
-		<?php
-		if ( have_posts() ) :
+<!--blog body-->
+<div id="Blog-post">
+  <div class="container">
+    <div class="row"> 
+      <!--blog posts container-->
+      <div class="col-md-8 col-sm-12 single-post"> 
+        
+        <!--article-->
+       
+        <!--/article--> 
+        
+      <?php
+		
 
-			if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
+		
+      $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+         $count_post = get_theme_mod('numero_blog_count',3);
+         $query_post = new WP_Query( array( 'post_type' => 'post','post__not_in' => get_option( 'sticky_posts' ), 'posts_per_page' =>$count_post,'paged'          => $paged ) );
 
-			<?php
-			endif;
-
+         if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
 			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+			
 
 				/*
 				 * Include the Post-Format-specific template for the content.
@@ -40,7 +54,7 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_navigation();
+			
 
 		else :
 
@@ -48,9 +62,46 @@ get_header(); ?>
 
 		endif; ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+        
+        <div class="clearfix"></div>
+        
+        <!--portfolio page nav-->
+        <nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
+          <ul>
+             <li>
+            <?php
+            the_posts_pagination(
+              array(
+                'prev_text' => '<i class="fa fa-chevron-left"></i>' ,
+                'next_text' =>  '<i class="fa fa-chevron-right"></i>',
+              )
+            );
+            ?>
+            <?php wp_reset_postdata(); ?>
+          </li>
+          </ul>
+        </nav><!--/portfolio page nav-->
+      </div>
+      <!--blog posts container--> 
+      
+      <!--aside-->
+      <aside class="col-md-4 col-sm-12"> 
+        
+       <?php get_sidebar(); ?>
+        
+        <!--Meta  end--> 
+        
+      </aside>
+      <!--aside-->
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+		
+		
 
 <?php
-get_sidebar();
+
 get_footer();

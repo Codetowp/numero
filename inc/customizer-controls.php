@@ -1,75 +1,75 @@
 <?php
-/**
- * Numero Theme Customizer controls
- *
- * @package Numero
- */
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Numero Customizer Controls
+/*-----------------------------------------------------------------------------------*/
 
 class Numero_Misc_Control extends WP_Customize_Control 
-	{
-		public $settings = 'blogname';
-		public $description = '';
-		public $group = '';
+    {
+        public $settings = 'blogname';
+        public $description = '';
+        public $group = '';
 
-		public function render_content() 
-		{
-			switch ( $this->type ) 
-			{
-				default:
+        public function render_content() 
+        {
+            switch ( $this->type ) 
+            {
+                default:
 
-				case 'heading':
-					echo '<span class="customize-control-title">' . esc_html($this->title) . '</span>';
-					break;
+                case 'heading':
+                    echo '<span class="customize-control-title">' . esc_html( $this->title ) . '</span>';
+                    break;
 
-				case 'custom_message' :
-					echo '<p class="description">' .esc_html( $this->description) . '</p>';
-					break;
+                case 'custom_message' :
+                    echo '<p class="description">' . esc_html( $this->description ) . '</p>';
+                    break;
 
-				case 'hr' :
-					echo '<hr />';
-					break;
-			}
-		}
-	}
+                case 'hr' :
+                    echo '<hr />';
+                    break;
+            }
+        }
+    }
 
 class Numero_Textarea_Custom_Control extends WP_Customize_Control
-	{
-		public function render_content() 
-		{
-			?>
-			<label>
-				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-				<textarea class="large-text" cols="20" rows="5" <?php $this->link(); ?>>
-					<?php echo esc_textarea( $this->value() ); ?>
-				</textarea>
-				<p class="description"><?php echo esc_html($this->description) ?></p>
-			</label>
-			<?php
-		}
-	}
+    {
+        public function render_content() 
+        {
+            ?>
+            <label>
+                <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                <textarea class="large-text" cols="20" rows="5" <?php $this->link(); ?>>
+                    <?php echo esc_textarea( $this->value() ); ?>
+                </textarea>
+                <p class="description"><?php echo esc_html( $this->description );?></p>
+            </label>
+            <?php
+        }
+    }
 
 class Numero_Theme_Support extends WP_Customize_Control 
-	{
-		public function render_content() 
-		{
-			echo wp_kses_post( 'Upgrade to <a href="#">Numero Plus</a> to be able to change the section order and styling!', 'numero' );
-		}
-	}
+    {
+        public function render_content() 
+        {
+            echo wp_kses_post( 'Upgrade to <a href="#">Numero Plus</a> to be able to change the section order and styling!', 'saint' );
+        }
+    }
 
 if ( ! function_exists( 'numero_sanitize_checkbox' ) ) 
-	{
-		function numero_sanitize_checkbox( $input ) 
-		{
-			if ( $input == 1 ) 
-			{
-				return 1;
-			} 
-			else 
-			{
-				return 0;
-			}
-		}
-	}
+    {
+        function numero_sanitize_checkbox( $input ) 
+        {
+            if ( $input == 1 ) 
+            {
+                return 1;
+            } 
+            else 
+            {
+                return 0;
+            }
+        }
+    }
 
 /**
  * Sanitize CSS code
@@ -246,7 +246,7 @@ class Numero_Editor_Custom_Control extends WP_Customize_Control
             </label>
             
             <textarea class="wp-js-editor-textarea large-text" data-editor-mod="<?php echo esc_attr( $this->mod ); ?>" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
-            <p class="description"><?php echo $this->description ?></p>
+            <p class="description"><?php echo esc_html( $this->description ); ?></p>
         </div>
     <?php
     }
@@ -322,12 +322,12 @@ class Numero_Alpha_Color_Control extends WP_Customize_Control {
         <label>
             <?php // Output the label and description if they were passed in.
             if ( isset( $this->label ) && '' !== $this->label ) {
-                echo '<span class="customize-control-title">' . sanitize_text_field( $this->label ) . '</span>';
+                echo '<span class="customize-control-title">' .  esc_html( sanitize_text_field( $this->label ) ). '</span>';
             }
             if ( isset( $this->description ) && '' !== $this->description ) {
-                echo '<span class="description customize-control-description">' . sanitize_text_field( $this->description ) . '</span>';
+                echo '<span class="description customize-control-description">' . esc_html( sanitize_text_field( $this->description ) ) . '</span>';
             } ?>
-            <input class="alpha-color-control" type="text" data-show-opacity="<?php echo $show_opacity; ?>" data-palette="<?php echo esc_attr( $palette ); ?>" data-default-color="<?php echo esc_attr( $this->settings['default']->default ); ?>" <?php $this->link(); ?>  />
+            <input class="alpha-color-control" type="text" data-show-opacity="<?php echo esc_html( $show_opacity ); ?>" data-palette="<?php echo esc_attr( $palette ); ?>" data-default-color="<?php echo esc_attr( $this->settings['default']->default ); ?>" <?php $this->link(); ?>  />
         </label>
     <?php
     }
@@ -500,7 +500,7 @@ class Numero_Customize_Repeatable_Control extends WP_Customize_Control {
                 <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
             <?php endif; ?>
             <?php if ( ! empty( $this->description ) ) : ?>
-                <span class="description customize-control-description"><?php echo $this->description; ?></span>
+                <span class="description customize-control-description"><?php echo  esc_html( $this->description ); ?></span>
             <?php endif; ?>
         </label>
         <input data-hidden-value type="hidden" <?php $this->input_attrs(); ?> value="" <?php $this->link(); ?> />
@@ -508,7 +508,7 @@ class Numero_Customize_Repeatable_Control extends WP_Customize_Control {
             <ul class="list-repeatable"></ul>
         </div>
         <div class="repeatable-actions">
-            <span class="button-secondary add-new-repeat-item"><?php _e( 'Add an item', 'numero' ); ?></span>
+            <span class="button-secondary add-new-repeat-item"><?php  esc_html_e( 'Add an item', 'numero' ); ?></span>
         </div>
         <?php
     }
@@ -523,7 +523,7 @@ class Numero_Customize_Repeatable_Control extends WP_Customize_Control {
                         <a class="widget-action" href="#"></a>
                     </div>
                     <div class="widget-title">
-                        <h4 class="live-title"><?php _e( 'Item', 'numero' ); ?></h4>
+                        <h4 class="live-title"><?php  esc_html_e( 'Item', 'numero' ); ?></h4>
                     </div>
                 </div>
 
@@ -661,8 +661,8 @@ class Numero_Customize_Repeatable_Control extends WP_Customize_Control {
                                             <# } #>
 
                                             <div class="actions">
-                                                <button class="button remove-button " <# if ( ! field.value.url ){ #> style="display:none"; <# } #> type="button"><?php _e( 'Remove', 'numero' ) ?></button>
-                                                <button class="button upload-button" data-media="{{field.media}}" data-add-txt="<?php esc_attr_e( 'Add', 'numero' ); ?>" data-change-txt="<?php esc_attr_e( 'Change', 'numero' ); ?>" type="button"><# if ( ! field.value.url  ){ #> <?php _e( 'Add', 'numero' ); ?> <# } else { #> <?php _e( 'Change', 'numero' ); ?> <# } #> </button>
+                                                <button class="button remove-button " <# if ( ! field.value.url ){ #> style="display:none"; <# } #> type="button"><?php  esc_html_e( 'Remove', 'numero' ) ?></button>
+                                                <button class="button upload-button" data-media="{{field.media}}" data-add-txt="<?php esc_attr_e( 'Add', 'numero' ); ?>" data-change-txt="<?php esc_attr_e( 'Change', 'numero' ); ?>" type="button"><# if ( ! field.value.url  ){ #> <?php  esc_html_e( 'Add', 'numero' ); ?> <# } else { #> <?php  esc_html_e( 'Change', 'numero' ); ?> <# } #> </button>
                                                 <div style="clear:both"></div>
                                             </div>
 
@@ -695,9 +695,9 @@ class Numero_Customize_Repeatable_Control extends WP_Customize_Control {
                             <div class="widget-control-actions">
                                 <div class="alignleft">
                                     <span class="remove-btn-wrapper">
-                                        <a href="#" class="repeat-control-remove" title=""><?php _e( 'Remove', 'numero' ); ?></a> |
+                                        <a href="#" class="repeat-control-remove" title=""><?php  esc_html_e( 'Remove', 'numero' ); ?></a> |
                                     </span>
-                                    <a href="#" class="repeat-control-close"><?php _e( 'Close', 'numero' ); ?></a>
+                                    <a href="#" class="repeat-control-close"><?php  esc_html_e( 'Close', 'numero' ); ?></a>
                                 </div>
                                 <br class="clear">
                             </div>
@@ -740,7 +740,7 @@ class Numero_Editor_Scripts
     public static function enqueue() {
 
         if ( ! class_exists( '_WP_Editors' ) ) {
-            require(ABSPATH . WPINC . '/class-wp-editor.php');
+            get_template_part(ABSPATH . WPINC . '/class-wp-editor.php');
         }
 
         add_action( 'customize_controls_print_footer_scripts', array( __CLASS__, 'enqueue_editor' ),  2 );
@@ -766,10 +766,7 @@ function numero_customizer_control_scripts(){
     wp_enqueue_script( 'jquery-ui-sortable' );
     wp_enqueue_script( 'wp-color-picker' );
     wp_enqueue_style( 'wp-color-picker' );
-
-    wp_enqueue_script( 'numero-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-controls', 'wp-color-picker' ) );
-    wp_enqueue_style( 'numero-customizer',  get_template_directory_uri() . '/assets/css/customizer.css' );
-
+    wp_enqueue_script( 'numero-customizer', get_template_directory_uri() . '/inc/admin/customizer_js.js', array( 'customize-controls', 'wp-color-picker' ) );
 }
 
 add_action( 'customize_controls_enqueue_scripts', 'numero_customizer_control_scripts', 99 );

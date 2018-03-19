@@ -79,6 +79,7 @@ if ( ! function_exists( 'numero_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
+		require get_template_directory() . '/inc/customizer-library.php';
 	}
 endif;
 add_action( 'after_setup_theme', 'numero_setup' );
@@ -140,6 +141,7 @@ function numero_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'numero-bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'numero-SmoothScroll-js', get_template_directory_uri() . '/assets/js/SmoothScroll.js', array(), '20151215', true );
@@ -165,6 +167,30 @@ function numero_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'numero_scripts' );
 
+add_image_size( 'numero_our_work', 262, 163,  array( 'top', 'center' ) );
+add_image_size( 'choose-medium', 840, 527,  array( 'top', 'center' ) );
+add_image_size( 'numero-blog', 262, 163,  array( 'top', 'center' ) );
+
+add_image_size( 'numero_portfolio', 555, 347,  array( 'top', 'center' ) );
+// Custom Theme Functions
+	require get_template_directory() . '/inc/lib/related-post.php';
+	require get_template_directory() . '/inc/lib/related-projects.php';
+	/*fonts*/
+function numero_font_styles() {
+
+	// Font options
+	$fonts = array(
+		get_theme_mod( 'numero_paragraph_font', customizer_library_get_default( 'primary-font' ) ),
+		get_theme_mod( 'numero_heading_font_family', customizer_library_get_default( 'secondary-font' ) )
+	);
+
+	$font_uri = customizer_library_get_google_font_uri( $fonts );
+
+	// Load Google Fonts
+	wp_enqueue_style( 'numero_font_styles', $font_uri, array(), null, 'screen' );
+
+}
+add_action( 'wp_enqueue_scripts', 'numero_font_styles' );
 
 /**
  * Implement the Custom Header feature.
@@ -199,3 +225,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+/**
+ * Custom font style.
+ */
+require get_template_directory() . '/inc/lib/print_styles.php';
