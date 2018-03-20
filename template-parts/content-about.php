@@ -92,7 +92,7 @@ else
       <!--col-3-->
       <div class="col-md-4 col-sm-4 col-about-us wow fadeInRight"> <i class="fa fa-clock-o"></i>
         <h4><?php esc_html_e('Future plans','numero'); ?></h4>
-        <p><?php esc_html_e('Looking cautiously round, to ascertain that they were not overheard, the two hags cowered nearer to the fire, and chuckled heartily.'); ?></p>
+        <p><?php esc_html_e('Looking cautiously round, to ascertain that they were not overheard, the two hags cowered nearer to the fire, and chuckled heartily.','numero'); ?></p>
       </div>
       <!--/col-3--> 
       
