@@ -24,7 +24,7 @@
       <div class="col-md-6 col-md-offset-3">
         <div id="testimonial" class="owl-carousel owl-theme">
           <?php 
-                            $posts_per_page_testimonial = get_theme_mod( 'numero_testimonial_count' );
+                            $posts_per_page_testimonial = get_theme_mod( 'numero_testimonial_count',3 );
                             $args = array(
                                 'post_type'      => 'jetpack-testimonial',
                                 'posts_per_page' => $posts_per_page_testimonial,

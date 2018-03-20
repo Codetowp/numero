@@ -14,7 +14,7 @@ get_header(); ?>
 
 <?php
     $background_img   = esc_url( get_theme_mod( 'numero_portfolio_page_background_img' ) );   
-    $background_img_static   = get_template_directory_uri()."/img/s-1.jpg";
+    $background_img_static   = get_template_directory_uri()."/assets/img/s-1.jpg";
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
 <div id="page-banner" style="background-image: url(<?php echo esc_url( $image); ?>);">
@@ -47,10 +47,10 @@ get_header(); ?>
 
          if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post(); ?>
           <li>
-            <figure><?php the_post_thumbnail();?>
+            <figure><a href="<?php the_permalink();?>"><?php the_post_thumbnail();?>
               <figcaption>
                 <div class="caption-content">
-                  <h6><?php the_title(); ?></h6>
+                  <h6><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h6>
                     
                     <?php 
                       $before='';

@@ -10,22 +10,15 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-
-	<?php numero_post_thumbnail(); ?>
-
-	<div class="entry-content">
-		<?php
-			the_content();
-
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'numero' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
+	
+          
+          <!--Header-->
+          <header class="entry-header"> <span class="date-article"><?php  numero_posted_on();?></span> <?php if(has_post_thumbnail() ): ?><img src="<?php the_post_thumbnail_url('numero-blogs'); ?>" class="img-responsive"><?php else:?><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/06-screenshot.jpg' );?>" class="img-responsive"><?php endif; ?> <span class="byline"><span class="author vcard"><i class="fa fa-user-o"></i><?php the_author_posts_link(); ?></span></span> <a href="#">
+            <h5><?php the_title(); ?> </h5>
+            </a></header>
+         <?php the_content(); ?>
+               
+    
 
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">

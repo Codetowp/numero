@@ -10,10 +10,10 @@
 get_header(); ?>
 
 	
-<div id="page-banner" style="background-image: url(img/s-1.jpg);">
-  <div class="content  wow fdeInUp" style="visibility: visible; animation-name: fdeInUp;">
+<div id="page-banner" style="background-image: url(<?php the_post_thumbnail_url(); ?>);">
+  <div class="content  wow fdeInUp" style="visibility: visible; animation-name: fadeInUp;">
     <div class="container">
-      <h1>Our Blog</h1>
+      <h1><?php esc_html_e('Our Blog','numero') ;?></h1>
     </div>
   </div>
 </div>
@@ -42,17 +42,28 @@ get_header(); ?>
 
 	
         <div class="clearfix"></div>
-        <footer class="entry-footer entry-meta-bar">
-          <div class="entry-meta"> <i class="fa fa-tags"></i> <span class="tag-links  clearfix"> <a href="#" rel="tag">wordpress</a> <a href="#" rel="tag">themes</a> </span> </div>
-        </footer>
+       <?php
+    $id = get_the_ID();
+
+    $categories = get_the_category($id);
+    if( $categories !='' ){
+      ?>    
+      <footer class="entry-footer entry-category-bar">
+        <div class="entry-meta"> <?php esc_html_e('Category','numero'); ?>:<?php
+        foreach ( $categories as $category ) {
+          echo  esc_html( $category->name );
+        }
+        ?> </div>
+      </footer>
+      <?php } ?>
         <!--/footer tags-->
         
         <div class="clearfix"></div>
         
         <!--author box-->
-        <div class="author-box"> <img alt="" src="img/team/03.jpg"  class="avatar " height="100" width="100">
-          <div class="author-box-title"> Authored By <a href="#" rel="author">Rijo Abraham</a> </div>
-          <div class="author-description"> Rijo loves to dig into WordPress, explore what’s possible and share his knowledge with readers. He also has deep interest in anything related to increasing productivity, writing better and being happy! </div>
+        <div class="author-box"><?php echo get_avatar( get_the_author_meta('ID'), '100', '' ); ?>
+          <div class="author-box-title"><?php esc_html_e('Authorized By', 'numero'); ?><?php the_author_posts_link(); ?> </div>
+          <div class="author-description"><?php the_author_meta('description'); ?></div>
           <div class="author_social"> </div>
         </div>
         <!--/author box-->

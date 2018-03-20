@@ -21,14 +21,21 @@
                     }
                     else
                     {?>
-                        <img src="<?php echo get_template_directory_uri()?>/img/a-3.jpg" class="img-responsive">
+                        <img src="<?php echo  esc_url(get_template_directory_uri().'/assets/img/a-3.jpg'); ?>" class="img-responsive">
                         <?php 
                     }?>
         </a> 
         <span class="byline">
             <span class="author vcard">
-                <?php numero_entry_footer();?>
-                <a href="#"><i class="fa fa-user-o"></i> <?php echo esc_html(get_the_author_meta('display_name'));?></a> 
+                <i class="fa fa-folder-o"></i><?php
+        $id = get_the_ID();
+
+         $category = get_the_category($id );
+        
+                
+                echo '<a href="' .esc_url( get_tag_link($category[0]->term_id)).'">' . esc_html( $category[0]->cat_name ) . '</a> ';
+                 ?>
+                <a href="<?php echo esc_url( get_the_author_meta('url') ); ?>"><i class="fa fa-user-o"></i> <?php echo esc_html(get_the_author_meta('display_name'));?> </a> 
             </span>
         </span> 
         <a href="<?php the_permalink();?>">
@@ -40,5 +47,5 @@
     <p>
         <?php the_excerpt();?>
     </p>
-    <a class="btn  readmore-btn" href="<?php the_permalink();?>">READ MORE</a> 
+    <a class="btn  readmore-btn" href="<?php the_permalink();?>"><?php esc_html_e('READ MORE','numero'); ?></a> 
 </article>

@@ -4288,9 +4288,16 @@ width: calc(100% / 3)  ;
 
 
 #clients-block {
-	background: #51dde9;
-	padding: 50px 0;
+	
 	color: #ffffff;
+	background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    padding: 0px 0;
+    position: relative;
 }
 #clients .item {
 	padding: 0;

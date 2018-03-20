@@ -22,11 +22,7 @@
       <!--site details-->
       <div class="col-md-3 col-sm-12 col-xs-12 site-identity"> 
         <ul class="socio">
-           <?php
-              if ( is_active_sidebar( 'widget-1' ) ) 
-              {
-                dynamic_sidebar( 'widget-1' ); 
-              }?>
+          <?php if ( is_active_sidebar( 'widget-footer1' ) ) { dynamic_sidebar( 'widget-footer1' ); } ?>
         </ul>
       </div>
       <!--/site details--> 
@@ -34,39 +30,24 @@
       <!--col-1-->
       <div class="col-md-2 col-sm-4 col-xs-4 root-widget">
       
-       <?php
-          if ( is_active_sidebar( 'widget-2' ) ) 
-          {
-            dynamic_sidebar( 'widget-2' ); 
-          }?>
+      <?php if ( is_active_sidebar( 'widget-footer2' ) ) { dynamic_sidebar( 'widget-footer2' ); } ?>
       </div>
       <!--/col-1--> 
       
       <!--col-2-->
       <div class="col-md-2 col-sm-4 col-xs-4 root-widget">
-         <?php  if ( is_active_sidebar( 'widget-3' ) ) 
-          {
-            dynamic_sidebar( 'widget-3' ); 
-          }?>
+        <?php if ( is_active_sidebar( 'widget-footer3' ) ) { dynamic_sidebar( 'widget-footer3' ); } ?>
       </div>
       <!--/col-2--> 
       <!--col-3-->
       <div class="col-md-2 col-sm-4 col-xs-4 root-widget">
-     <?php
-          if ( is_active_sidebar( 'widget-4' ) ) 
-          {
-            dynamic_sidebar( 'widget-4' ); 
-          }?>
+     <?php if ( is_active_sidebar( 'widget-footer4' ) ) { dynamic_sidebar( 'widget-footer4' ); } ?>
       </div>
       <!--/col-3--> 
       
       <!--contact details-->
       <div class="col-md-3 col-sm-12 col-xs-12  subcribe-block">
-         <?php
-          if ( is_active_sidebar( 'widget-5' ) ) 
-          {
-            dynamic_sidebar( 'widget-5' ); 
-          }?>
+         <?php if ( is_active_sidebar( 'widget-footer5' ) ) { dynamic_sidebar( 'widget-footer5' ); } ?>
         <form class="form">
           <div class="form-group">
             <input type="email" placeholder="Your Email Address" class="form-control" />
@@ -77,9 +58,14 @@
         </form>
       </div>
       <!--/contact details--> 
-      
+    
     </div>
+
   </div>
+    <div class=" col-md-12 col-sm-12  fnav text-center">
+        <p><?php esc_html_e('ALL RIGHTS RESERVED. COPYRIGHT &#169; 2018. A theme by', 'numero');?>
+        <?php printf( '<a href="' . esc_url( 'https://dcrazed.com/' ) . '" target="_blank">Dcrazed</a>' ); ?> </p>
+      </div>
 </footer>
 
 <?php wp_footer(); ?>

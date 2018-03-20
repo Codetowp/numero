@@ -14,10 +14,10 @@
 
 get_header(); ?>
 
-	<div id="page-banner" style="background-image: url(img/s-1.jpg);">
+	<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
   <div class="content wow fdeInUp" style="visibility: visible; animation-name: fdeInUp;">
     <div class="container">
-      <?php esc_html_e('<h1>Our Blog</h1>','numero'); ?>
+     <h1> <?php  esc_html_e('Our Blog','numero'); ?></h1>
     </div>
   </div>
 </div>

@@ -17,7 +17,7 @@ get_header(); ?>
 
 <?php
     $background_img   = esc_url( get_theme_mod( 'numero_portfolio_page_background_img' ) );   
-    $background_img_static   = get_template_directory_uri()."/img/s-1.jpg";
+    $background_img_static   = get_template_directory_uri()."/assets/img/s-1.jpg";
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
 <div id="page-banner" style="background-image: url(<?php echo esc_url($image); ?>);">
@@ -101,13 +101,13 @@ get_header(); ?>
 		<div class="row"> 
 			<!--section-title-->
 			<div class="section-title text-center wow fadeInUp">
-				<h4>Realated Projects</h4>
+				<h4><?php esc_html_e('realated Projects','numero'); ?></h4>
 			</div>
 			<!--/section-title-->
 			<div class="clearfix"></div>
 			<div class="works">
 				<ul class="grid">
-					<?php numero_related_projectx() ?>
+					<?php numero_related_projectx(); ?>
 				</ul>
 			</div>
 		</div>

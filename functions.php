@@ -111,6 +111,53 @@ function numero_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	register_sidebar(array(
+		'name' => esc_html__('Footer Widgets 1', 'numero'),
+		'id' => 'widget-footer1',
+		'description' => esc_html__('Add Widgets Here.', 'numero'),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget' => '</section>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
+
+	));
+	register_sidebar(array(
+		'name' => esc_html__('Footer Widgets 2', 'numero'),
+		'id' => 'widget-footer2',
+		'description' => esc_html__('Add widgets here.', 'numero'),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget' => '</section>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
+	));
+	register_sidebar(array(
+		'name' => esc_html__('Footer Widgets 3', 'numero'),
+		'id' => 'widget-footer3',
+		'description' => esc_html__('Add widgets here.', 'numero'),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget' => '</section>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
+	));
+	register_sidebar(array(
+		'name' => esc_html__('Footer Widgets 4', 'numero'),
+		'id' => 'widget-footer4',
+		'description' => esc_html__('Add widgets here.', 'numero'),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget' => '</section>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
+	));
+	register_sidebar(array(
+		'name' => esc_html__('Footer Widgets 5', 'numero'),
+		'id' => 'widget-footer5',
+		'description' => esc_html__('Add widgets here.', 'numero'),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget' => '</section>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
+	));
 }
 add_action( 'widgets_init', 'numero_widgets_init' );
 /**
@@ -170,7 +217,8 @@ add_action( 'wp_enqueue_scripts', 'numero_scripts' );
 add_image_size( 'numero_our_work', 262, 163,  array( 'top', 'center' ) );
 add_image_size( 'choose-medium', 840, 527,  array( 'top', 'center' ) );
 add_image_size( 'numero-blog', 262, 163,  array( 'top', 'center' ) );
-
+add_image_size( 'numero-blogs', 730, 500,  array( 'top', 'center' ) );
+add_image_size( 'numero-related-post', 230, 152,  array( 'top', 'center' ) );
 add_image_size( 'numero_portfolio', 555, 347,  array( 'top', 'center' ) );
 // Custom Theme Functions
 	require get_template_directory() . '/inc/lib/related-post.php';
@@ -191,7 +239,16 @@ function numero_font_styles() {
 
 }
 add_action( 'wp_enqueue_scripts', 'numero_font_styles' );
+/**
+ * Registers social widget
+ */
+function numero_widgets_register() {
+	require get_template_directory() . '/inc/widgets/social.php';
+}
+add_action('widgets_init', 'numero_widgets_register');
 
+// Recent Post Widgets.
+require get_template_directory() . '/inc/widgets/recentpost.php';
 /**
  * Implement the Custom Header feature.
  */

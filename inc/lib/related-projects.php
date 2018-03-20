@@ -39,7 +39,7 @@ function numero_related_projectx() {
 				$class_format = 'fa-format-' . get_post_format( get_the_ID() );
                 
                  $title=get_the_title();
-                
+                $url=get_permalink(get_the_ID() );
                 global $post;
                
                 
@@ -50,7 +50,7 @@ function numero_related_projectx() {
 							%s
 							<figcaption>
 								<div class="caption-content">
-									<h6>%s</h6>
+									<h6><a href="%s">%s</a></h6>
 									<ul class="work-more">
 										<li><a href="%s"><i class="fa fa-link"></i></a></li>
 									</ul>
@@ -59,6 +59,7 @@ function numero_related_projectx() {
 						</figure>
 					</li>',
 					wp_kses_post($post_thumbnail),
+					esc_url($url),
 					esc_html($title),
                     esc_url( get_permalink() )
 

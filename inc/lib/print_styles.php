@@ -26,35 +26,9 @@ if (!function_exists('numero_paragraph_font'))  {
 		
 	}
 }
- // Add custom styles to `<head>`.
 
 
-if (!function_exists('numero_paragraph_font_size'))  {
-	function numero_paragraph_font_size(){
-		
-		$fontparagfamily_value = get_theme_mod('numero_paragraph_font_size', '');
-		$append_para_family_font = sprintf( 'font-size: %spx !important;',  $fontparagfamily_value );
-			// Output the styles.
-		if ( $fontparagfamily_value ) {
-			echo "\n" . 'p{' . esc_html($append_para_family_font) . '}';
-		}
-		
-	}
-}
 
-
-if (!function_exists('numero_paragraph_font_color'))  {
-	function numero_paragraph_font_color(){
-		
-		$color_value = get_theme_mod('numero_paragraph_font_color', '');
-		$append_color = sprintf( 'color: %s !important;',  $color_value );
-			// Output the styles.
-		if ( $color_value ) {
-			echo "\n" . 'p{' .esc_html ($append_color) . '}' ;
-		}
-		
-	}
-}
 
 
 
@@ -72,20 +46,6 @@ if (!function_exists('numero_heading_font_family'))  {
 }
 
 
-
-if (!function_exists('numero_headings_font_color'))  {
-	function numero_headings_font_color(){
-		
-		$color_value = get_theme_mod('numero_headings_font_color', '');
-		$append_color = sprintf( 'color: %s;',  $color_value );
-			// Output the styles.
-		if ( $color_value ) {
-			echo "\n" . 'h1{' . esc_html($append_color) . '}'."\n".'h2{'.esc_html($append_color).'}'."\n".'h3{'.esc_html($append_color).'}'.
-                "\n".'h4{'.esc_html($append_color).'}'."\n".'h5{'.esc_html($append_color).'}'."\n".'#about-us-block h2{'.esc_html($append_color).'}'."\n".'#our-work-block h2{'.esc_html($append_color).'}' ;
-		}
-		
-	}
-}
 
 
 
@@ -132,13 +92,7 @@ if(!function_exists('numero_main_styles')){
 echo '<style type="text/css" id="numero-css">';
 text_color_styles();
 numero_paragraph_font();
-numero_paragraph_font_size();
 numero_heading_font_family();
-numero_paragraph_font_color();
-numero_heading_font_family();
-numero_headings_font_color();
-numero_heading_font_family();
-numero_headings_font_color();
 numero_accent_color();
 numero_secondary_color();
 

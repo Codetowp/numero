@@ -21,8 +21,8 @@ function numero_customize_register( $wp_customize ) {
         {
             $numero_option_pages[ $p->ID ] = $p->post_title;
         }
-	require get_template_directory() . '/inc/lib/fo-to-range.php';
-    require get_template_directory() . '/inc/customizer-controls.php';
+    load_template( get_template_directory() . '/inc/customizer-controls.php', true ) ;
+    load_template( get_template_directory() . '/inc/lib/fo-to-range.php', true ) ;
 	
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
@@ -58,7 +58,7 @@ function numero_customize_register( $wp_customize ) {
         ) ); 
         
         $wp_customize->selective_refresh->add_partial( 'numero_about_description', array(
-            'selector'              => '#about-us-block .about-paragraph',
+            'selector'              => '#about-us-block .section-title p',
             'render_callback'       => 'numero_customize_partial_about_description',
         ) ); 
         
@@ -111,12 +111,20 @@ function numero_customize_register( $wp_customize ) {
             'selector'              => '#top-menu .pull-left  ul',
             'render_callback'       => 'numero_customize_partial_header_phone_number',
         ) ); 
+         $wp_customize->selective_refresh->add_partial( 'numero_counter_check', array(
+            'selector'              => '#company-counter .c-block',
+           
+        ) ); 
+          $wp_customize->selective_refresh->add_partial( 'numero_client_section', array(
+            'selector'              => '#clients-block', 
+        ) ); 
+       
 	}
     /*****************************Panel***********************************************/
     
     $wp_customize->add_panel( 'numero_pannel' ,array(
        'priority'        		=> 101,
-       'title'           		=> esc_html__( 'Frontpage Theme Sections', 'numero' ),
+       'title'           		=> __( 'Frontpage Theme Sections', 'numero' ),
        'description'     		=> '',
    ) );
     /*************************Top Header Section********************************************/    
@@ -156,7 +164,7 @@ foreach( $social_sites as $social_site ) {
     ) );
 
     $wp_customize->add_control( "numero_social_links[$social_site]", array(
-            'label'   => ucwords( $social_site ) . __( " Url:", 'numero' ),
+            'label'   => ucwords( $social_site ) . __( "Url:", 'numero' ),
             'section' => 'numero_top_header',
             'type'    => 'text',
     ) );
@@ -164,7 +172,7 @@ foreach( $social_sites as $social_site ) {
 
 
 $wp_customize->add_setting( 'numero_header_phone_number', array(  
-    'default'                   => esc_html__('+232456758-212', 'numero'),
+    'default'                   => '+232456758-212',
     'sanitize_callback'         => 'sanitize_text_field',
     'transport'                 => 'refresh', // refresh or postMessage              
 ) );    
@@ -185,29 +193,6 @@ $wp_customize->add_section('numero_header_section', array(
 
 ));
 
-
-$wp_customize->add_setting( 'numero_header_intro_check', array(
-        'sanitize_callback' => 'numero_sanitize_checkbox',
-        'default'           => '',
-        'capability'        => 'manage_options',
-        'transport'         => 'refresh',
-    )
-);
-
-$wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize, 'numero_header_intro_check', array(
-        'settings' => 'numero_header_intro_check',
-        'label'    => __( 'Disable Header Section?', 'numero' ),
-        'section'  => 'numero_header_section',
-        'type'     => 'ios',
-        'priority' => 1,
-
-) ) );
-
-
-
-
-
-
 $wp_customize->add_setting( 'numero_background_img', array(
     'default'                   => esc_url(get_template_directory_uri()."/assets/img/bg-1.jpg"),
     'type'                      => 'theme_mod',
@@ -227,7 +212,7 @@ $wp_customize->add_control( new WP_Customize_Image_Control(
 
 $wp_customize->add_setting( 'numero_header_text', array(      
     
-    'default'                   => esc_html__('Section Main Title', 'numero'),
+    'default'                   => __('Section Main Title', 'numero'),
     'sanitize_callback'         => 'sanitize_text_field',
     'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
@@ -241,7 +226,7 @@ $wp_customize->add_control( 'numero_header_text', array(
 
 
 $wp_customize->add_setting( 'numero_tag_line', array(      
-    'default'                   => esc_html__('Section Title', 'numero'),
+    'default'                   => __('Section Title', 'numero'),
     'sanitize_callback'         => 'sanitize_text_field',
     'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
@@ -255,7 +240,7 @@ $wp_customize->add_control( 'numero_tag_line', array(
 
 
 $wp_customize->add_setting( 'numero_header_description', array(      
-'default'                   => esc_html__('Section Description', 'numero'),
+'default'                   => __('Section Description', 'numero'),
 'sanitize_callback'         => 'wp_kses_post',
 'transport'                 => 'postMessage',               
 ) );    
@@ -330,8 +315,6 @@ $wp_customize->add_section('numero_about_section', array(
 
 ));
 
-
-
 $wp_customize->add_setting( 'numero_about_check', array(
         'sanitize_callback' => 'numero_sanitize_checkbox',
         'default'           => '',
@@ -349,11 +332,8 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 
 ) ) );
 
-
-
-
  $wp_customize->add_setting( 'numero_about_header_text', array(      
-    'default'                   => esc_html__('About us', 'numero'),
+    'default'                   => __('About us', 'numero'),
     'sanitize_callback'         => 'sanitize_text_field',
     'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
@@ -366,7 +346,7 @@ $wp_customize->add_control( 'numero_about_header_text', array(
 ) );
 
 $wp_customize->add_setting( 'numero_about_description', array(      
-    'default'                   => esc_html__('Section Description', 'numero'),
+    'default'                   => __('Section Description', 'numero'),
     'sanitize_callback'         => 'wp_kses_post',
     'transport'                 => 'postMessage',               
 ) );    
@@ -391,7 +371,7 @@ $wp_customize->add_control(
 $wp_customize,
     'numero_about_boxes',
     array(
-        'label'         => esc_html__('About Us page', 'numero'),
+        'label'         => __('About Us page', 'numero'),
         'description'   => '',
         'section'       => 'numero_about_section',
         'live_title_id' => 'content_page', // apply for unput text and textarea only
@@ -446,7 +426,7 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 
 
  $wp_customize->add_setting( 'numero_choose_header_text', array(      
-    'default'                   => esc_html__('Section Title', 'numero'),
+    'default'                   =>__('Section Title', 'numero'),
     'sanitize_callback'         => 'sanitize_text_field',
     'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
@@ -472,7 +452,7 @@ $wp_customize->add_control(
         $wp_customize, 
         'numero_choose_box',
         array(
-            'label'         => esc_html__('choose content page', 'numero'),
+            'label'         => __('choose content page', 'numero'),
             'description'   => '',
             'section'       => 'numero_choose_section',
             'live_title_id' => 'content_page', // apply for unput text and textarea only
@@ -587,6 +567,8 @@ $wp_customize->add_control(
 
         )
     ) );
+
+
 /*********Our Work**********/
     
 $wp_customize->add_section('numero_our_work', array(
@@ -619,7 +601,7 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 
 
 $wp_customize->add_setting( 'numero_our_work_header', array(      
-    'default'                   => esc_html__('Session Title', 'numero'),
+    'default'                   => __('Session Title', 'numero'),
     'sanitize_callback'         => 'sanitize_text_field',
     'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
@@ -703,7 +685,7 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 
 
 $wp_customize->add_setting( 'numero_service_header', array(      
-'default'                   => esc_html__('Section Title', 'numero'),
+'default'                   =>__('Section Title', 'numero'),
 'sanitize_callback'         => 'sanitize_text_field',
 'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
@@ -716,7 +698,7 @@ $wp_customize->add_control( 'numero_service_header', array(
 ) );
 
 $wp_customize->add_setting( 'numero_service_description', array(      
-'default'                   => esc_html__('Section Description', 'numero'),
+'default'                   => __('Section Description', 'numero'),
 'sanitize_callback'         => 'wp_kses_post',
 'transport'                 => 'postMessage',               
 ) );    
@@ -795,7 +777,7 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 
 
 $wp_customize->add_setting( 'numero_testimonial_header', array(      
-    'default'                   => esc_html__('Section Title', 'numero'),
+    'default'                   => __('Section Title', 'numero'),
     'sanitize_callback'         => 'sanitize_text_field',
     'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
@@ -884,8 +866,24 @@ new Numero_Customize_Repeatable_Control(
     )
 )
 );
+$wp_customize->add_setting( 'numero_client_background_img', array(
+    'default'                   => esc_url(get_template_directory_uri()."/assets/img/07-screenshot.jpg"),
+    'type'                      => 'theme_mod',
+    'capability'                => 'edit_theme_options',
+    'sanitize_callback'         => 'esc_url_raw',
+) );
+
+$wp_customize->add_control( new WP_Customize_Image_Control(
+    $wp_customize,'numero_client_background_img', array(
+    'label'                     => __( 'Background Image', 'numero' ),
+    'section'                   => 'numero_client_section',
+    'settings'                  => 'numero_client_background_img',
+    'context'                   => 'numero_client_background_img',
+    'priority'                  => 20,
+    ) 
+) );
 /*********Blog Section**********/
-    
+  $wp_customize->get_control( 'header_image'  )->section   = 'numero_blog_section';  
 $wp_customize->add_section('numero_blog_section', array(
     'title'                     => __('Blog Section', 'numero'),
     'description'               => 'Easily edit your header section',
@@ -913,7 +911,7 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 ) ) );
 
 $wp_customize->add_setting( 'numero_blog_header', array(      
-    'default'                   => esc_html__('Section Description', 'numero'),
+    'default'                   => __('Section Description', 'numero'),
     'sanitize_callback'         => 'sanitize_text_field',
     'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
@@ -926,7 +924,7 @@ $wp_customize->add_control( 'numero_blog_header', array(
 ) );
 
 $wp_customize->add_setting( 'numero_blog_description', array(      
-    'default'                   => esc_html__('Section Description', 'numero'),
+    'default'                   =>__('Section Description', 'numero'),
     'sanitize_callback'         => 'wp_kses_post',
     'transport'                 => 'postMessage',               
 ) );    
@@ -980,7 +978,7 @@ $wp_customize->add_control( new Numero_Customizer_Toggle_Control( $wp_customize,
 ) ) );
 
 $wp_customize->add_setting( 'numero_trial_header', array(      
-    'default'                   => esc_html__('Be the first to grap all new design content from numero!','numero'),
+    'default'                   => __('Be the first to grap all new design content from numero!','numero'),
     'sanitize_callback'         => 'wp_kses_post',
     'transport'                 => 'postMessage', // refresh or postMessage              
 ) );    
@@ -993,7 +991,7 @@ $wp_customize->add_control( 'numero_trial_header', array(
 ) );
 
 $wp_customize->add_setting( 'numero_trial_button', array(      
-    'default'                   => esc_html__('START FREE TRIAL','numero') ,
+    'default'                   => __('START FREE TRIAL','numero') ,
     'sanitize_callback'         => 'sanitize_text_field',
     'transport'                 => 'postMessage',               
 ) );    
@@ -1024,7 +1022,7 @@ $wp_customize->add_section('numero_font_settings', array(
     'title'                     => __('Font Settings', 'numero'),
     'description'               => 'Change font family, size and color (Headings & Paragraph) for Homepage, Blog Posts & Pages.',
     'priority'                  => 65,
-   
+    'panel'                     =>'numero_global_pannel',
 
 ));
 
@@ -1045,42 +1043,9 @@ $wp_customize->add_control( 'numero_paragraph_font', array(
     'priority' => 1,
     ));
 
-$wp_customize->add_setting( 'numero_paragraph_font_color', 
-    array(
-        'default' => '#43484d', 
-        'transport' => 'refresh', 
-        'sanitize_callback' => 'sanitize_hex_color', 
-    ) );
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_paragraph_font_color', 
-   array(
-    'label'      => esc_attr__( 'Pick Paragraph Font Color', 'numero' ),
-     'description'   => esc_attr__('Default : #43484d', 'numero' ),
-    'section'    => 'numero_font_settings',
-       'priority'   => 2,
-) ) );    
 
 
-$wp_customize->add_setting( 'numero_paragraph_font_size', array(
-    'default'       => get_theme_mod( 'numero_paragraph_font_size', '16px' ),
-    'capability'    => 'edit_theme_options',
-    'transport'     => 'refresh',
-    'sanitize_callback'=> 'absint',
-) );
 
-$wp_customize->add_control( new Numero_Customizer_Range_Value_Control( $wp_customize, 'numero_paragraph_font_size', array(
-    'type'     => 'range-value',
-    'section'  => 'numero_font_settings',
-    'settings' => 'numero_paragraph_font_size',        
-    'label'    => __( 'Pick Paragraph Font Size','numero' ),
-    'description'   => esc_attr__('Default : 16px', 'numero' ),
-    'input_attrs' => array(
-        'min'    => 11,
-        'max'    => 24,
-        'step'   => 1,
-        'suffix' => 'px',
-  ),
-'priority'   => 3,
-) ) );
 
 /***************Heading fonts****************/
        
@@ -1100,18 +1065,6 @@ $wp_customize->add_control( 'numero_heading_font_family', array(
 ));
 
 
-$wp_customize->add_setting( 'numero_headings_font_color', 
-array(
-    'default' => '#ffffff', 
-    'transport' => 'refresh', 
-    'sanitize_callback' => 'sanitize_hex_color', 
-) );
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'numero_headings_font_color', 
-array(
-'label'      => esc_attr__( 'Pick Heading Font Color', 'numero' ),
-'section'    => 'numero_font_settings',
-   'priority'   => 5,
-) ) );
 
 
 /**************accent**************/    
@@ -1132,9 +1085,9 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'nume
 
 /*************************Panel****************************************************/
 
-$wp_customize->add_panel( 'numero_page_pannel' ,array(
+$wp_customize->add_panel( 'numero_global_pannel' ,array(
 'priority'              => 105,
-'title'                 => esc_html__( 'Page Settings Sections', 'numero' ),
+'title'                 => __( 'Global SETTINGS', 'numero' ),
 'description'           => '',
 ) );
 /*************************header details********************************************/    
@@ -1142,7 +1095,7 @@ $wp_customize->add_panel( 'numero_page_pannel' ,array(
 $wp_customize->add_section( 'numero_blog_page_settings', array(
 'title'                     => __( 'Recent Post Count', 'numero'  ),
 'priority'                  => 1,
-'panel'                     => 'numero_page_pannel',  
+'panel'                     => 'numero_global_pannel',  
 ) );
 
 $wp_customize->add_setting( 'numero_blog_page_relative_count', array(

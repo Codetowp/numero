@@ -11,7 +11,8 @@ if ( ! defined( 'WPINC' ) ) {
 }
 if ( ! class_exists( 'Customizer_Library' ) ) :
 	// Helper functions for fonts.
-	require plugin_dir_path( __FILE__ ) . 'fonts.php';
+	load_template( get_template_directory() . '/inc/lib/fonts.php', true ) ;
+
 	class Customizer_Library {
 		private static $instance;
 		public $options = array();

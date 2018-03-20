@@ -23,13 +23,14 @@ function numero_related_post() {
                 
                 if  ( get_the_post_thumbnail()=='')
                 {
-                    $background_img_relatedpost   = get_template_directory_uri() . '/img/04-screenshot.jpg';
+                    $background_img_relatedpost   = get_template_directory_uri() . '/assets/img/04-screenshot.jpg';
                     
                     $post_thumbnail= '<img src="'.$background_img_relatedpost.'" class="img-responsive">';
                 }
                 else
                 {
-                    $post_thumbnail = get_the_post_thumbnail( get_the_ID(), 'img-responsive' );
+                    $post_thumbnail = get_the_post_thumbnail( get_the_ID('numero-related-post'), 'img-responsive' );
+
                 }
                 
 				$class_format = '';
@@ -38,7 +39,7 @@ function numero_related_post() {
 				$class_format = 'fa-format-' . get_post_format( get_the_ID() );
                 
                  $title=get_the_title();
-                
+                 $url=get_permalink(get_the_ID() );
                 global $post;
                 $categories = get_the_category($post->ID);
                 $cat_link = get_category_link($categories[0]->cat_ID);
@@ -46,11 +47,12 @@ function numero_related_post() {
                 
 				printf(                    
 					'<article class="col-md-4 col-sm-6 col-xs-12">
-                        <header class="entry-header"> %s <a href="%s">
+                        <header class="entry-header"><a href="%s"> %s </a> <a href="%s">
                           <h6>%s</h6></a> 
-                          <a href="%s">' .esc_html( $categories[0]->cat_name) . '</a> , 
+                          <a href="%s">' .esc_html( $categories[0]->cat_name) . '</a> 
                         </header>
                       </article>',
+                      esc_url($url),
 					wp_kses_post($post_thumbnail),
                     esc_url( get_permalink() ),
                     esc_html($title),

@@ -8,7 +8,10 @@
  */
 
 ?>
-<section id="clients-block" class="text-center">
+<?php
+$background_img   = get_theme_mod( 'numero_client_background_img',get_template_directory_uri().'/img/07-screenshot.jpg' );   
+?>
+<section id="clients-block" class="text-center" style="background-image: url(<?php echo esc_url($background_img);?>);">
   <div class="container">
     <div id="clients" class="owl-carousel owl-theme">
      <?php

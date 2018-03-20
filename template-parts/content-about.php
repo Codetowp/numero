@@ -83,18 +83,19 @@ if ( ! empty( $page_ids ) )
 else
 {?>            
       <!--col-2-->
-      <div class="col-md-4 col-sm-4 col-about-us wow zoomIn"> <i class="fa fa-clock-o"></i>
-        <h4>Expertise</h4>
-        <p>She gave my mother such a turn, that I have always been convinced I am indebted to Miss Betsey for having been born on a Friday.</p>
+     <div class="col-md-4 col-sm-4 col-about-us wow zoomIn"> <i class="fa fa-clock-o"></i>
+        <h4><?php esc_html_e('Expertise','numero'); ?></h4>
+        <p><?php esc_html_e('She gave my mother such a turn, that I have always been convinced I am indebted to Miss Betsey for having been born on a Friday.','numero'); ?></p>
       </div>
       <!--/col-2--> 
       
       <!--col-3-->
       <div class="col-md-4 col-sm-4 col-about-us wow fadeInRight"> <i class="fa fa-clock-o"></i>
-        <h4>Future plans</h4>
-        <p>Looking cautiously round, to ascertain that they were not overheard, the two hags cowered nearer to the fire, and chuckled heartily.</p>
+        <h4><?php esc_html_e('Future plans','numero'); ?></h4>
+        <p><?php esc_html_e('Looking cautiously round, to ascertain that they were not overheard, the two hags cowered nearer to the fire, and chuckled heartily.'); ?></p>
       </div>
       <!--/col-3--> 
+      
       <?php  }?>
     </div>
   </div>

@@ -12,8 +12,15 @@
 
 	
  <article class="col-md-12 wow fadeInUp" <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-          <header class="entry-header"> <span class="date-article"><i class="fa fa-calendar-o"></i> JULY 13 2017</span> <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" class="img-responsive"></a> <span class="byline"><span class="author vcard"><a href="#"><i class="fa fa-folder-o"></i> Business &bull; Industry</a><a href="#"><i class="fa fa-user-o"></i> Rijo</a> </span></span> <a href="#">
+          <header class="entry-header"> <span class="date-article"><?php  numero_posted_on();?></span> <a href="<?php the_permalink(); ?>"><?php if(has_post_thumbnail() ): ?><img src="<?php the_post_thumbnail_url('numero-blogs'); ?>" class="img-responsive"><?php else:?><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/06-screenshot.jpg' );?>" class="img-responsive"><?php endif; ?></a> <span class="byline"><span class="author vcard"><i class="fa fa-folder-o"></i> <?php
+		$id = get_the_ID();
+
+		 $category = get_the_category($id );
+		
+				
+				echo '<a href="' .esc_url( get_tag_link($category[0]->term_id)).'">' . esc_html( $category[0]->cat_name ) . '</a> ';
+				 ?><i class="fa fa-user-o"></i> <?php the_author_posts_link(); ?> </span></span> <a href="<?php the_permalink(); ?>">
             <h2><?php the_title(); ?></h2>
             </a></header>
-          <?php echo esc_html( wp_trim_words( get_the_content(), 10, '...' ));?>
+         <p> <?php echo esc_html( wp_trim_words( get_the_content(), 10, '...' ));?></p>
           <a class="btn  readmore-btn" href="<?php the_permalink(); ?>"><?php esc_html_e('READ MORE','numero'); ?></a> </article>
